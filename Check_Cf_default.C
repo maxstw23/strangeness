@@ -55,7 +55,7 @@ const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
 
 
-void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234")
+void Check_Cf_default(const Char_t *inFile = "placeholder.list", const TString JobID = "1234")
 {   
     // PDG Database
 	TDatabasePDG *db = new TDatabasePDG();

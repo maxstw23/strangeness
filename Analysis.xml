@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<job  maxFilesPerProcess="500" simulateSubmission="false" fileListSyntax="xrootd">
+<job  maxFilesPerProcess="50" simulateSubmission="false" fileListSyntax="xrootd">
     
     <command>
 	stardev
