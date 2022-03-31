@@ -13,8 +13,10 @@ public:
     virtual ~MixedBuffer() {}
     void Init() {for (int i = 0;i < 9; i++) {events[i].resize(0);}}
     void Add(my_event _new_event, int cen);
+    void Add_FIFO(my_event _new_event, int cen);
     bool IsEmpty(int cen) {return (events[cen-1].size() == 0);} 
     my_event Sample(int cen);
+    std::vector<my_event> Sample_All(int cen);
 
 ClassDef(MixedBuffer,1)
 };
