@@ -317,7 +317,7 @@ void Check_Cf_default(const Char_t *inFile = "placeholder.list", const TString J
         if (cen == -1) continue;
 
         // double loop for cf
-        // normal cf
+        /****** normal cf ******/
         for (int j = 0; j < px2_vec.size(); ++j)
         {
             int pid2 = pid2_vec[j];
@@ -367,7 +367,7 @@ void Check_Cf_default(const Char_t *inFile = "placeholder.list", const TString J
                 float phi_diff = fabs(phi1-phi2);
                 if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
 
-                // fill normal cf
+                // fill cf
                 if (pid1 ==  P1PID && pid2 == -P2PID) 
                 {
                     hCorrKplusObar[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
@@ -403,7 +403,7 @@ void Check_Cf_default(const Char_t *inFile = "placeholder.list", const TString J
             }
         }
 
-        // mixed-event 
+        /****** mixed cf ******/
         if (!buffer.IsEmpty(cen))
         {   
             std::vector<my_event> mixed_buffer = buffer.Sample_All(cen);
@@ -450,7 +450,11 @@ void Check_Cf_default(const Char_t *inFile = "placeholder.list", const TString J
                         p2.Boost((-1)*beta);
                         hCOM->Fill((p1+p2).Vect().Mag());
 
-                        // fill normal cf
+                        // angle folding
+                        float phi_diff = fabs(phi1-phi2);
+                        if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
+
+                        // fill cf
                         if (pid1 ==  P1PID && pid2 == -P2PID)
                         {
                             hCorrKplusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
