@@ -4,7 +4,7 @@
     
     <command>
 	stardev
-	root4star -b -q check_default.C++\(\"$FILELIST\",\"$JOBID\"\)
+	root4star -b -q check_default.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
     </command>
     
     <SandBox installer="ZIP">

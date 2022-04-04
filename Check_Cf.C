@@ -43,7 +43,6 @@ const int buffer_size = 10;
 const bool  CutEta  = false;
 const bool  Cuty    = false; //only select either CutEta or Cuty or none, not both!
 TString energy = "14";
-const int mode = 1;
 
 const float mKaon = 0.493677;
 const float mOmega = 1.67245;
@@ -55,7 +54,9 @@ const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
 
 
-void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234")
+void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
+//  mode 0: AMPT default
+//  mode 1: AMPT string-melting or UrQMD (will add UrQMD cendef)
 {   
     // PDG Database
 	TDatabasePDG *db = new TDatabasePDG();
