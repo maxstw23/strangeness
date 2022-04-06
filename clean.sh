@@ -4,4 +4,4 @@ rm *.zip
 rm script/*
 rm debug/*
 rm log/*
-rm data/*
+rm -rf data/*
