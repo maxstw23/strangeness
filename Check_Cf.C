@@ -106,6 +106,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hP        = new TH1D("hP"        , "Total Momentum"                   , 500 ,   0., 15.  );
     TH1D* hPt       = new TH1D("hPt"       , "Tranverse Momentum"               , 500 ,   0., 15.  );
     TH1D* hEta      = new TH1D("hEta"      , "Pseudorapidity"                   , 500 , -10., 10.  );
+    TH1D* hy        = new TH1D("hy"        , "Rapidity"                         , 500 , -10., 10.  );
     TH2D* hPtEta    = new TH2D("hPtEta"    , "Pt-eta map"                       , 500 ,   0., 15., 500, -10., 10.);
     TH1D* hEtaO     = new TH1D("hEtaO"     , "#Omega^{-} Pseudorapidity"        , 500 , -10., 10.  );
     TH1D* hEtaObar  = new TH1D("hEtaObar"  , "#bar{#Omega^{+}} Pseudorapidity"  , 500 , -10., 10.  );
@@ -159,14 +160,14 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     hPtCorrKminusObar[1] = new TH1D("hPtCorrKminusObar_mix", "K^{-}-#bar{#Omega^{+}} p_T Correlation", 5000, 0.0, 50.0);
     /* y */
     TH1D *hyCorrKplusO[2], *hyCorrKplusObar[2], *hyCorrKminusO[2], *hyCorrKminusObar[2];
-    hyCorrKplusO[0]     = new TH1D("hyCorrKplusO"    , "K^{+}-#Omega^{-} y Correlation"      , 1000, 0.0, 10.0);
-    hyCorrKplusObar[0]  = new TH1D("hyCorrKplusObar" , "K^{+}-#bar{#Omega^{+}} y Correlation", 1000, 0.0, 10.0);
-    hyCorrKminusO[0]    = new TH1D("hyCorrKminusO"   , "K^{-}-#Omega^{-} y Correlation"      , 1000, 0.0, 10.0);
-    hyCorrKminusObar[0] = new TH1D("hyCorrKminusObar", "K^{-}-#bar{#Omega^{+}} y Correlation", 1000, 0.0, 10.0);
-    hyCorrKplusO[1]     = new TH1D("hyCorrKplusO_mix"    , "K^{+}-#Omega^{-} y Correlation"      , 1000, 0.0, 10.0);
-    hyCorrKplusObar[1]  = new TH1D("hyCorrKplusObar_mix" , "K^{+}-#bar{#Omega^{+}} y Correlation", 1000, 0.0, 10.0);
-    hyCorrKminusO[1]    = new TH1D("hyCorrKminusO_mix"   , "K^{-}-#Omega^{-} y Correlation"      , 1000, 0.0, 10.0);
-    hyCorrKminusObar[1] = new TH1D("hyCorrKminusObar_mix", "K^{-}-#bar{#Omega^{+}} y Correlation", 1000, 0.0, 10.0);
+    hyCorrKplusO[0]     = new TH1D("hyCorrKplusO"    , "K^{+}-#Omega^{-} y Correlation"      , 2000, -10.0, 10.0);
+    hyCorrKplusObar[0]  = new TH1D("hyCorrKplusObar" , "K^{+}-#bar{#Omega^{+}} y Correlation", 2000, -10.0, 10.0);
+    hyCorrKminusO[0]    = new TH1D("hyCorrKminusO"   , "K^{-}-#Omega^{-} y Correlation"      , 2000, -10.0, 10.0);
+    hyCorrKminusObar[0] = new TH1D("hyCorrKminusObar", "K^{-}-#bar{#Omega^{+}} y Correlation", 2000, -10.0, 10.0);
+    hyCorrKplusO[1]     = new TH1D("hyCorrKplusO_mix"    , "K^{+}-#Omega^{-} y Correlation"      , 2000, -10.0, 10.0);
+    hyCorrKplusObar[1]  = new TH1D("hyCorrKplusObar_mix" , "K^{+}-#bar{#Omega^{+}} y Correlation", 2000, -10.0, 10.0);
+    hyCorrKminusO[1]    = new TH1D("hyCorrKminusO_mix"   , "K^{-}-#Omega^{-} y Correlation"      , 2000, -10.0, 10.0);
+    hyCorrKminusObar[1] = new TH1D("hyCorrKminusObar_mix", "K^{-}-#bar{#Omega^{+}} y Correlation", 2000, -10.0, 10.0);
     /* phi */
     TH1D *hphiCorrKplusO[2], *hphiCorrKplusObar[2], *hphiCorrKminusO[2], *hphiCorrKminusObar[2];
     hphiCorrKplusO[0]     = new TH1D("hphiCorrKplusO"    , "K^{+}-#Omega^{-} phi Correlation"      , 500, 0.0, PI);
@@ -251,6 +252,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             hP->Fill(p);
             hPt->Fill(pt);
             hEta->Fill(eta);
+            if (y > -999) hy->Fill(y);
             hPtEta->Fill(pt,eta);
             if (pid ==  OmegaPID) {hEtaO   ->Fill(eta); if (y > -999) hyO   ->Fill(y); hPtO   ->Fill(pt);}
             if (pid == -OmegaPID) {hEtaObar->Fill(eta); if (y > -999) hyObar->Fill(y); hPtObar->Fill(pt);}
@@ -373,7 +375,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 {
                     hCorrKplusObar[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
                     hPtCorrKplusObar[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKplusObar[0]  ->Fill(fabs(y1-y2));
+                    hyCorrKplusObar[0]  ->Fill(y1-y2);
                     hphiCorrKplusObar[0]->Fill(phi_diff);
                     hthetaCorrKplusObar ->Fill(fabs(theta1-theta2));
                 }
@@ -381,7 +383,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 {
                     hCorrKplusO[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
                     hPtCorrKplusO[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKplusO[0]  ->Fill(fabs(y1-y2));
+                    hyCorrKplusO[0]  ->Fill(y1-y2);
                     hphiCorrKplusO[0]->Fill(phi_diff);
                     hthetaCorrKplusO ->Fill(fabs(theta1-theta2));
                 }
@@ -389,7 +391,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 {
                     hCorrKminusObar[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
                     hPtCorrKminusObar[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKminusObar[0]  ->Fill(fabs(y1-y2));
+                    hyCorrKminusObar[0]  ->Fill(y1-y2);
                     hphiCorrKminusObar[0]->Fill(phi_diff);
                     hthetaCorrKminusObar ->Fill(fabs(theta1-theta2));
                 }
@@ -397,7 +399,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 {
                     hCorrKminusO[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
                     hPtCorrKminusO[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKminusO[0]  ->Fill(fabs(y1-y2));
+                    hyCorrKminusO[0]  ->Fill(y1-y2);
                     hphiCorrKminusO[0]->Fill(phi_diff);
                     hthetaCorrKminusO ->Fill(fabs(theta1-theta2));
                 }
@@ -460,28 +462,28 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                         {
                             hCorrKplusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
                             hPtCorrKplusObar[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKplusObar[1]  ->Fill(fabs(y1-y2));
+                            hyCorrKplusObar[1]  ->Fill(y1-y2);
                             hphiCorrKplusObar[1]->Fill(phi_diff);
                         }
                         if (pid1 ==  P1PID && pid2 ==  P2PID) 
                         {
                             hCorrKplusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
                             hPtCorrKplusO[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKplusO[1]  ->Fill(fabs(y1-y2));
+                            hyCorrKplusO[1]  ->Fill(y1-y2);
                             hphiCorrKplusO[1]->Fill(phi_diff);
                         }
                         if (pid1 == -P1PID && pid2 == -P2PID)
                         {
                             hCorrKminusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
                             hPtCorrKminusObar[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKminusObar[1]  ->Fill(fabs(y1-y2));
+                            hyCorrKminusObar[1]  ->Fill(y1-y2);
                             hphiCorrKminusObar[1]->Fill(phi_diff); 
                         } 
                         if (pid1 == -P1PID && pid2 ==  P2PID) 
                         {
                             hCorrKminusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
                             hPtCorrKminusO[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKminusO[1]  ->Fill(fabs(y1-y2));
+                            hyCorrKminusO[1]  ->Fill(y1-y2);
                             hphiCorrKminusO[1]->Fill(phi_diff);
                         }
                     }
