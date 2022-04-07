@@ -4,4 +4,4 @@ rm *.zip
 rm script/*
 rm debug/*
 rm log/*
-rm -rf data/*
+find data ! -name 'hadd2.pl' -type f -delete
