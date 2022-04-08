@@ -31,15 +31,16 @@ using namespace std;
 
 // constants
 const float eta_cut    = 1.;
-const int NClass       = 6; //number of particle classes to count    
-const int NEventClass  = 6; //number of special events to select
+const int NClass       = 7; //number of particle classes to count    
+const int NEventClass  = 2; //number of special events to select
 const int NKaonClass   = 5;
 const int NLambdaClass = 3;
 const int NSigmaClass  = 7;
 const int NXiClass     = 5;
 const int NOmegaClass  = 3;
+const int NNucleonClass= 4;
 
-int FindStrangeType(int PID);
+int FindType(int PID);
 
 void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID = "1234")
 {   
@@ -112,10 +113,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
 
-    // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0
-    TH1D *hsdist [NEventClass+1], *hpdist[NEventClass+1], *hKaon[NEventClass+1], 
-         *hLambda[NEventClass+1], *hSigma[NEventClass+1], *hXi  [NEventClass+1], *hOmega[NEventClass+1];
-    char fname[7][200]; 
+    // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0， 7 - Nucleons
+    TH1D *hsdist[NEventClass+1], *hpdist[NEventClass+1], *hKaon [NEventClass+1], *hLambda[NEventClass+1], 
+         *hSigma[NEventClass+1], *hXi   [NEventClass+1], *hOmega[NEventClass+1], *hNucleon[NEventClass+1];
+    char fname[8][200]; 
     for (int i = 0; i < NEventClass+1; i++)
     {
         sprintf(fname[0], "hsdist_%d" , i);
@@ -125,13 +126,15 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         sprintf(fname[4], "hSigma_%d" , i);
         sprintf(fname[5], "hXi_%d"    , i);
         sprintf(fname[6], "hOmega_%d" , i);
-        hsdist[i]  = new TH1D(fname[0], fname[0], NClass      , 0.5, 0.5 + NClass      );
-        hpdist[i]  = new TH1D(fname[1], fname[1], NClass      , 0.5, 0.5 + NClass      );
-        hKaon[i]   = new TH1D(fname[2], fname[2], NKaonClass  , 0.5, 0.5 + NKaonClass  );
-        hLambda[i] = new TH1D(fname[3], fname[3], NLambdaClass, 0.5, 0.5 + NLambdaClass);
-        hSigma[i]  = new TH1D(fname[4], fname[4], NSigmaClass , 0.5, 0.5 + NSigmaClass );
-        hXi[i]     = new TH1D(fname[5], fname[5], NXiClass    , 0.5, 0.5 + NXiClass    );
-        hOmega[i]  = new TH1D(fname[6], fname[6], NOmegaClass , 0.5, 0.5 + NOmegaClass );
+        sprintf(fname[7], "hNucleon_%d_count", i);
+        hsdist[i]  = new TH1D(fname[0], fname[0], NClass       , 0.5, 0.5 + NClass       );
+        hpdist[i]  = new TH1D(fname[1], fname[1], NClass       , 0.5, 0.5 + NClass       );
+        hKaon[i]   = new TH1D(fname[2], fname[2], NKaonClass   , 0.5, 0.5 + NKaonClass   );
+        hLambda[i] = new TH1D(fname[3], fname[3], NLambdaClass , 0.5, 0.5 + NLambdaClass );
+        hSigma[i]  = new TH1D(fname[4], fname[4], NSigmaClass  , 0.5, 0.5 + NSigmaClass  );
+        hXi[i]     = new TH1D(fname[5], fname[5], NXiClass     , 0.5, 0.5 + NXiClass     );
+        hOmega[i]  = new TH1D(fname[6], fname[6], NOmegaClass  , 0.5, 0.5 + NOmegaClass  );
+        hNucleon[i]= new TH1D(fname[7], fname[7], NNucleonClass, 0.5, 0.5 + NNucleonClass);
     
     }
 
@@ -170,8 +173,6 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
             // check for particle
             if (*it == -3334) hasParticle[1] = true; if (*it == 3334) hasParticle[2] = true; 
-            if (*it == -3312) hasParticle[3] = true; if (*it == 3312) hasParticle[4] = true; 
-            if (*it == -3322) hasParticle[5] = true; if (*it == 3322) hasParticle[6] = true; 
 
             // omega ratio
             if (*it ==  3334) hOmegaRatio->Fill(0);
@@ -192,7 +193,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         {
             int   pid   = pid_vec->at(i);
             int   s     = sness_map[pid];
-            int   type  = FindStrangeType(pid);
+            int   type  = FindType(pid);
             float px    = px_vec->at(i);
             float py    = py_vec->at(i);
             float pz    = pz_vec->at(i);
@@ -250,6 +251,14 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                     else if (pid == -3334) hOmega[j]->Fill(2, s); //anti Omega^+
                     else                   hOmega[j]->Fill(3, s); //others
                 }
+
+                if (type == 7) //Nucleons
+                {
+                    if      (pid ==  2212) hNucleon[j]->Fill(1); //proton
+                    else if (pid == -2212) hNucleon[j]->Fill(2); //anti-proton
+                    else if (pid ==  2112) hNucleon[j]->Fill(3); //neutron
+                    else if (pid == -2112) hNucleon[j]->Fill(4); //anti-neutron
+                }
             }                   
         }
 
@@ -262,7 +271,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     fout.Write();
 }
 
-int FindStrangeType(int PID)
+int FindType(int PID)
 {
     // kaons
      if (fabs(PID) == 311 || fabs(PID) == 321 || fabs(PID) == 313 || fabs(PID) == 323)  
@@ -287,6 +296,10 @@ int FindStrangeType(int PID)
     // omega
     if (fabs(PID) == 3334 || fabs(PID) == 4332 || fabs(PID) == 4432 || fabs(PID) == 5332)
         return 6;
+
+    // nucleon
+    if (fabs(PID) == 2212 || fabs(PID) == 2112)
+        return 7;
     
     return -1; //not strange
 }
