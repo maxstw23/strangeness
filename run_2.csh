@@ -10,7 +10,7 @@ printf -v var '*.root'
 # Correlation
 #star-submit-template -template ./Analysis_2.xml -entities input_dir=$var,mode=1
 #star-submit-template -template ./Analysis_default_2.xml -entities input_dir=$var,mode=0
-#star-submit-template -template ./Analysis_urqmd_2.xml -entities input_dir=$var,mode=1
+#star-submit-template -template ./Analysis_urqmd_2.xml -entities input_dir=$var,mode=2
 
 # Strangeness Conservation
 star-submit-template -template ./Analysis_sness_2.xml -entities input_dir=$var
