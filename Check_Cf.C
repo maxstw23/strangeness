@@ -52,6 +52,7 @@ const int   KaonPID = 321;
 const int   OmegaPID = 3334;
 const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
+const int   Xi0PID = 3322;
 
 
 void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
@@ -131,6 +132,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile* hKaonCt = new TProfile("hKaonCt", "Kaon Count for #Omega^{-} and #bar{#Omega^{+}} events", 2, -0.5, 1.5); // to check average kaon+ counts per events. Omega events should have more
     TH1D* hSingleEvtCt = new TH1D("hSingleEvtCt", "Count Single Hyperon Event (0 is total hyperon event)", 2, -0.5, 1.5);
     TH1D* hOmegaUsed = new TH1D("hOmegaUsed", "Actual #Omega^{-}/#bar{#Omega^{+}} used (1-2 orig 3-4 mixed)", 4, 0.5, 4.5); // for mixed event normalization
+    TH1D* hOmegaXi0Used = new TH1D("hOmegaXi0Used", 
+                                   "1: #Omega^{-}w#bar{#Xi^{0}}, 
+                                    2: #Omega^{-}wo#bar{#Xi^{0}},
+                                    3: #bar{#Omega^{+}}w#Xi^{0},
+                                    4: #bar{#Omega^{+}}wo#Xi^{0},", 4, 0.5, 4.5); // for Xi0 coincident correlation norm
     TH1D* hKplusEtaDist_O     = new TH1D("hKplusEtaDist_O"    , "Kaon+ Eta Dist for Qualified Omega"     , 500, -10., 10.);
     TH1D* hKplusEtaDist_Obar  = new TH1D("hKplusEtaDist_Obar" , "Kaon+ Eta Dist for Qualified Anti-Omega", 500, -10., 10.);
     TH1D* hKminusEtaDist_O    = new TH1D("hKminusEtaDist_O"   , "Kaon- Eta Dist for Qualified Omega"     , 500, -10., 10.);
@@ -183,6 +189,23 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hthetaCorrKplusObar  = new TH1D("hthetaCorrKplusObar" , "K^{+}-#bar{#Omega^{+}} theta Correlation", 500, 0.0, PI);
     TH1D* hthetaCorrKminusO    = new TH1D("hthetaCorrKminusO"   , "K^{-}-#Omega^{-} theta Correlation"      , 500, 0.0, PI);
     TH1D* hthetaCorrKminusObar = new TH1D("hthetaCorrKminusObar", "K^{-}-#bar{#Omega^{+}} theta Correlation", 500, 0.0, PI);
+    /* xi0 coincident test */
+    TH1D* hKplusO_wXi0      = new TH1D("hKplusO_wXi0"  , "K^{+}-#Omega^{-} k* Correlation with Xi0"   , 5000, 0.0, 50.0);
+    TH1D* hKplusO_woXi0     = new TH1D("hKplusO_woXi0" , "K^{+}-#Omega^{-} k* Correlation without Xi0", 5000, 0.0, 50.0);
+    TH1D* hKminusObar_wXi0  = new TH1D("hKminusObar_wXi0" , "K^{-}-#bar{#Omega^{+}} k* Correlation with Xi0"   , 5000, 0.0, 50.0);
+    TH1D* hKminusObar_woXi0 = new TH1D("hKminusObar_woXi0", "K^{-}-#bar{#Omega^{+}} k* Correlation without Xi0", 5000, 0.0, 50.0);
+    TH1D* hPtKplusO_wXi0      = new TH1D("hPtKplusO_wXi0"  , "K^{+}-#Omega^{-} p_T Correlation with Xi0"   , 5000, 0.0, 50.0);
+    TH1D* hPtKplusO_woXi0     = new TH1D("hPtKplusO_woXi0" , "K^{+}-#Omega^{-} p_T Correlation without Xi0", 5000, 0.0, 50.0);
+    TH1D* hPtKminusObar_wXi0  = new TH1D("hPtKminusObar_wXi0" , "K^{-}-#bar{#Omega^{+}} p_T Correlation with Xi0"   , 5000, 0.0, 50.0);
+    TH1D* hPtKminusObar_woXi0 = new TH1D("hPtKminusObar_woXi0", "K^{-}-#bar{#Omega^{+}} p_T Correlation without Xi0", 5000, 0.0, 50.0);
+    TH1D* hyKplusO_wXi0      = new TH1D("hyKplusO_wXi0"  , "K^{+}-#Omega^{-} y Correlation with Xi0"   , 2000, -10.0, 10.0);
+    TH1D* hyKplusO_woXi0     = new TH1D("hyKplusO_woXi0" , "K^{+}-#Omega^{-} y Correlation without Xi0", 2000, -10.0, 10.0);
+    TH1D* hyKminusObar_wXi0  = new TH1D("hyKminusObar_wXi0" , "K^{-}-#bar{#Omega^{+}} y Correlation with Xi0"   , 2000, -10.0, 10.0);
+    TH1D* hyKminusObar_woXi0 = new TH1D("hyKminusObar_woXi0", "K^{-}-#bar{#Omega^{+}} y Correlation without Xi0", 2000, -10.0, 10.0);
+    TH1D* hphiKplusO_wXi0      = new TH1D("hphiKplusO_wXi0"  , "K^{+}-#Omega^{-} phi Correlation with Xi0"   , 500, 0.0, PI);
+    TH1D* hphiKplusO_woXi0     = new TH1D("hphiKplusO_woXi0" , "K^{+}-#Omega^{-} phi Correlation without Xi0", 500, 0.0, PI);
+    TH1D* hphiKminusObar_wXi0  = new TH1D("hphiKminusObar_wXi0" , "K^{-}-#bar{#Omega^{+}} phi Correlation with Xi0"   , 500, 0.0, PI);
+    TH1D* hphiKminusObar_woXi0 = new TH1D("hphiKminusObar_woXi0", "K^{-}-#bar{#Omega^{+}} phi Correlation without Xi0", 500, 0.0, PI);
 
     // setting PID and momentum branches
     float imp;
@@ -207,10 +230,12 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // loop
     int nentries = chain->GetEntries();
-    int P1PID = KaonPID, P2PID = OmegaPID;
+    int P1PID = KaonPID, P2PID = OmegaPID, P3PID = Xi0PID;
     float P1Mass = mKaon, P2Mass = mOmega;
     bool hasP2 = false, hasAntiP2 = false;
+    bool hasP3 = false, hasAntiP3 = false;
     int P2evt_ct = 0, AntiP2evt_ct = 0;
+    int P3_used[2] = {0}, AntiP3_used[2] = {0};
     int evt_ct_all = 0, evt_ct_single = 0;
     int omega_ct[2] = {0}; int omegab_ct[2] = {0};
 
@@ -224,6 +249,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         mult = 0;
         refmult = 0;
         hasP2 = false; hasAntiP2 = false;
+        hasP3 = false; hasAntiP3 = false;
         my_event current_evt;
 
         // fill track vectors and QA plots
@@ -270,9 +296,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (CutEta) {if (fabs(eta) > eta_cut) continue;}
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
 
-            // find P2 and antiP2
+            // find particles
             if (!hasP2    ) {if (pid ==  P2PID) hasP2     = true;}
             if (!hasAntiP2) {if (pid == -P2PID) hasAntiP2 = true;}
+            if (!hasP3    ) {if (pid ==  P3PID) hasP3     = true;}
+            if (!hasAntiP3) {if (pid == -P3PID) hasAntiP3 = true;}
 
             // fill the vectors
             if (fabs(pid) == P1PID) 
@@ -321,7 +349,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
         // double loop for cf
         /****** normal cf ******/
-        for (int j = 0; j < px2_vec.size(); ++j)
+        for (int j = 0; j < px2_vec.size(); ++j) // this can be viewed as an event loop since only one omega per event
         {
             int pid2 = pid2_vec[j];
             float px2 = px2_vec[j];
@@ -335,8 +363,18 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             float y2 = lv.Rapidity();
             
             // for normalization
-            if (pid2 ==  P2PID) omega_ct[0]++;
-            if (pid2 == -P2PID) omegab_ct[0]++;
+            if (pid2 ==  P2PID) 
+            {
+                omega_ct[0]++;
+                if (hasAntiP3) AntiP3_used[0]++;
+                else AntiP3_used[1]++;
+            }
+            if (pid2 == -P2PID) 
+            {
+                omegab_ct[0]++;
+                if (hasP3) P3_used[0]++;
+                else P3_used[1]++;
+            }
 
             for (int i = 0; i < px1_vec.size(); ++i)
             {   
@@ -366,14 +404,15 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 p2.Boost((-1)*beta);
                 hCOM->Fill((p1+p2).Vect().Mag());
 
-                // angle folding
+                // fill quantity
                 float phi_diff = fabs(phi1-phi2);
                 if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
+                float kstar = 0.5*(p1-p2).Vect().Mag();
 
                 // fill cf
                 if (pid1 ==  P1PID && pid2 == -P2PID) 
                 {
-                    hCorrKplusObar[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                    hCorrKplusObar[0]   ->Fill(kstar);
                     hPtCorrKplusObar[0] ->Fill(fabs(pt1-pt2));
                     hyCorrKplusObar[0]  ->Fill(y1-y2);
                     hphiCorrKplusObar[0]->Fill(phi_diff);
@@ -381,7 +420,21 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 }
                 if (pid1 ==  P1PID && pid2 ==  P2PID) 
                 {
-                    hCorrKplusO[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                    hCorrKplusO[0]   ->Fill(kstar);
+                    if (hasAntiP3) 
+                    {
+                        hKplusO_wXi0->Fill(kstar);
+                        hPtKplusO_wXi0->Fill(fabs(pt1-pt2));
+                        hyKplusO_wXi0->Fill(y1-y2);
+                        hphiKplusO_wXi0->Fill(phi_diff);
+                    }
+                    else 
+                    {
+                        hKplusO_woXi0->Fill(kstar);
+                        hPtKplusO_woXi0->Fill(fabs(pt1-pt2));
+                        hyKplusO_woXi0->Fill(y1-y2);
+                        hphiKplusO_woXi0->Fill(phi_diff);
+                    }
                     hPtCorrKplusO[0] ->Fill(fabs(pt1-pt2));
                     hyCorrKplusO[0]  ->Fill(y1-y2);
                     hphiCorrKplusO[0]->Fill(phi_diff);
@@ -389,7 +442,21 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 }
                 if (pid1 == -P1PID && pid2 == -P2PID) 
                 {
-                    hCorrKminusObar[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                    hCorrKminusObar[0]   ->Fill(kstar);
+                    if (hasP3) 
+                    {
+                        hKminusObar_wXi0->Fill(kstar);
+                        hPtKminusObar_wXi0->Fill(fabs(pt1-pt2));
+                        hyKminusObar_wXi0->Fill(y1-y2);
+                        hphiKminusObar_wXi0->Fill(phi_diff);
+                    }
+                    else 
+                    {
+                        hKminusObar_woXi0->Fill(kstar);
+                        hPtKminusObar_woXi0->Fill(fabs(pt1-pt2));
+                        hyKminusObar_woXi0->Fill(y1-y2);
+                        hphiKminusObar_woXi0->Fill(phi_diff);
+                    }
                     hPtCorrKminusObar[0] ->Fill(fabs(pt1-pt2));
                     hyCorrKminusObar[0]  ->Fill(y1-y2);
                     hphiCorrKminusObar[0]->Fill(phi_diff);
@@ -397,7 +464,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 }
                 if (pid1 == -P1PID && pid2 ==  P2PID) 
                 {
-                    hCorrKminusO[0]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                    hCorrKminusO[0]   ->Fill(kstar);
                     hPtCorrKminusO[0] ->Fill(fabs(pt1-pt2));
                     hyCorrKminusO[0]  ->Fill(y1-y2);
                     hphiCorrKminusO[0]->Fill(phi_diff);
@@ -499,10 +566,18 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     hEvtCt->Fill(1.,AntiP2evt_ct*1.0); // Note these did not go thru the event cut!
     hSingleEvtCt->Fill(0., evt_ct_all*1.0);
     hSingleEvtCt->Fill(1., evt_ct_single*1.0);
+
+    // omega used for cf and mixed-event
     hOmegaUsed->Fill(1,omega_ct[0]);
     hOmegaUsed->Fill(2,omegab_ct[0]);
     hOmegaUsed->Fill(3,omega_ct[1]);
     hOmegaUsed->Fill(4,omegab_ct[1]);
+
+    // xi0 event
+    hOmegaXi0Used->Fill(1,AntiP3_used[0]);
+    hOmegaXi0Used->Fill(2,AntiP3_used[1]);
+    hOmegaXi0Used->Fill(3,P3_used[0]);
+    hOmegaXi0Used->Fill(4,P3_used[1]);
   
     fout.Write();
 }
