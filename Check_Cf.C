@@ -133,10 +133,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hSingleEvtCt = new TH1D("hSingleEvtCt", "Count Single Hyperon Event (0 is total hyperon event)", 2, -0.5, 1.5);
     TH1D* hOmegaUsed = new TH1D("hOmegaUsed", "Actual #Omega^{-}/#bar{#Omega^{+}} used (1-2 orig 3-4 mixed)", 4, 0.5, 4.5); // for mixed event normalization
     TH1D* hOmegaXi0Used = new TH1D("hOmegaXi0Used", 
-                                   "1: #Omega^{-}w#bar{#Xi^{0}}, 
-                                    2: #Omega^{-}wo#bar{#Xi^{0}},
-                                    3: #bar{#Omega^{+}}w#Xi^{0},
-                                    4: #bar{#Omega^{+}}wo#Xi^{0},", 4, 0.5, 4.5); // for Xi0 coincident correlation norm
+                                   "1-#Omega^{-}#bar{#Xi^{0}},2-#Omega^{-},3-#bar{#Omega^{+}}#Xi^{0},4-#bar{#Omega^{+}}", 4, 0.5, 4.5); 
+                                   // for Xi0 coincident correlation norm
     TH1D* hKplusEtaDist_O     = new TH1D("hKplusEtaDist_O"    , "Kaon+ Eta Dist for Qualified Omega"     , 500, -10., 10.);
     TH1D* hKplusEtaDist_Obar  = new TH1D("hKplusEtaDist_Obar" , "Kaon+ Eta Dist for Qualified Anti-Omega", 500, -10., 10.);
     TH1D* hKminusEtaDist_O    = new TH1D("hKminusEtaDist_O"   , "Kaon- Eta Dist for Qualified Omega"     , 500, -10., 10.);
