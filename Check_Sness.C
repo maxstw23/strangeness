@@ -113,6 +113,26 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
 
+    TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 200.5);
+    TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_wob    = new TProfile("hbndist_wo", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_woob   = new TProfile("hbndist_woo", "Baryon number distribution for without omegabar events", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_owxb   = new TProfile("hbndist_owxb", "Baryon number distribution for omega events with xibar", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_owoxb  = new TProfile("hbndist_owoxb", "Baryon number distribution for omega events without xibar", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_owx    = new TProfile("hbndist_owx", "Baryon number distribution for omega events with xi", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_owox   = new TProfile("hbndist_owox", "Baryon number distribution for omega events without xi", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_obwx   = new TProfile("hbndist_obwx", "Baryon number distribution for omegabar events with xi", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_obwox  = new TProfile("hbndist_obwox", "Baryon number distribution for omegabar events without xi", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_obwxb  = new TProfile("hbndist_obwxb", "Baryon number distribution for omegabar events with xibar", 6, -0.5, 5.5, -200, 200);
+    TProfile* hbndist_obwoxb = new TProfile("hbndist_obwoxb", "Baryon number distribution for omegabar events without xibar", 6, -0.5, 5.5, -200, 200);
+    
+    TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_obwx  = new TProfile("hkaonct_obwx" , "Kaon count for omegabar event with xi and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",2, -0.5, 1.5, 0, 100);
+    
+
     // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0， 7 - Nucleons
     TH1D *hsdist[NEventClass+1], *hpdist[NEventClass+1], *hKaon [NEventClass+1], *hLambda[NEventClass+1], 
          *hSigma[NEventClass+1], *hXi   [NEventClass+1], *hOmega[NEventClass+1], *hNucleon[NEventClass+1];
@@ -153,6 +173,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     //std::set<int> s_pid_set;
     int nentries = chain->GetEntries();
     bool hasParticle[NEventClass+1]; 
+    bool hasXi, hasAntiXi;
     int M[NEventClass+1] = {0}; //number of events that contain anti_o, o, anti_x, x, anti_x0, x0;
 
     // event loop
@@ -161,10 +182,11 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
 
-        int total_s = 0, itrack = 0;
+        int total_s = 0, total_bn = 0, itrack = 0;
 
         // check if event has certain particles
         for (int j = 0; j < NEventClass+1; j++) hasParticle[j] = false;
+        hasXi = false; hasAntiXi = false;
 
         // fill examples and check anti-omega
         for (std::vector<int>::iterator it = pid_vec->begin(); it != pid_vec->end(); ++it)
@@ -173,13 +195,16 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
             // check for particle
             if (*it == -3334) hasParticle[1] = true; if (*it == 3334) hasParticle[2] = true; 
+            if (*it == -3312) hasAntiXi      = true; if (*it == 3312) hasXi          = true;
 
             // omega ratio
             if (*it ==  3334) hOmegaRatio->Fill(0);
             if (*it == -3334) hOmegaRatio->Fill(1);
             
-            // total strangeness
+            // total strangeness and baryon number
             total_s += s;
+            if (*it < 10000 && *it > 999) total_bn += 1;
+            if (*it >-10000 && *it <-999) total_bn -= 1;
         }
 
         // count events
@@ -189,6 +214,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // loop thru events
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
+        int kaonct = 0; int bct[6] = {0};
         for (int i = 0; i < ntrack; ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -200,7 +226,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             float pt    = px*px + py*py;
             float theta = atan2(pt,pz);
             float eta   = -log(tan(theta/2.));
-
+            
             // fill all and selected events
             if (type == -1) continue;
             for (int j = 0; j < NEventClass+1; j++)
@@ -259,10 +285,92 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                     else if (pid ==  2112) hNucleon[j]->Fill(3); //neutron
                     else if (pid == -2112) hNucleon[j]->Fill(4); //anti-neutron
                 }
-            }                   
+            } 
+
+            // count kaons and baryon number
+            if (pid == 321) kaonct++;
+            if (fabs(pid) >= 10000 || fabs(pid) <= 999) continue;
+            // total
+            if (pid > 0) bct[0] += 1;
+            if (pid < 0) bct[0] -= 1;
+            // lambda
+            if (type == 3)
+            {
+                if (pid > 0) bct[1] += 1;
+                if (pid < 0) bct[1] -= 1;
+            }
+            // sigma
+            if (type == 4)
+            {
+                if (pid > 0) bct[2] += 1;
+                if (pid < 0) bct[2] -= 1;
+            }
+            // cascade
+            if (type == 5)
+            {
+                if (pid > 0) bct[3] += 1;
+                if (pid < 0) bct[3] -= 1;
+            }
+            // omega
+            if (type == 6)
+            {
+                if (pid > 0) bct[4] += 1;
+                if (pid < 0) bct[4] -= 1;
+            }
+            // nucleon
+            if (type == 7)
+            {
+                if (pid > 0) bct[5] += 1;
+                if (pid < 0) bct[5] -= 1;
+            }
+
         }
 
-        hstrangeness->Fill(total_s);    
+        hstrangeness->Fill(total_s);  
+        hbaryon->Fill(total_bn);  
+        // baryon number subplots
+        for (int k = 0; k < 6; k++)
+        {
+            if (hasParticle[2]) // if has omega
+            {
+                hbndist_wo->Fill(k, bct[k]);
+                if (hasXi)     hbndist_owx  ->Fill(k, bct[k]);
+                else           hbndist_owox ->Fill(k, bct[k]);
+                if (hasAntiXi) hbndist_owxb ->Fill(k, bct[k]);
+                else           hbndist_owoxb->Fill(k, bct[k]);
+            }
+            else hbndist_woo->Fill(k, bct[k]);
+
+            if (hasParticle[1]) // if has anti-omega
+            {
+                hbndist_wob->Fill(k, bct[k]);
+                if (hasXi)     hbndist_obwx  ->Fill(k, bct[k]);
+                else           hbndist_obwox ->Fill(k, bct[k]);
+                if (hasAntiXi) hbndist_obwxb ->Fill(k, bct[k]);
+                else           hbndist_obwoxb->Fill(k, bct[k]);
+            }
+            else hbndist_woob->Fill(k, bct[k]); 
+        }
+
+        // kaon ct subplots
+        for (int k = 0; k < 2; k++)
+        {
+            if (hasParticle[2])
+            { 
+                if (hasXi)     hkaonct_owx ->Fill(0, kaonct);
+                else           hkaonct_owx ->Fill(1, kaonct);
+                if (hasAntiXi) hkaonct_owxb->Fill(0, kaonct);
+                else           hkaonct_owxb->Fill(1, kaonct);
+            }
+
+            if (hasParticle[1])
+            { 
+                if (hasXi)     hkaonct_obwx ->Fill(0, kaonct);
+                else           hkaonct_obwx ->Fill(1, kaonct);
+                if (hasAntiXi) hkaonct_obwxb->Fill(0, kaonct);
+                else           hkaonct_obwxb->Fill(1, kaonct);
+            }
+        }
 
     }
 
