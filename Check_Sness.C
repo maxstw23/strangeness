@@ -113,19 +113,19 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
 
-    TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 200.5);
-    TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_wob    = new TProfile("hbndist_wo", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_woob   = new TProfile("hbndist_woo", "Baryon number distribution for without omegabar events", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_owxb   = new TProfile("hbndist_owxb", "Baryon number distribution for omega events with xibar", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_owoxb  = new TProfile("hbndist_owoxb", "Baryon number distribution for omega events without xibar", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_owx    = new TProfile("hbndist_owx", "Baryon number distribution for omega events with xi", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_owox   = new TProfile("hbndist_owox", "Baryon number distribution for omega events without xi", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_obwx   = new TProfile("hbndist_obwx", "Baryon number distribution for omegabar events with xi", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_obwox  = new TProfile("hbndist_obwox", "Baryon number distribution for omegabar events without xi", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_obwxb  = new TProfile("hbndist_obwxb", "Baryon number distribution for omegabar events with xibar", 6, -0.5, 5.5, -200, 200);
-    TProfile* hbndist_obwoxb = new TProfile("hbndist_obwoxb", "Baryon number distribution for omegabar events without xibar", 6, -0.5, 5.5, -200, 200);
+    TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
+    TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_wob    = new TProfile("hbndist_wo", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woob   = new TProfile("hbndist_woo", "Baryon number distribution for without omegabar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_owxb   = new TProfile("hbndist_owxb", "Baryon number distribution for omega events with xibar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_owoxb  = new TProfile("hbndist_owoxb", "Baryon number distribution for omega events without xibar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_owx    = new TProfile("hbndist_owx", "Baryon number distribution for omega events with xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_owox   = new TProfile("hbndist_owox", "Baryon number distribution for omega events without xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_obwx   = new TProfile("hbndist_obwx", "Baryon number distribution for omegabar events with xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_obwox  = new TProfile("hbndist_obwox", "Baryon number distribution for omegabar events without xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_obwxb  = new TProfile("hbndist_obwxb", "Baryon number distribution for omegabar events with xibar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_obwoxb = new TProfile("hbndist_obwoxb", "Baryon number distribution for omegabar events without xibar", 6, -0.5, 5.5, -200, 600);
     
     TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",2, -0.5, 1.5, 0, 100);
     TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",2, -0.5, 1.5, 0, 100);
@@ -353,23 +353,20 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         }
 
         // kaon ct subplots
-        for (int k = 0; k < 2; k++)
-        {
-            if (hasParticle[2])
-            { 
-                if (hasXi)     hkaonct_owx ->Fill(0, kaonct);
-                else           hkaonct_owx ->Fill(1, kaonct);
-                if (hasAntiXi) hkaonct_owxb->Fill(0, kaonct);
-                else           hkaonct_owxb->Fill(1, kaonct);
-            }
+        if (hasParticle[2])
+        { 
+            if (hasXi)     hkaonct_owx ->Fill(0., kaonct*1.0);
+            else           hkaonct_owx ->Fill(1., kaonct*1.0);
+            if (hasAntiXi) hkaonct_owxb->Fill(0., kaonct*1.0);
+            else           hkaonct_owxb->Fill(1., kaonct*1.0);
+        }
 
-            if (hasParticle[1])
-            { 
-                if (hasXi)     hkaonct_obwx ->Fill(0, kaonct);
-                else           hkaonct_obwx ->Fill(1, kaonct);
-                if (hasAntiXi) hkaonct_obwxb->Fill(0, kaonct);
-                else           hkaonct_obwxb->Fill(1, kaonct);
-            }
+        if (hasParticle[1])
+        { 
+            if (hasXi)     hkaonct_obwx ->Fill(0., kaonct*1.0);
+            else           hkaonct_obwx ->Fill(1., kaonct*1.0);
+            if (hasAntiXi) hkaonct_obwxb->Fill(0., kaonct*1.0);
+            else           hkaonct_obwxb->Fill(1., kaonct*1.0);
         }
 
     }
