@@ -4,13 +4,13 @@
     
     <command>
 	stardev
-	root4star -b -q check_default.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
+	root4star -b -q check.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
     </command>
     
     <SandBox installer="ZIP">
         <Package name="package">
-            <File>file:./Check_Cf_default.C</File>
-	    <File>file:./check_default.C</File>
+            <File>file:./Check_Cf.C</File>
+	    <File>file:./check.C</File>
 	    <File>file:./lib/</File>
         </Package>
     </SandBox>
