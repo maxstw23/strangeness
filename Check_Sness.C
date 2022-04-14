@@ -116,8 +116,12 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
     TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 600);
-    TProfile* hbndist_wob    = new TProfile("hbndist_wo", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 600);
-    TProfile* hbndist_woob   = new TProfile("hbndist_woo", "Baryon number distribution for without omegabar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_wob    = new TProfile("hbndist_wob", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woob   = new TProfile("hbndist_woob", "Baryon number distribution for without omegabar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_wx     = new TProfile("hbndist_wx", "Baryon number distribution for with xi events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_wox    = new TProfile("hbndist_wox", "Baryon number distribution for without xi events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_wxb    = new TProfile("hbndist_wxb", "Baryon number distribution for with xibar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woxb   = new TProfile("hbndist_woxb", "Baryon number distribution for without xibar events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owxb   = new TProfile("hbndist_owxb", "Baryon number distribution for omega events with xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owoxb  = new TProfile("hbndist_owoxb", "Baryon number distribution for omega events without xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owx    = new TProfile("hbndist_owx", "Baryon number distribution for omega events with xi", 6, -0.5, 5.5, -200, 600);
@@ -131,6 +135,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",2, -0.5, 1.5, 0, 100);
     TProfile* hkaonct_obwx  = new TProfile("hkaonct_obwx" , "Kaon count for omegabar event with xi and without",2, -0.5, 1.5, 0, 100);
     TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_x     = new TProfile("hkaonct_x"  , "Kaon count for events with xi and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_xb    = new TProfile("hkaonct_xb" , "Kaon count for events with xibar and without",2, -0.5, 1.5, 0, 100);
     
 
     // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0， 7 - Nucleons
@@ -350,6 +356,11 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                 else           hbndist_obwoxb->Fill(k, bct[k]);
             }
             else hbndist_woob->Fill(k, bct[k]); 
+
+            if (hasXi)     hbndist_wx  ->Fill(k, bct[k]);
+            else           hbndist_wox ->Fill(k, bct[k]);
+            if (hasAntiXi) hbndist_wxb ->Fill(k, bct[k]);
+            else           hbndist_woxb->Fill(k, bct[k]);
         }
 
         // kaon ct subplots
@@ -360,7 +371,6 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasAntiXi) hkaonct_owxb->Fill(0., kaonct*1.0);
             else           hkaonct_owxb->Fill(1., kaonct*1.0);
         }
-
         if (hasParticle[1])
         { 
             if (hasXi)     hkaonct_obwx ->Fill(0., kaonct*1.0);
@@ -368,7 +378,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasAntiXi) hkaonct_obwxb->Fill(0., kaonct*1.0);
             else           hkaonct_obwxb->Fill(1., kaonct*1.0);
         }
-
+        if (hasXi)     hkaonct_x ->Fill(0., kaonct*1.0);
+        else           hkaonct_x ->Fill(1., kaonct*1.0);
+        if (hasAntiXi) hkaonct_xb->Fill(0., kaonct*1.0);
+        else           hkaonct_xb->Fill(1., kaonct*1.0);
     }
 
     for (int i = 0; i < NEventClass+1; i++) hMult_each->Fill(i, M[i]); //i = 0: total event count
