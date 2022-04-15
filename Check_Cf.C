@@ -48,11 +48,13 @@ const float mKaon = 0.493677;
 const float mOmega = 1.67245;
 const float mProton = 0.938272;
 const float mLambda = 1.115683;
+const float mXim = 1.32171;
 const int   KaonPID = 321;
 const int   OmegaPID = 3334;
 const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
 const int   Xi0PID = 3322;
+const int   XimPID = 3312;
 
 
 void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
@@ -228,8 +230,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // loop
     int nentries = chain->GetEntries();
-    int P1PID = KaonPID, P2PID = OmegaPID, P3PID = Xi0PID;
-    float P1Mass = mKaon, P2Mass = mOmega;
+    int P1PID = XimPID, P2PID = OmegaPID, P3PID = Xi0PID;
+    float P1Mass = mXim, P2Mass = mOmega;
     bool hasP2 = false, hasAntiP2 = false;
     bool hasP3 = false, hasAntiP3 = false;
     int P2evt_ct = 0, AntiP2evt_ct = 0;
