@@ -14,3 +14,4 @@ printf -v var '*.root'
 
 # Strangeness Conservation
 star-submit-template -template ./Analysis_sness_2.xml -entities input_dir=$var
+#star-submit-template -template ./Analysis_sness_default_2.xml -entities input_dir=$var

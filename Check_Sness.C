@@ -131,12 +131,12 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hbndist_obwxb  = new TProfile("hbndist_obwxb", "Baryon number distribution for omegabar events with xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_obwoxb = new TProfile("hbndist_obwoxb", "Baryon number distribution for omegabar events without xibar", 6, -0.5, 5.5, -200, 600);
     
-    TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",2, -0.5, 1.5, 0, 100);
-    TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",2, -0.5, 1.5, 0, 100);
-    TProfile* hkaonct_obwx  = new TProfile("hkaonct_obwx" , "Kaon count for omegabar event with xi and without",2, -0.5, 1.5, 0, 100);
-    TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",2, -0.5, 1.5, 0, 100);
-    TProfile* hkaonct_x     = new TProfile("hkaonct_x"  , "Kaon count for events with xi and without",2, -0.5, 1.5, 0, 100);
-    TProfile* hkaonct_xb    = new TProfile("hkaonct_xb" , "Kaon count for events with xibar and without",2, -0.5, 1.5, 0, 100);
+    TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",4, -0.5, 3.5, 0, 100); //0-1: k+, 2-3: k-
+    TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",4, -0.5, 3.5, 0, 100);
+    TProfile* hkaonct_obwx  = new TProfile("hkaonct_obwx" , "Kaon count for omegabar event with xi and without",4, -0.5, 3.5, 0, 100);
+    TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",4, -0.5, 3.5, 0, 100);
+    TProfile* hkaonct_x     = new TProfile("hkaonct_x"  , "Kaon count for events with xi and without",4, -0.5, 3.5, 0, 100);
+    TProfile* hkaonct_xb    = new TProfile("hkaonct_xb" , "Kaon count for events with xibar and without",4, -0.5, 3.5, 0, 100);
     
 
     // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0， 7 - Nucleons
@@ -220,7 +220,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // loop thru events
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
-        int kaonct = 0; int bct[6] = {0};
+        int kaonct[2] = {0};  
+        int bct[6] = {0};
         for (int i = 0; i < ntrack; ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -294,7 +295,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             } 
 
             // count kaons and baryon number
-            if (pid == 321) kaonct++;
+            if (pid ==  321) kaonct[0]++; //k+
+            if (pid == -321) kaonct[1]++; //k-
             if (fabs(pid) >= 10000 || fabs(pid) <= 999) continue;
             // total
             if (pid > 0) bct[0] += 1;
@@ -366,22 +368,22 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // kaon ct subplots
         if (hasParticle[2])
         { 
-            if (hasXi)     hkaonct_owx ->Fill(0., kaonct*1.0);
-            else           hkaonct_owx ->Fill(1., kaonct*1.0);
-            if (hasAntiXi) hkaonct_owxb->Fill(0., kaonct*1.0);
-            else           hkaonct_owxb->Fill(1., kaonct*1.0);
+            if (hasXi)     {hkaonct_owx ->Fill(0., kaonct[0]*1.0); hkaonct_owx ->Fill(2., kaonct[1]*1.0);}
+            else           {hkaonct_owx ->Fill(1., kaonct[0]*1.0); hkaonct_owx ->Fill(3., kaonct[1]*1.0);}
+            if (hasAntiXi) {hkaonct_owxb->Fill(0., kaonct[0]*1.0); hkaonct_owxb->Fill(2., kaonct[1]*1.0);}
+            else           {hkaonct_owxb->Fill(1., kaonct[0]*1.0); hkaonct_owxb->Fill(3., kaonct[1]*1.0);}
         }
         if (hasParticle[1])
         { 
-            if (hasXi)     hkaonct_obwx ->Fill(0., kaonct*1.0);
-            else           hkaonct_obwx ->Fill(1., kaonct*1.0);
-            if (hasAntiXi) hkaonct_obwxb->Fill(0., kaonct*1.0);
-            else           hkaonct_obwxb->Fill(1., kaonct*1.0);
+            if (hasXi)     {hkaonct_obwx ->Fill(0., kaonct[0]*1.0); hkaonct_obwx ->Fill(2., kaonct[1]*1.0);}
+            else           {hkaonct_obwx ->Fill(1., kaonct[0]*1.0); hkaonct_obwx ->Fill(3., kaonct[1]*1.0);}
+            if (hasAntiXi) {hkaonct_obwxb->Fill(0., kaonct[0]*1.0); hkaonct_obwxb->Fill(2., kaonct[1]*1.0);}
+            else           {hkaonct_obwxb->Fill(1., kaonct[0]*1.0); hkaonct_obwxb->Fill(3., kaonct[1]*1.0);}
         }
-        if (hasXi)     hkaonct_x ->Fill(0., kaonct*1.0);
-        else           hkaonct_x ->Fill(1., kaonct*1.0);
-        if (hasAntiXi) hkaonct_xb->Fill(0., kaonct*1.0);
-        else           hkaonct_xb->Fill(1., kaonct*1.0);
+        if (hasXi)     {hkaonct_x ->Fill(0., kaonct[0]*1.0); hkaonct_x ->Fill(2., kaonct[1]*1.0);}
+        else           {hkaonct_x ->Fill(1., kaonct[0]*1.0); hkaonct_x ->Fill(3., kaonct[1]*1.0);}
+        if (hasAntiXi) {hkaonct_xb->Fill(0., kaonct[0]*1.0); hkaonct_xb->Fill(2., kaonct[1]*1.0);}
+        else           {hkaonct_xb->Fill(1., kaonct[0]*1.0); hkaonct_xb->Fill(3., kaonct[1]*1.0);}
     }
 
     for (int i = 0; i < NEventClass+1; i++) hMult_each->Fill(i, M[i]); //i = 0: total event count
