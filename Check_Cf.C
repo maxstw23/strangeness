@@ -230,8 +230,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // loop
     int nentries = chain->GetEntries();
-    int P1PID = LambdaPID, P2PID = OmegaPID, P3PID = Xi0PID;
-    float P1Mass = mLambda, P2Mass = mOmega;
+    int P1PID = XimPID, P2PID = OmegaPID, P3PID = Xi0PID;
+    float P1Mass = mXim, P2Mass = mOmega;
     bool hasP2 = false, hasAntiP2 = false;
     bool hasP3 = false, hasAntiP3 = false;
     int P2evt_ct = 0, AntiP2evt_ct = 0;
