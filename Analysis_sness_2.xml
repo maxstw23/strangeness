@@ -4,12 +4,13 @@
     
     <command>
 	stardev
-	root4star -b -q Check_Sness.C++\(\"$FILELIST\",\"$JOBID\"\)
+	root4star -b -q Check_Sness.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
     </command>
     
     <SandBox>
         <Package name="package">
             <File>file:./Check_Sness.C</File>
+            <File>file:./lib/</File>
         </Package>
     </SandBox>
         

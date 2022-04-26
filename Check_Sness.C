@@ -26,6 +26,8 @@
 #include "TDatabasePDG.h"
 #include "TParticlePDG.h"
 #include <string>
+// my classes
+#include "./lib/CenMaker.h"
 
 using namespace std;
 
@@ -40,9 +42,13 @@ const int NXiClass     = 5;
 const int NOmegaClass  = 3;
 const int NNucleonClass= 4;
 
+// for cendef
+TString energy = "14";
+const int cen_select = 9;
+
 int FindType(int PID);
 
-void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID = "1234")
+void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
 {   
     // initialize map
     std::map<int, int> sness_map;
@@ -113,6 +119,24 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
 
+    TH1D* hnpp         = new TH1D("hnpp", "Participant number for all qualified events", 1000, -0.5, 999.5);
+    TH1D* hnpp_owx     = new TH1D("hnpp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
+    TH1D* hnpp_owox    = new TH1D("hnpp_owox", "Participant number for criteria owox", 1000, -0.5, 999.5);
+    TH1D* hnpp_owxb    = new TH1D("hnpp_owxb", "Participant number for criteria owxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_owoxb   = new TH1D("hnpp_owoxb", "Participant number for criteria owoxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_obwx    = new TH1D("hnpp_obwx", "Participant number for criteria obwx", 1000, -0.5, 999.5);
+    TH1D* hnpp_obwox   = new TH1D("hnpp_obwox", "Participant number for criteria obwox", 1000, -0.5, 999.5);
+    TH1D* hnpp_obwxb   = new TH1D("hnpp_obwxb", "Participant number for criteria obwxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_obwoxb  = new TH1D("hnpp_obwoxb", "Participant number for criteria obwoxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_wx      = new TH1D("hnpp_wx", "Participant number for criteria wx", 1000, -0.5, 999.5);
+    TH1D* hnpp_wox     = new TH1D("hnpp_wox", "Participant number for criteria wox", 1000, -0.5, 999.5);
+    TH1D* hnpp_wxb     = new TH1D("hnpp_wxb", "Participant number for criteria wxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_woxb    = new TH1D("hnpp_woxb", "Participant number for criteria woxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_wo      = new TH1D("hnpp_wo", "Participant number for criteria wo", 1000, -0.5, 999.5);
+    TH1D* hnpp_woo     = new TH1D("hnpp_woo", "Participant number for criteria woo", 1000, -0.5, 999.5);
+    TH1D* hnpp_wob     = new TH1D("hnpp_wob", "Participant number for criteria wob", 1000, -0.5, 999.5);
+    TH1D* hnpp_woob    = new TH1D("hnpp_woob", "Participant number for criteria woob", 1000, -0.5, 999.5);
+
     TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
     TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 600);
@@ -166,10 +190,14 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
     // setting PID and momentum branches
     TBranch* bpid = nullptr;
+    float npp;
+    float refmult;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
     std::vector<float> *pz_vec  = nullptr;
+    chain->SetBranchAddress("npp", &npp);
+    chain->SetBranchAddress("refmult", &refmult);
     chain->SetBranchAddress("pid", &pid_vec, &bpid);
     chain->SetBranchAddress("px",  &px_vec);
     chain->SetBranchAddress("py",  &py_vec);
@@ -187,6 +215,11 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     {
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
+
+        // CUT ON CENTRALITY
+        CenMaker cenmaker;
+        int cen = cenmaker.cent9(refmult, energy, mode);
+        if (cen != cen_select) continue;
 
         int total_s = 0, total_bn = 0, itrack = 0;
 
@@ -389,6 +422,32 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasAntiXi) hkaonct_xb->Fill(2.*i  , kaonct[i]*1.0); 
             else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0); 
         }
+
+        // npp distributions
+        hnpp->Fill(npp);
+        if (hasParticle[2])
+        {   
+            hnpp_wo->Fill(npp);
+            if (hasXi)     hnpp_owx   ->Fill(npp); 
+            else           hnpp_owox  ->Fill(npp); 
+            if (hasAntiXi) hnpp_owxb  ->Fill(npp); 
+            else           hnpp_owoxb ->Fill(npp);
+        }
+        else hnpp_woo->Fill(npp);
+        if (hasParticle[1])
+        { 
+            hnpp_wob->Fill(npp);
+            if (hasXi)     hnpp_obwx  ->Fill(npp); 
+            else           hnpp_obwox ->Fill(npp); 
+            if (hasAntiXi) hnpp_obwxb ->Fill(npp); 
+            else           hnpp_obwoxb->Fill(npp); 
+        }
+        else hnpp_woob->Fill(npp);
+        if (hasXi)     hnpp_wx  ->Fill(npp); 
+        else           hnpp_wox ->Fill(npp); 
+        if (hasAntiXi) hnpp_wxb ->Fill(npp); 
+        else           hnpp_woxb->Fill(npp); 
+
     }
 
     for (int i = 0; i < NEventClass+1; i++) hMult_each->Fill(i, M[i]); //i = 0: total event count
