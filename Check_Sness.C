@@ -190,8 +190,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
     // setting PID and momentum branches
     TBranch* bpid = nullptr;
-    float npp;
-    float refmult;
+    int npp;
+    int refmult;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
