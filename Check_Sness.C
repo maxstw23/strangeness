@@ -28,6 +28,7 @@
 #include <string>
 // my classes
 #include "./lib/CenMaker.h"
+#include "./lib/NpartNormalizer.h"
 
 using namespace std;
 
@@ -221,6 +222,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         int cen = cenmaker.cent9(refmult, energy, mode);
         if (cen != cen_select) continue;
 
+        // for npart normalization
+        NpartNormalizer normalizer;
+
         int total_s = 0, total_bn = 0, itrack = 0;
 
         // check if event has certain particles
@@ -378,9 +382,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             {
                 hbndist_wo->Fill(k, bct[k]);
                 if (hasXi)     hbndist_owx  ->Fill(k, bct[k]);
-                else           hbndist_owox ->Fill(k, bct[k]);
+                else           hbndist_owox ->Fill(k, bct[k], normalizer.weight(npp, "ox"));
                 if (hasAntiXi) hbndist_owxb ->Fill(k, bct[k]);
-                else           hbndist_owoxb->Fill(k, bct[k]);
+                else           hbndist_owoxb->Fill(k, bct[k], normalizer.weight(npp, "oxb"));
             }
             else hbndist_woo->Fill(k, bct[k]);
 
@@ -388,16 +392,16 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             {
                 hbndist_wob->Fill(k, bct[k]);
                 if (hasXi)     hbndist_obwx  ->Fill(k, bct[k]);
-                else           hbndist_obwox ->Fill(k, bct[k]);
+                else           hbndist_obwox ->Fill(k, bct[k], normalizer.weight(npp, "obx"));
                 if (hasAntiXi) hbndist_obwxb ->Fill(k, bct[k]);
-                else           hbndist_obwoxb->Fill(k, bct[k]);
+                else           hbndist_obwoxb->Fill(k, bct[k], normalizer.weight(npp, "obxb"));
             }
             else hbndist_woob->Fill(k, bct[k]); 
 
             if (hasXi)     hbndist_wx  ->Fill(k, bct[k]);
-            else           hbndist_wox ->Fill(k, bct[k]);
+            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(npp, "x"));
             if (hasAntiXi) hbndist_wxb ->Fill(k, bct[k]);
-            else           hbndist_woxb->Fill(k, bct[k]);
+            else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(npp, "xb"));
         }
 
         // kaon ct subplots
@@ -406,21 +410,21 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasParticle[2])
             { 
                 if (hasXi)     hkaonct_owx  ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_owx  ->Fill(2.*i+1, kaonct[i]*1.0); 
+                else           hkaonct_owx  ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "ox")); 
                 if (hasAntiXi) hkaonct_owxb ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_owxb ->Fill(2.*i+1, kaonct[i]*1.0);
+                else           hkaonct_owxb ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "oxb"));
             }
             if (hasParticle[1])
             { 
                 if (hasXi)     hkaonct_obwx ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_obwx ->Fill(2.*i+1, kaonct[i]*1.0); 
+                else           hkaonct_obwx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "obx")); 
                 if (hasAntiXi) hkaonct_obwxb->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_obwxb->Fill(2.*i+1, kaonct[i]*1.0); 
+                else           hkaonct_obwxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "obxb")); 
             }
             if (hasXi)     hkaonct_x ->Fill(2.*i  , kaonct[i]*1.0); 
-            else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0); 
+            else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "x")); 
             if (hasAntiXi) hkaonct_xb->Fill(2.*i  , kaonct[i]*1.0); 
-            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0); 
+            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "xb")); 
         }
 
         // npp distributions
@@ -429,24 +433,24 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         {   
             hnpp_wo->Fill(npp);
             if (hasXi)     hnpp_owx   ->Fill(npp); 
-            else           hnpp_owox  ->Fill(npp); 
+            else           hnpp_owox  ->Fill(npp, normalizer.weight(npp, "ox")); 
             if (hasAntiXi) hnpp_owxb  ->Fill(npp); 
-            else           hnpp_owoxb ->Fill(npp);
+            else           hnpp_owoxb ->Fill(npp, normalizer.weight(npp, "oxb"));
         }
-        else hnpp_woo->Fill(npp);
+        else hnpp_woo->Fill(npp, normalizer.weight(npp, "o"));
         if (hasParticle[1])
         { 
             hnpp_wob->Fill(npp);
             if (hasXi)     hnpp_obwx  ->Fill(npp); 
-            else           hnpp_obwox ->Fill(npp); 
+            else           hnpp_obwox ->Fill(npp, normalizer.weight(npp, "obx")); 
             if (hasAntiXi) hnpp_obwxb ->Fill(npp); 
-            else           hnpp_obwoxb->Fill(npp); 
+            else           hnpp_obwoxb->Fill(npp, normalizer.weight(npp, "obxb")); 
         }
-        else hnpp_woob->Fill(npp);
+        else hnpp_woob->Fill(npp, normalizer.weight(npp, "ob"));
         if (hasXi)     hnpp_wx  ->Fill(npp); 
-        else           hnpp_wox ->Fill(npp); 
+        else           hnpp_wox ->Fill(npp, normalizer.weight(npp, "x")); 
         if (hasAntiXi) hnpp_wxb ->Fill(npp); 
-        else           hnpp_woxb->Fill(npp); 
+        else           hnpp_woxb->Fill(npp, normalizer.weight(npp, "xb")); 
 
     }
 
