@@ -1,4 +1,4 @@
-#include "NpartNormalized.h"
+#include "NpartNormalizer.h"
 #include "TString.h"
 
 const std::map<int, float> NpartNormalizer::ratio_ox = {
