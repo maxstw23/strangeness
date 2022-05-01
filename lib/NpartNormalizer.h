@@ -1,6 +1,7 @@
 #ifndef NpartNormalizer_hh
 #define NpartNormalizer_hh
 #include "TString.h"
+#include <map>
 
 class NpartNormalizer
 {
