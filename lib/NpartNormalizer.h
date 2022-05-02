@@ -5,7 +5,7 @@
 class NpartNormalizer
 {
 private:
-    const int lowest_npp = 101;
+    static const int lowest_npp = 101;
     static const float ratio_ox[100];
     static const float ratio_oxb[100];
     static const float ratio_obx[100];
