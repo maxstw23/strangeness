@@ -1,20 +1,20 @@
 #ifndef NpartNormalizer_hh
 #define NpartNormalizer_hh
 #include "TString.h"
-#include <map>
 
 class NpartNormalizer
 {
 private:
-    static std::map<int, float> ratio_ox;
-    static std::map<int, float> ratio_oxb;
-    static std::map<int, float> ratio_obx;
-    static std::map<int, float> ratio_obxb;
+    const int lowest_npp = 101;
+    static const float ratio_ox[100];
+    static const float ratio_oxb[100];
+    static const float ratio_obx[100];
+    static const float ratio_obxb[100];
 
-    static std::map<int, float> ratio_x;
-    static std::map<int, float> ratio_xb;
-    static std::map<int, float> ratio_o;
-    static std::map<int, float> ratio_ob;
+    static const float ratio_x[100];
+    static const float ratio_xb[100];
+    static const float ratio_o[100];
+    static const float ratio_ob[100];
     
 public:
     NpartNormalizer() {}
