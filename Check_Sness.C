@@ -23,6 +23,7 @@
 #include "TComplex.h"
 #include "TChain.h"
 #include "TVector2.h"
+#include "TLorentzVector.h"
 #include "TDatabasePDG.h"
 #include "TParticlePDG.h"
 #include <string>
@@ -51,6 +52,10 @@ int FindType(int PID);
 
 void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
 {   
+    // PDG Database
+	TDatabasePDG *db = new TDatabasePDG();
+	TParticlePDG *p_info = new TParticlePDG();
+
     // initialize map
     std::map<int, int> sness_map;
     sness_map.insert(std::pair<int, int>( 311,  1)); //K^0
@@ -119,6 +124,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hstrangeness = new TH1D("sness", "total strangeness", 50, -24.5, 25.5);
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
+
+    TH1D* hBaryon_yield = new TH1D("hBaryon_yield", "Baryon yield for BES comparison", 6, -0.5, 5.5); //0-1 lambda, 2-3 xi, 4-5 omega
 
     TH1D* hnpp         = new TH1D("hnpp", "Participant number for all qualified events", 1000, -0.5, 999.5);
     TH1D* hnpp_owx     = new TH1D("hnpp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
@@ -217,9 +224,39 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
 
-        // CUT ON CENTRALITY
+        // centrality
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
+
+        // counting particle for BES comparison
+        for (int i = 0; i < pid_vec->size(); ++i)
+        {
+            int   pid   = pid_vec->at(i);
+            int   s     = sness_map[pid];
+            int   type  = FindType(pid);
+            float px    = px_vec->at(i);
+            float py    = py_vec->at(i);
+            float pz    = pz_vec->at(i);
+            float pt    = px*px + py*py;
+            float theta = atan2(pt,pz);
+            float eta   = -log(tan(theta/2.));
+            float y     = -999;
+            p_info= db->GetParticle((int)pid);
+            if (!p_info) continue;
+            TLorentzVector lv;
+            lv.SetXYZM(px, py, pz, p_info->Mass());
+            y = lv.Rapidity();
+
+            if (fabs(y) > 0.5) continue; // mid-rapidity
+            if (pid == -3122 && cen == 9) hBaryon_yield->Fill(0.);
+            if (pid ==  3122 && cen == 9) hBaryon_yield->Fill(1.);
+            if (pid == -3312 && cen == 9) hBaryon_yield->Fill(2.);
+            if (pid ==  3312 && cen == 9) hBaryon_yield->Fill(3.);
+            if (pid == -3334 && (cen == 9 || cen == 10)) hBaryon_yield->Fill(4.);
+            if (pid ==  3334 && (cen == 9 || cen == 10)) hBaryon_yield->Fill(5.);
+        }
+
+        // CUT ON CENTRALITY
         if (cen != cen_select) continue;
 
         // for npart normalization
@@ -249,7 +286,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (*it < 10000 && *it > 999) total_bn += 1;
             if (*it >-10000 && *it <-999) total_bn -= 1;
         }
-
+    
         // count events
         hasParticle[0] = true; //total count
         for (int j = 0; j < NEventClass+1; j++) {if (hasParticle[j]) M[j]++;}

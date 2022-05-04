@@ -5,16 +5,16 @@
 class NpartNormalizer
 {
 private:
-    static const int lowest_npp = 101;
-    static const float ratio_ox[100];
-    static const float ratio_oxb[100];
-    static const float ratio_obx[100];
-    static const float ratio_obxb[100];
+    static const int lowest_npp = 151;
+    static const float ratio_ox[40];
+    static const float ratio_oxb[40];
+    static const float ratio_obx[40];
+    static const float ratio_obxb[40];
 
-    static const float ratio_x[100];
-    static const float ratio_xb[100];
-    static const float ratio_o[100];
-    static const float ratio_ob[100];
+    static const float ratio_x[40];
+    static const float ratio_xb[40];
+    static const float ratio_o[40];
+    static const float ratio_ob[40];
     
 public:
     NpartNormalizer() {}
