@@ -144,6 +144,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hnpp_woo     = new TH1D("hnpp_woo", "Participant number for criteria woo", 1000, -0.5, 999.5);
     TH1D* hnpp_wob     = new TH1D("hnpp_wob", "Participant number for criteria wob", 1000, -0.5, 999.5);
     TH1D* hnpp_woob    = new TH1D("hnpp_woob", "Participant number for criteria woob", 1000, -0.5, 999.5);
+    TH1D* hnpp_woallx_for_wx  = new TH1D("hnpp_woallx_for_wx", "Participant number for criteria woallx_for_wx", 1000, -0.5, 999.5);
+    TH1D* hnpp_woallx_for_wxb = new TH1D("hnpp_woallx_for_wxb", "Participant number for criteria woallx_for_wxb", 1000, -0.5, 999.5);
+    TH1D* hnpp_woallo_for_wo  = new TH1D("hnpp_woallo_for_wo", "Participant number for criteria woallo_for_wo", 1000, -0.5, 999.5);
+    TH1D* hnpp_woallo_for_wob = new TH1D("hnpp_woallo_for_wob", "Participant number for criteria woallo_for_wob", 1000, -0.5, 999.5);
 
     TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
     TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
@@ -488,7 +492,16 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         else           hnpp_wox ->Fill(npp, normalizer.weight(npp, "x")); 
         if (hasAntiXi) hnpp_wxb ->Fill(npp); 
         else           hnpp_woxb->Fill(npp, normalizer.weight(npp, "xb")); 
-
+        if ((!hasParticle[2]) && (!hasParticle[1])) // test case without both omega and anti-omega (xi and anti-xi)
+        {
+            hnpp_woallo_for_wo->Fill(npp, 1.0);
+            hnpp_woallo_for_wob->Fill(npp, 1.0);
+        }
+        if ((!hasXi) && (!hasAntiXi))
+        {
+            hnpp_woallx_for_wx->Fill(npp, 1.0);
+            hnpp_woallx_for_wxb->Fill(npp, 1.0);
+        }
     }
 
     for (int i = 0; i < NEventClass+1; i++) hMult_each->Fill(i, M[i]); //i = 0: total event count
