@@ -494,13 +494,13 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         else           hnpp_woxb->Fill(npp, normalizer.weight(npp, "xb")); 
         if ((!hasParticle[2]) && (!hasParticle[1])) // test case without both omega and anti-omega (xi and anti-xi)
         {
-            hnpp_woallo_for_wo->Fill(npp, 1.0);
-            hnpp_woallo_for_wob->Fill(npp, 1.0);
+            hnpp_woallo_for_wo ->Fill(npp, normalizer.weight(npp, "woallo_for_wo"));
+            hnpp_woallo_for_wob->Fill(npp, normalizer.weight(npp, "woallo_for_wob"));
         }
         if ((!hasXi) && (!hasAntiXi))
         {
-            hnpp_woallx_for_wx->Fill(npp, 1.0);
-            hnpp_woallx_for_wxb->Fill(npp, 1.0);
+            hnpp_woallx_for_wx ->Fill(npp, normalizer.weight(npp, "woallx_for_wx"));
+            hnpp_woallx_for_wxb->Fill(npp, normalizer.weight(npp, "woallx_for_wxb"));
         }
     }
 

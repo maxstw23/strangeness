@@ -15,6 +15,11 @@ private:
     static const float ratio_xb[40];
     static const float ratio_o[40];
     static const float ratio_ob[40];
+
+    static const float ratio_woallx_for_wx[40];
+    static const float ratio_woallx_for_wxb[40];
+    static const float ratio_woallo_for_wo[40];
+    static const float ratio_woallo_for_wob[40];
     
 public:
     NpartNormalizer() {}
