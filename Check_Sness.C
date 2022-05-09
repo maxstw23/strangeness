@@ -166,6 +166,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hbndist_obwox  = new TProfile("hbndist_obwox", "Baryon number distribution for omegabar events without xi", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_obwxb  = new TProfile("hbndist_obwxb", "Baryon number distribution for omegabar events with xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_obwoxb = new TProfile("hbndist_obwoxb", "Baryon number distribution for omegabar events without xibar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woallo_for_wo  = new TProfile("hbndist_woallo_for_wo" , "Baryon number distribution for events without all omega for omega", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woallo_for_wob = new TProfile("hbndist_woallo_for_wob", "Baryon number distribution for events without all omega for omegabar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woallx_for_wx  = new TProfile("hbndist_woallx_for_wx" , "Baryon number distribution for events without all xi for xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_woallx_for_wxb = new TProfile("hbndist_woallx_for_wxb", "Baryon number distribution for events without all xi for xibar", 6, -0.5, 5.5, -200, 600);
     
     TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",8, -0.5, 7.5, 0, 100); //0-1: k+, 2-3: k-, 4-5: k0, 6-7: k0bar
     TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",8, -0.5, 7.5, 0, 100);
@@ -173,7 +177,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_x     = new TProfile("hkaonct_x"  , "Kaon count for events with xi and without",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_xb    = new TProfile("hkaonct_xb" , "Kaon count for events with xibar and without",8, -0.5, 7.5, 0, 100);
-    
+    TProfile* hkaonct_woallo_for_wo  = new TProfile("hkaonct_woallo_for_wo" , "Kaon count for events without all omega and with omega",8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_woallo_for_wob = new TProfile("hkaonct_woallo_for_wob", "Kaon count for events without all omega and with omegabar",8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_woallx_for_wx  = new TProfile("hkaonct_woallx_for_wx" , "Kaon count for events without all xi and with xi",8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_woallx_for_wxb = new TProfile("hkaonct_woallx_for_wxb", "Kaon count for events without all xi and with xibar",8, -0.5, 7.5, 0, 100);
 
     // 0 - total, 1 - Anti-O, 2 - O, 3 - Anti-X, 4 - X, 5 - Anti-X0, 6 - X0， 7 - Nucleons
     TH1D *hsdist[NEventClass+1], *hpdist[NEventClass+1], *hKaon [NEventClass+1], *hLambda[NEventClass+1], 
@@ -443,6 +450,17 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(npp, "x"));
             if (hasAntiXi) hbndist_wxb ->Fill(k, bct[k]);
             else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(npp, "xb"));
+
+            if ((!hasParticle[2]) && (!hasParticle[1]))
+            {
+                hbndist_woallo_for_wo ->Fill(k, bct[k], normalizer.weight(npp, "woallo_for_wo"));
+                hbndist_woallo_for_wob->Fill(k, bct[k], normalizer.weight(npp, "woallo_for_wob"));
+            }
+            if ((!hasXi) && (!hasAntiXi))
+            {
+                hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(npp, "woallx_for_wx"));
+                hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(npp, "woallx_for_wxb"));
+            }
         }
 
         // kaon ct subplots
@@ -465,7 +483,17 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasXi)     hkaonct_x ->Fill(2.*i  , kaonct[i]*1.0); 
             else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "x")); 
             if (hasAntiXi) hkaonct_xb->Fill(2.*i  , kaonct[i]*1.0); 
-            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "xb")); 
+            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "xb"));
+
+            if (hasParticle[2])                         hkaonct_woallo_for_wob->Fill(2.*i  , kaonct[i]*1.0);
+            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallo_for_wob"));
+            if (hasParticle[1])                         hkaonct_woallo_for_wo ->Fill(2.*i  , kaonct[i]*1.0);
+            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wo ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallo_for_wo"));
+            if (hasAntiXi)                hkaonct_woallx_for_wxb->Fill(2.*i  , kaonct[i]*1.0);
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallx_for_wxb"));
+            if (hasXi)                    hkaonct_woallx_for_wx ->Fill(2.*i  , kaonct[i]*1.0);
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallx_for_wx"));
+
         }
 
         // npp distributions
