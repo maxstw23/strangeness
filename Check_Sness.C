@@ -126,28 +126,29 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
 
     TH1D* hBaryon_yield = new TH1D("hBaryon_yield", "Baryon yield for BES comparison", 6, -0.5, 5.5); //0-1 lambda, 2-3 xi, 4-5 omega
+    TH2D* hBaryon_yield_np = new TH2D("hBaryon_yield_np", "Baryon yield based on npart distribution", 6, -0.5, 5.5, 1000, -0.5, 999.5);
 
-    TH1D* hnpp         = new TH1D("hnpp", "Participant number for all qualified events", 1000, -0.5, 999.5);
-    TH1D* hnpp_owx     = new TH1D("hnpp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
-    TH1D* hnpp_owox    = new TH1D("hnpp_owox", "Participant number for criteria owox", 1000, -0.5, 999.5);
-    TH1D* hnpp_owxb    = new TH1D("hnpp_owxb", "Participant number for criteria owxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_owoxb   = new TH1D("hnpp_owoxb", "Participant number for criteria owoxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_obwx    = new TH1D("hnpp_obwx", "Participant number for criteria obwx", 1000, -0.5, 999.5);
-    TH1D* hnpp_obwox   = new TH1D("hnpp_obwox", "Participant number for criteria obwox", 1000, -0.5, 999.5);
-    TH1D* hnpp_obwxb   = new TH1D("hnpp_obwxb", "Participant number for criteria obwxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_obwoxb  = new TH1D("hnpp_obwoxb", "Participant number for criteria obwoxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_wx      = new TH1D("hnpp_wx", "Participant number for criteria wx", 1000, -0.5, 999.5);
-    TH1D* hnpp_wox     = new TH1D("hnpp_wox", "Participant number for criteria wox", 1000, -0.5, 999.5);
-    TH1D* hnpp_wxb     = new TH1D("hnpp_wxb", "Participant number for criteria wxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_woxb    = new TH1D("hnpp_woxb", "Participant number for criteria woxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_wo      = new TH1D("hnpp_wo", "Participant number for criteria wo", 1000, -0.5, 999.5);
-    TH1D* hnpp_woo     = new TH1D("hnpp_woo", "Participant number for criteria woo", 1000, -0.5, 999.5);
-    TH1D* hnpp_wob     = new TH1D("hnpp_wob", "Participant number for criteria wob", 1000, -0.5, 999.5);
-    TH1D* hnpp_woob    = new TH1D("hnpp_woob", "Participant number for criteria woob", 1000, -0.5, 999.5);
-    TH1D* hnpp_woallx_for_wx  = new TH1D("hnpp_woallx_for_wx", "Participant number for criteria woallx_for_wx", 1000, -0.5, 999.5);
-    TH1D* hnpp_woallx_for_wxb = new TH1D("hnpp_woallx_for_wxb", "Participant number for criteria woallx_for_wxb", 1000, -0.5, 999.5);
-    TH1D* hnpp_woallo_for_wo  = new TH1D("hnpp_woallo_for_wo", "Participant number for criteria woallo_for_wo", 1000, -0.5, 999.5);
-    TH1D* hnpp_woallo_for_wob = new TH1D("hnpp_woallo_for_wob", "Participant number for criteria woallo_for_wob", 1000, -0.5, 999.5);
+    TH1D* hnp         = new TH1D("hnp", "Participant number for all qualified events", 1000, -0.5, 999.5);
+    TH1D* hnp_owx     = new TH1D("hnp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
+    TH1D* hnp_owox    = new TH1D("hnp_owox", "Participant number for criteria owox", 1000, -0.5, 999.5);
+    TH1D* hnp_owxb    = new TH1D("hnp_owxb", "Participant number for criteria owxb", 1000, -0.5, 999.5);
+    TH1D* hnp_owoxb   = new TH1D("hnp_owoxb", "Participant number for criteria owoxb", 1000, -0.5, 999.5);
+    TH1D* hnp_obwx    = new TH1D("hnp_obwx", "Participant number for criteria obwx", 1000, -0.5, 999.5);
+    TH1D* hnp_obwox   = new TH1D("hnp_obwox", "Participant number for criteria obwox", 1000, -0.5, 999.5);
+    TH1D* hnp_obwxb   = new TH1D("hnp_obwxb", "Participant number for criteria obwxb", 1000, -0.5, 999.5);
+    TH1D* hnp_obwoxb  = new TH1D("hnp_obwoxb", "Participant number for criteria obwoxb", 1000, -0.5, 999.5);
+    TH1D* hnp_wx      = new TH1D("hnp_wx", "Participant number for criteria wx", 1000, -0.5, 999.5);
+    TH1D* hnp_wox     = new TH1D("hnp_wox", "Participant number for criteria wox", 1000, -0.5, 999.5);
+    TH1D* hnp_wxb     = new TH1D("hnp_wxb", "Participant number for criteria wxb", 1000, -0.5, 999.5);
+    TH1D* hnp_woxb    = new TH1D("hnp_woxb", "Participant number for criteria woxb", 1000, -0.5, 999.5);
+    TH1D* hnp_wo      = new TH1D("hnp_wo", "Participant number for criteria wo", 1000, -0.5, 999.5);
+    TH1D* hnp_woo     = new TH1D("hnp_woo", "Participant number for criteria woo", 1000, -0.5, 999.5);
+    TH1D* hnp_wob     = new TH1D("hnp_wob", "Participant number for criteria wob", 1000, -0.5, 999.5);
+    TH1D* hnp_woob    = new TH1D("hnp_woob", "Participant number for criteria woob", 1000, -0.5, 999.5);
+    TH1D* hnp_woallx_for_wx  = new TH1D("hnp_woallx_for_wx", "Participant number for criteria woallx_for_wx", 1000, -0.5, 999.5);
+    TH1D* hnp_woallx_for_wxb = new TH1D("hnp_woallx_for_wxb", "Participant number for criteria woallx_for_wxb", 1000, -0.5, 999.5);
+    TH1D* hnp_woallo_for_wo  = new TH1D("hnp_woallo_for_wo", "Participant number for criteria woallo_for_wo", 1000, -0.5, 999.5);
+    TH1D* hnp_woallo_for_wob = new TH1D("hnp_woallo_for_wob", "Participant number for criteria woallo_for_wob", 1000, -0.5, 999.5);
 
     TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
     TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
@@ -209,13 +210,14 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
     // setting PID and momentum branches
     TBranch* bpid = nullptr;
-    int npp;
+    int npp, npt;
     int refmult;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
     std::vector<float> *pz_vec  = nullptr;
     chain->SetBranchAddress("npp", &npp);
+    chain->SetBranchAddress("npt", &npt);
     chain->SetBranchAddress("refmult", &refmult);
     chain->SetBranchAddress("pid", &pid_vec, &bpid);
     chain->SetBranchAddress("px",  &px_vec);
@@ -234,6 +236,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     {
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
+        int np = npp + npt;
 
         // centrality
         CenMaker cenmaker;
@@ -259,12 +262,12 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             y = lv.Rapidity();
 
             if (fabs(y) > 0.5) continue; // mid-rapidity
-            if (pid == -3122 && cen == 9) hBaryon_yield->Fill(0.);
-            if (pid ==  3122 && cen == 9) hBaryon_yield->Fill(1.);
-            if (pid == -3312 && cen == 9) hBaryon_yield->Fill(2.);
-            if (pid ==  3312 && cen == 9) hBaryon_yield->Fill(3.);
-            if (pid == -3334 && (cen == 9 || cen == 10)) hBaryon_yield->Fill(4.);
-            if (pid ==  3334 && (cen == 9 || cen == 10)) hBaryon_yield->Fill(5.);
+            if (pid == -3122 && cen == 9)                {hBaryon_yield->Fill(0.); hBaryon_yield_np->Fill(0., np*1.0);}
+            if (pid ==  3122 && cen == 9)                {hBaryon_yield->Fill(1.); hBaryon_yield_np->Fill(1., np*1.0);}
+            if (pid == -3312 && cen == 9)                {hBaryon_yield->Fill(2.); hBaryon_yield_np->Fill(2., np*1.0);}
+            if (pid ==  3312 && cen == 9)                {hBaryon_yield->Fill(3.); hBaryon_yield_np->Fill(3., np*1.0);}
+            if (pid == -3334 && (cen == 9 || cen == 10)) {hBaryon_yield->Fill(4.); hBaryon_yield_np->Fill(4., np*1.0);}
+            if (pid ==  3334 && (cen == 9 || cen == 10)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
         }
 
         // CUT ON CENTRALITY
@@ -272,6 +275,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         // for npart normalization
         NpartNormalizer normalizer;
+        normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
 
         int total_s = 0, total_bn = 0, itrack = 0;
 
@@ -430,9 +434,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             {
                 hbndist_wo->Fill(k, bct[k]);
                 if (hasXi)     hbndist_owx  ->Fill(k, bct[k]);
-                else           hbndist_owox ->Fill(k, bct[k], normalizer.weight(npp, "ox"));
+                else           hbndist_owox ->Fill(k, bct[k], normalizer.weight(np, "ox"));
                 if (hasAntiXi) hbndist_owxb ->Fill(k, bct[k]);
-                else           hbndist_owoxb->Fill(k, bct[k], normalizer.weight(npp, "oxb"));
+                else           hbndist_owoxb->Fill(k, bct[k], normalizer.weight(np, "oxb"));
             }
             else hbndist_woo->Fill(k, bct[k]);
 
@@ -440,26 +444,26 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             {
                 hbndist_wob->Fill(k, bct[k]);
                 if (hasXi)     hbndist_obwx  ->Fill(k, bct[k]);
-                else           hbndist_obwox ->Fill(k, bct[k], normalizer.weight(npp, "obx"));
+                else           hbndist_obwox ->Fill(k, bct[k], normalizer.weight(np, "obx"));
                 if (hasAntiXi) hbndist_obwxb ->Fill(k, bct[k]);
-                else           hbndist_obwoxb->Fill(k, bct[k], normalizer.weight(npp, "obxb"));
+                else           hbndist_obwoxb->Fill(k, bct[k], normalizer.weight(np, "obxb"));
             }
             else hbndist_woob->Fill(k, bct[k]); 
 
             if (hasXi)     hbndist_wx  ->Fill(k, bct[k]);
-            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(npp, "x"));
+            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x"));
             if (hasAntiXi) hbndist_wxb ->Fill(k, bct[k]);
-            else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(npp, "xb"));
+            else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(np, "xb"));
 
             if ((!hasParticle[2]) && (!hasParticle[1]))
             {
-                hbndist_woallo_for_wo ->Fill(k, bct[k], normalizer.weight(npp, "woallo_for_wo"));
-                hbndist_woallo_for_wob->Fill(k, bct[k], normalizer.weight(npp, "woallo_for_wob"));
+                hbndist_woallo_for_wo ->Fill(k, bct[k], normalizer.weight(np, "woallo_for_wo"));
+                hbndist_woallo_for_wob->Fill(k, bct[k], normalizer.weight(np, "woallo_for_wob"));
             }
             if ((!hasXi) && (!hasAntiXi))
             {
-                hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(npp, "woallx_for_wx"));
-                hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(npp, "woallx_for_wxb"));
+                hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wx"));
+                hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wxb"));
             }
         }
 
@@ -469,66 +473,66 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasParticle[2])
             { 
                 if (hasXi)     hkaonct_owx  ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_owx  ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "ox")); 
+                else           hkaonct_owx  ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "ox")); 
                 if (hasAntiXi) hkaonct_owxb ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_owxb ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "oxb"));
+                else           hkaonct_owxb ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "oxb"));
             }
             if (hasParticle[1])
             { 
                 if (hasXi)     hkaonct_obwx ->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_obwx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "obx")); 
+                else           hkaonct_obwx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "obx")); 
                 if (hasAntiXi) hkaonct_obwxb->Fill(2.*i  , kaonct[i]*1.0); 
-                else           hkaonct_obwxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "obxb")); 
+                else           hkaonct_obwxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "obxb")); 
             }
             if (hasXi)     hkaonct_x ->Fill(2.*i  , kaonct[i]*1.0); 
-            else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "x")); 
+            else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "x")); 
             if (hasAntiXi) hkaonct_xb->Fill(2.*i  , kaonct[i]*1.0); 
-            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "xb"));
+            else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "xb"));
 
             if (hasParticle[2])                         hkaonct_woallo_for_wob->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallo_for_wob"));
+            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wob"));
             if (hasParticle[1])                         hkaonct_woallo_for_wo ->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wo ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallo_for_wo"));
+            if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wo ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wo"));
             if (hasAntiXi)                hkaonct_woallx_for_wxb->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallx_for_wxb"));
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wxb"));
             if (hasXi)                    hkaonct_woallx_for_wx ->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(npp, "woallx_for_wx"));
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wx"));
 
         }
 
-        // npp distributions
-        hnpp->Fill(npp);
+        // np distributions
+        hnp->Fill(np);
         if (hasParticle[2])
         {   
-            hnpp_wo->Fill(npp);
-            if (hasXi)     hnpp_owx   ->Fill(npp); 
-            else           hnpp_owox  ->Fill(npp, normalizer.weight(npp, "ox")); 
-            if (hasAntiXi) hnpp_owxb  ->Fill(npp); 
-            else           hnpp_owoxb ->Fill(npp, normalizer.weight(npp, "oxb"));
+            hnp_wo->Fill(np);
+            if (hasXi)     hnp_owx   ->Fill(np); 
+            else           hnp_owox  ->Fill(np, normalizer.weight(np, "ox")); 
+            if (hasAntiXi) hnp_owxb  ->Fill(np); 
+            else           hnp_owoxb ->Fill(np, normalizer.weight(np, "oxb"));
         }
-        else hnpp_woo->Fill(npp, normalizer.weight(npp, "o"));
+        else hnp_woo->Fill(np, normalizer.weight(np, "o"));
         if (hasParticle[1])
         { 
-            hnpp_wob->Fill(npp);
-            if (hasXi)     hnpp_obwx  ->Fill(npp); 
-            else           hnpp_obwox ->Fill(npp, normalizer.weight(npp, "obx")); 
-            if (hasAntiXi) hnpp_obwxb ->Fill(npp); 
-            else           hnpp_obwoxb->Fill(npp, normalizer.weight(npp, "obxb")); 
+            hnp_wob->Fill(np);
+            if (hasXi)     hnp_obwx  ->Fill(np); 
+            else           hnp_obwox ->Fill(np, normalizer.weight(np, "obx")); 
+            if (hasAntiXi) hnp_obwxb ->Fill(np); 
+            else           hnp_obwoxb->Fill(np, normalizer.weight(np, "obxb")); 
         }
-        else hnpp_woob->Fill(npp, normalizer.weight(npp, "ob"));
-        if (hasXi)     hnpp_wx  ->Fill(npp); 
-        else           hnpp_wox ->Fill(npp, normalizer.weight(npp, "x")); 
-        if (hasAntiXi) hnpp_wxb ->Fill(npp); 
-        else           hnpp_woxb->Fill(npp, normalizer.weight(npp, "xb")); 
+        else hnp_woob->Fill(np, normalizer.weight(np, "ob"));
+        if (hasXi)     hnp_wx  ->Fill(np); 
+        else           hnp_wox ->Fill(np, normalizer.weight(np, "x")); 
+        if (hasAntiXi) hnp_wxb ->Fill(np); 
+        else           hnp_woxb->Fill(np, normalizer.weight(np, "xb")); 
         if ((!hasParticle[2]) && (!hasParticle[1])) // test case without both omega and anti-omega (xi and anti-xi)
         {
-            hnpp_woallo_for_wo ->Fill(npp, normalizer.weight(npp, "woallo_for_wo"));
-            hnpp_woallo_for_wob->Fill(npp, normalizer.weight(npp, "woallo_for_wob"));
+            hnp_woallo_for_wo ->Fill(np, normalizer.weight(np, "woallo_for_wo"));
+            hnp_woallo_for_wob->Fill(np, normalizer.weight(np, "woallo_for_wob"));
         }
         if ((!hasXi) && (!hasAntiXi))
         {
-            hnpp_woallx_for_wx ->Fill(npp, normalizer.weight(npp, "woallx_for_wx"));
-            hnpp_woallx_for_wxb->Fill(npp, normalizer.weight(npp, "woallx_for_wxb"));
+            hnp_woallx_for_wx ->Fill(np, normalizer.weight(np, "woallx_for_wx"));
+            hnp_woallx_for_wxb->Fill(np, normalizer.weight(np, "woallx_for_wxb"));
         }
     }
 

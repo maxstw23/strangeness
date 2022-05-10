@@ -5,7 +5,8 @@
 class NpartNormalizer
 {
 private:
-    static const int lowest_npp = 151;
+    bool IsUnitWeight;
+    static const int lowest_np = 151;
     static const float ratio_ox[40];
     static const float ratio_oxb[40];
     static const float ratio_obx[40];
@@ -22,9 +23,10 @@ private:
     static const float ratio_woallo_for_wob[40];
     
 public:
-    NpartNormalizer() {}
+    NpartNormalizer() {IsUnitWeight = false;}
     virtual ~NpartNormalizer() {}
-    float weight(int npp, TString compare_case);
+    void unit_weight() {IsUnitWeight = true; }
+    float weight(int np, TString compare_case);
 
 ClassDef(NpartNormalizer, 1)
 };

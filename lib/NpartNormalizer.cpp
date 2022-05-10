@@ -98,23 +98,26 @@ const float NpartNormalizer::ratio_woallo_for_wob[] =
     1.107158137467735, 1.1531708219072334, 1.1697836768424144, 1.2110348205412274, 1.2405829542321916, 1.2718508345725337, 1.286216184369616, 1.33070519152514, 1.3564410083791387, 1.3468678617486354
 };
 
-float NpartNormalizer::weight(int npp, TString compare_case)
+
+float NpartNormalizer::weight(int np, TString compare_case)
 {
-    if (npp < lowest_npp || npp >= lowest_npp + 40) return 0;
-    if (compare_case == "ox")   return ratio_ox[npp-lowest_npp];
-    if (compare_case == "oxb")  return ratio_oxb[npp-lowest_npp];
-    if (compare_case == "obx")  return ratio_obx[npp-lowest_npp];
-    if (compare_case == "obxb") return ratio_obxb[npp-lowest_npp];
+    if (IsUnitWeight) return 1.;
 
-    if (compare_case == "x")  return ratio_x[npp-lowest_npp];
-    if (compare_case == "xb") return ratio_xb[npp-lowest_npp];
-    if (compare_case == "o")  return ratio_o[npp-lowest_npp];
-    if (compare_case == "ob") return ratio_ob[npp-lowest_npp];
+    if (np < lowest_np || np >= lowest_np + 40) return 0;
+    if (compare_case == "ox")   return ratio_ox[np-lowest_np];
+    if (compare_case == "oxb")  return ratio_oxb[np-lowest_np];
+    if (compare_case == "obx")  return ratio_obx[np-lowest_np];
+    if (compare_case == "obxb") return ratio_obxb[np-lowest_np];
 
-    if (compare_case == "woallx_for_wx")  return ratio_woallx_for_wx[npp-lowest_npp];
-    if (compare_case == "woallx_for_wxb") return ratio_woallx_for_wxb[npp-lowest_npp];
-    if (compare_case == "woallo_for_wo")  return ratio_woallo_for_wo[npp-lowest_npp];
-    if (compare_case == "woallo_for_wob") return ratio_woallo_for_wob[npp-lowest_npp];
+    if (compare_case == "x")  return ratio_x[np-lowest_np];
+    if (compare_case == "xb") return ratio_xb[np-lowest_np];
+    if (compare_case == "o")  return ratio_o[np-lowest_np];
+    if (compare_case == "ob") return ratio_ob[np-lowest_np];
+
+    if (compare_case == "woallx_for_wx")  return ratio_woallx_for_wx[np-lowest_np];
+    if (compare_case == "woallx_for_wxb") return ratio_woallx_for_wxb[np-lowest_np];
+    if (compare_case == "woallo_for_wo")  return ratio_woallo_for_wo[np-lowest_np];
+    if (compare_case == "woallo_for_wob") return ratio_woallo_for_wob[np-lowest_np];
 
     return 0;
 }
