@@ -178,6 +178,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hkaonct_obwxb = new TProfile("hkaonct_obwxb", "Kaon count for omegabar event with xibar and without",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_x     = new TProfile("hkaonct_x"  , "Kaon count for events with xi and without",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_xb    = new TProfile("hkaonct_xb" , "Kaon count for events with xibar and without",8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_o     = new TProfile("hkaonct_o"  , "Kaon count for events with omega and without",8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_ob    = new TProfile("hkaonct_ob" , "Kaon count for events with omegabar and without",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_woallo_for_wo  = new TProfile("hkaonct_woallo_for_wo" , "Kaon count for events without all omega and with omega",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_woallo_for_wob = new TProfile("hkaonct_woallo_for_wob", "Kaon count for events without all omega and with omegabar",8, -0.5, 7.5, 0, 100);
     TProfile* hkaonct_woallx_for_wx  = new TProfile("hkaonct_woallx_for_wx" , "Kaon count for events without all xi and with xi",8, -0.5, 7.5, 0, 100);
@@ -275,7 +277,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         // for npart normalization
         NpartNormalizer normalizer;
-        normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
+        //normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
 
         int total_s = 0, total_bn = 0, itrack = 0;
 
@@ -438,7 +440,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                 if (hasAntiXi) hbndist_owxb ->Fill(k, bct[k]);
                 else           hbndist_owoxb->Fill(k, bct[k], normalizer.weight(np, "oxb"));
             }
-            else hbndist_woo->Fill(k, bct[k]);
+            else hbndist_woo->Fill(k, bct[k], normalizer.weight(np, "o"));
 
             if (hasParticle[1]) // if has anti-omega
             {
@@ -448,7 +450,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                 if (hasAntiXi) hbndist_obwxb ->Fill(k, bct[k]);
                 else           hbndist_obwoxb->Fill(k, bct[k], normalizer.weight(np, "obxb"));
             }
-            else hbndist_woob->Fill(k, bct[k]); 
+            else hbndist_woob->Fill(k, bct[k], normalizer.weight(np, "ob")); 
 
             if (hasXi)     hbndist_wx  ->Fill(k, bct[k]);
             else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x"));
@@ -488,6 +490,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             else           hkaonct_x ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "x")); 
             if (hasAntiXi) hkaonct_xb->Fill(2.*i  , kaonct[i]*1.0); 
             else           hkaonct_xb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "xb"));
+            if (hasParticle[2]) hkaonct_o ->Fill(2.*i  , kaonct[i]*1.0); 
+            else                hkaonct_o ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "o")); 
+            if (hasParticle[1]) hkaonct_ob->Fill(2.*i  , kaonct[i]*1.0); 
+            else                hkaonct_ob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "ob"));
 
             if (hasParticle[2])                         hkaonct_woallo_for_wob->Fill(2.*i  , kaonct[i]*1.0);
             if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wob"));

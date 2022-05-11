@@ -6,21 +6,21 @@ class NpartNormalizer
 {
 private:
     bool IsUnitWeight;
-    static const int lowest_np = 151;
-    static const float ratio_ox[40];
-    static const float ratio_oxb[40];
-    static const float ratio_obx[40];
-    static const float ratio_obxb[40];
+    static const int lowest_np = 301;
+    static const float ratio_ox[80];
+    static const float ratio_oxb[80];
+    static const float ratio_obx[80];
+    static const float ratio_obxb[80];
 
-    static const float ratio_x[40];
-    static const float ratio_xb[40];
-    static const float ratio_o[40];
-    static const float ratio_ob[40];
+    static const float ratio_x[80];
+    static const float ratio_xb[80];
+    static const float ratio_o[80];
+    static const float ratio_ob[80];
 
-    static const float ratio_woallx_for_wx[40];
-    static const float ratio_woallx_for_wxb[40];
-    static const float ratio_woallo_for_wo[40];
-    static const float ratio_woallo_for_wob[40];
+    static const float ratio_woallx_for_wx[80];
+    static const float ratio_woallx_for_wxb[80];
+    static const float ratio_woallo_for_wo[80];
+    static const float ratio_woallo_for_wob[80];
     
 public:
     NpartNormalizer() {IsUnitWeight = false;}
