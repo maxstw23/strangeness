@@ -40,8 +40,9 @@ const float PI = TMath::Pi();
 const float eta_cut = 1.;
 const float y_cut   = 1.;
 const int buffer_size = 10;
-const bool  CutEta  = false;
+const bool  CutEta  = true;
 const bool  Cuty    = false; //only select either CutEta or Cuty or none, not both!
+int cen_select = 9;
 TString energy = "14";
 
 const float mKaon = 0.493677;
@@ -209,11 +210,13 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // setting PID and momentum branches
     float imp;
+    int refmult;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
     std::vector<float> *pz_vec  = nullptr;
     chain->SetBranchAddress("imp", &imp);
+    chain->SetBranchAddress("refmult", &refmult);
     chain->SetBranchAddress("pid", &pid_vec);
     chain->SetBranchAddress("px",  &px_vec);
     chain->SetBranchAddress("py",  &py_vec);
@@ -221,7 +224,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // variables
     float px, py, pz, p, pt, theta, eta, y;
-    int pid, mult, refmult;
+    int pid, mult;
     TLorentzVector lv;
 
     // mixed-event buffer
@@ -247,10 +250,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
         // initialize
         mult = 0;
-        refmult = 0;
         hasP2 = false; hasAntiP2 = false;
         hasP3 = false; hasAntiP3 = false;
         my_event current_evt;
+        CenMaker cenmaker;
+        int cen = cenmaker.cent9(refmult, energy, mode);   
 
         // fill track vectors and QA plots
         int ntrack = pid_vec->size();
@@ -289,7 +293,6 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (pid ==  LambdaPID){hEtaLambda   ->Fill(eta); if (y > -999)hyLambda   ->Fill(y);}
             if (pid == -LambdaPID){hEtaLambdabar->Fill(eta); if (y > -999)hyLambdabar->Fill(y);}
             mult++;
-            if (fabs(eta) < 0.5 && (int)p_info->Charge() != 0) refmult++;
             if (pid == KaonPID) kaonct++;
 
             // track cut
@@ -337,15 +340,13 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hMult->Fill(mult);
         hRefMult->Fill(refmult); 
         hImpPar->Fill(imp);
-        CenMaker cenmaker;
-        int cen = cenmaker.cent9(refmult, energy, mode);
         hCen->Fill(cen*1.0);
         if (hasP2)     hKaonCt->Fill(0., kaonct*1.0);
         if (hasAntiP2) hKaonCt->Fill(1., kaonct*1.0);
 
         // event cut
         if (px2_vec.size() != 1) continue;
-        if (cen == -1) continue;
+        if (cen != cen_select) continue;
 
         // double loop for cf
         /****** normal cf ******/
