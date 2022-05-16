@@ -276,7 +276,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         if (cen != cen_select) continue;
 
         // for npart normalization
-        NpartNormalizer normalizer;
+        NpartNormalizer normalizer(mode);
         normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
 
         int total_s = 0, total_bn = 0, itrack = 0;
