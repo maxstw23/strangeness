@@ -7,26 +7,26 @@ class NpartNormalizer
 private:
     bool IsUnitWeight;
     static const int lowest_np = 301;
-    static const float ratio_ox[80];
-    static const float ratio_oxb[80];
-    static const float ratio_obx[80];
-    static const float ratio_obxb[80];
+    static const float ratio_s_ox[80];
+    static const float ratio_s_oxb[80];
+    static const float ratio_s_obx[80];
+    static const float ratio_s_obxb[80];
 
-    static const float ratio_x[80];
-    static const float ratio_xb[80];
-    static const float ratio_o[80];
-    static const float ratio_ob[80];
+    static const float ratio_s_x[80];
+    static const float ratio_s_xb[80];
+    static const float ratio_s_o[80];
+    static const float ratio_s_ob[80];
 
-    static const float ratio_woallx_for_wx[80];
-    static const float ratio_woallx_for_wxb[80];
-    static const float ratio_woallo_for_wo[80];
-    static const float ratio_woallo_for_wob[80];
+    static const float ratio_s_woallx_for_wx[80];
+    static const float ratio_s_woallx_for_wxb[80];
+    static const float ratio_s_woallo_for_wo[80];
+    static const float ratio_s_woallo_for_wob[80];
     
 public:
     NpartNormalizer() {IsUnitWeight = false;}
     virtual ~NpartNormalizer() {}
     void unit_weight() {IsUnitWeight = true; }
-    float weight(int np, TString compare_case);
+    float weight(int np, TString compare_case, int mode);
 
 ClassDef(NpartNormalizer, 1)
 };
