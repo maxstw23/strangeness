@@ -27,7 +27,7 @@ public:
     NpartNormalizer(int _mode) {IsUnitWeight = false; mode = _mode;}
     virtual ~NpartNormalizer() {}
     void unit_weight() {IsUnitWeight = true; }
-    float weight(int np, TString compare_case);
+    float weight(int np, TString compare_case, int mode);
 
 ClassDef(NpartNormalizer, 1)
 };

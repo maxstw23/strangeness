@@ -345,7 +345,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         if (hasAntiP2) hKaonCt->Fill(1., kaonct*1.0);
 
         // event cut
-        if (px2_vec.size() != 1) continue;
+        if (px2_vec.size() != 1) continue; // get rid of this if not 14.6 GeV
         if (cen != cen_select) continue;
 
         // double loop for cf
