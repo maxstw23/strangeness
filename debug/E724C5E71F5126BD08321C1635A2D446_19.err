@@ -1,5 +1,0 @@
-[1]  + Done                          ( ( setenv SUMS_EXECUTION 1 && nohup $0 $* ) > $SCRATCH/.output.log ) >& $SCRATCH/.errror.log
-Info in <TUnixSystem::ACLiC>: creating shared library /home/tmp/maxwoo/E724C5E71F5126BD08321C1635A2D446_19/./check_C.so
-Warning: link requested for unknown srcfile /home/tmp/maxwoo/E724C5E71F5126BD08321C1635A2D446_19/./check.C /home/tmp/maxwoo/E724C5E71F5126BD08321C1635A2D446_19/check_C_ACLiC_linkdef.h:8:
-Error: Function check("/tmp/maxwoo/E724C5E71F5126BD08321C1635A2D446_19/INPUTFILES/E724C5E71F5126BD08321C1635A2D446_19.local.list","E724C5E71F5126BD08321C1635A2D446_19",1) is not defined in current scope  :0:
-*** Interpreter error recovered ***
