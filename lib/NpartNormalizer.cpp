@@ -147,7 +147,7 @@ const float NpartNormalizer::ratio_s_woallo_for_wob[] =
 };
 
 
-float NpartNormalizer::weight(int np, TString compare_case, int mode)
+float NpartNormalizer::weight(int np, TString compare_case)
 {
     if (IsUnitWeight) return 1.;
 
