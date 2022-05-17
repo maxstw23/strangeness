@@ -4,7 +4,7 @@
     
     <command>
     stardev
-	oot -b -q check_S.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
+	root -b -q check_S.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
     </command>
     
     <SandBox>

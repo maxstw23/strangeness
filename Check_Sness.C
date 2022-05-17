@@ -47,6 +47,7 @@ const int NNucleonClass= 4;
 // for cendef
 TString energy = "14";
 const int cen_select = 9;
+const int num_omega_cut = 1;
 
 int FindType(int PID);
 
@@ -244,7 +245,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
 
-        // counting particle for BES comparison
+        // counting particle for BES comparison and count omega
+        int num_omega = 0;
         for (int i = 0; i < pid_vec->size(); ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -263,6 +265,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
 
+            // count Omegas
+            if (fabs(pid) == 3334) num_omega++;
+
+            // for baryon/anti-baryon ratios
             if (fabs(y) > 0.5) continue; // mid-rapidity
             if (pid == -3122 && cen == 9)                {hBaryon_yield->Fill(0.); hBaryon_yield_np->Fill(0., np*1.0);}
             if (pid ==  3122 && cen == 9)                {hBaryon_yield->Fill(1.); hBaryon_yield_np->Fill(1., np*1.0);}
@@ -272,8 +278,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (pid ==  3334 && (cen == 9 || cen == 10)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
         }
 
-        // CUT ON CENTRALITY
+        // event cut
         if (cen != cen_select) continue;
+        if (num_omega > num_omega_cut) continue;
 
         // for npart normalization
         NpartNormalizer normalizer(mode);
