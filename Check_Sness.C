@@ -213,7 +213,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
     // setting PID and momentum branches
     TBranch* bpid = nullptr;
-    int npp, npt;
+    int npp = 0, npt = 0;
     int refmult;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
@@ -242,9 +242,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     {
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
-        if (mode != 2) int np = npp + npt;
-        else int np = 0;
-
+        int np = 0;
+        if (mode != 2) np = npp + npt;
+    
         // centrality
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
