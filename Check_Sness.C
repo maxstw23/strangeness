@@ -219,8 +219,11 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
     std::vector<float> *pz_vec  = nullptr;
-    chain->SetBranchAddress("npp", &npp);
-    chain->SetBranchAddress("npt", &npt);
+    if (mode != 2) // only for AMPT
+    {
+        chain->SetBranchAddress("npp", &npp);
+        chain->SetBranchAddress("npt", &npt);
+    }
     chain->SetBranchAddress("refmult", &refmult);
     chain->SetBranchAddress("pid", &pid_vec, &bpid);
     chain->SetBranchAddress("px",  &px_vec);
@@ -239,7 +242,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     {
         if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
         chain->GetEntry(i);
-        int np = npp + npt;
+        if (mode != 2) int np = npp + npt;
+        else int np = 0;
 
         // centrality
         CenMaker cenmaker;
@@ -267,6 +271,12 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
             // count Omegas
             if (fabs(pid) == 3334) num_omega++;
+
+            // count "np" for UrQMD
+            if (mode == 2)
+            {
+                if (fabs(eta) < 1 && p_info->Charge() != 0) np++;
+            }
 
             // for baryon/anti-baryon ratios
             if (fabs(y) > 0.5) continue; // mid-rapidity
