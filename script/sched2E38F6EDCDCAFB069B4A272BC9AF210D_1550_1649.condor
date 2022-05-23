@@ -1,0 +1,1400 @@
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1649.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1649.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1649.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1648.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1648.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1648.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1647.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1647.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1647.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1646.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1646.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1646.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1645.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1645.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1645.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1644.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1644.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1644.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1643.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1643.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1643.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1642.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1642.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1642.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1641.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1641.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1641.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1640.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1640.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1640.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1639.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1639.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1639.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1638.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1638.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1638.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1637.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1637.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1637.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1636.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1636.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1636.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1635.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1635.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1635.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1634.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1634.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1634.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1633.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1633.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1633.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1632.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1632.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1632.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1631.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1631.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1631.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1630.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1630.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1630.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1629.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1629.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1629.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1628.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1628.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1628.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1627.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1627.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1627.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1626.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1626.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1626.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1625.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1625.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1625.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1624.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1624.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1624.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1623.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1623.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1623.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1622.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1622.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1622.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1621.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1621.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1621.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1620.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1620.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1620.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1619.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1619.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1619.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1618.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1618.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1618.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1617.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1617.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1617.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1616.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1616.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1616.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1615.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1615.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1615.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1614.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1614.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1614.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1613.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1613.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1613.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1612.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1612.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1612.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1611.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1611.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1611.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1610.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1610.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1610.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1609.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1609.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1609.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1608.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1608.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1608.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1607.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1607.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1607.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1606.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1606.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1606.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1605.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1605.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1605.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1604.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1604.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1604.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1603.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1603.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1603.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1602.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1602.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1602.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1601.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1601.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1601.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1600.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1600.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1600.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1599.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1599.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1599.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1598.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1598.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1598.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1597.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1597.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1597.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1596.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1596.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1596.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1595.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1595.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1595.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1594.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1594.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1594.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1593.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1593.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1593.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1592.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1592.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1592.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1591.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1591.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1591.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1590.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1590.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1590.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1589.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1589.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1589.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1588.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1588.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1588.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1587.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1587.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1587.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1586.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1586.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1586.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1585.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1585.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1585.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1584.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1584.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1584.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1583.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1583.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1583.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1582.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1582.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1582.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1581.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1581.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1581.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1580.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1580.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1580.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1579.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1579.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1579.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1578.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1578.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1578.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1577.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1577.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1577.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1576.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1576.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1576.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1575.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1575.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1575.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1574.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1574.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1574.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1573.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1573.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1573.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1572.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1572.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1572.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1571.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1571.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1571.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1570.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1570.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1570.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1569.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1569.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1569.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1568.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1568.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1568.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1567.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1567.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1567.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1566.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1566.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1566.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1565.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1565.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1565.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1564.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1564.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1564.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1563.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1563.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1563.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1562.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1562.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1562.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1561.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1561.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1561.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1560.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1560.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1560.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1559.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1559.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1559.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1558.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1558.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1558.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1557.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1557.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1557.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1556.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1556.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1556.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1555.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1555.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1555.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1554.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1554.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1554.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1553.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1553.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1553.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1552.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1552.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1552.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1551.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1551.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1551.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
+Universe         = vanilla
+Notification     = never
+Executable       = /bin/sh
+Arguments        = "-c 'exec /star/data01/pwg/xiatong/git/strangeness/script/sched2E38F6EDCDCAFB069B4A272BC9AF210D_1550.csh'"
+Output           = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1550.out
+Error            = /star/data01/pwg/xiatong/git/strangeness/debug/2E38F6EDCDCAFB069B4A272BC9AF210D_1550.err
+Log              = /tmp/maxwoo/sched2E38F6EDCDCAFB069B4A272BC9AF210D.condor.log
+Initialdir       = /star/data01/pwg/xiatong/git/strangeness
+kill_sig         = SIGINT
+PeriodicRemove   = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Accounting_group = group_star.cas
+Priority         = +10
+Queue
+
