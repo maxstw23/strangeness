@@ -151,7 +151,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hnp_woallo_for_wo  = new TH1D("hnp_woallo_for_wo", "Participant number for criteria woallo_for_wo", 1000, -0.5, 999.5);
     TH1D* hnp_woallo_for_wob = new TH1D("hnp_woallo_for_wob", "Participant number for criteria woallo_for_wob", 1000, -0.5, 999.5);
 
-    TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 400, -199.5, 600.5);
+    TH1D* hbaryon            = new TH1D("hbaryon", "total baryon number", 800, -199.5, 600.5);
     TProfile* hbndist_wo     = new TProfile("hbndist_wo", "Baryon number distribution for with omega events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woo    = new TProfile("hbndist_woo", "Baryon number distribution for without omega events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_wob    = new TProfile("hbndist_wob", "Baryon number distribution for with omegabar events", 6, -0.5, 5.5, -200, 600);
@@ -294,9 +294,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         // for npart normalization
         NpartNormalizer normalizer(mode);
-        //normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
+        normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
 
         int total_s = 0, total_bn = 0, itrack = 0;
+        float total_ssbar_pair = 0;
 
         // check if event has certain particles
         for (int j = 0; j < NEventClass+1; j++) hasParticle[j] = false;
@@ -317,6 +318,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             
             // total strangeness and baryon number
             total_s += s;
+            total_ssbar_pair += fabs(s)/2.0;
             if (*it < 10000 && *it > 999) total_bn += 1;
             if (*it >-10000 && *it <-999) total_bn -= 1;
         }
@@ -524,6 +526,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         }
 
         // np distributions
+        np = static_cast<int>(total_ssbar_pair); //change to ssbar pair counts, comment to switch back to npart
         hnp->Fill(np);
         if (hasParticle[2])
         {   
