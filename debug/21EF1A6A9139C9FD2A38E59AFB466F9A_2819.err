@@ -1,0 +1,22 @@
+[1]  + Done                          ( ( setenv SUMS_EXECUTION 1 && nohup $0 $* ) > $SCRATCH/.output.log ) >& $SCRATCH/.errror.log
+Info in <TUnixSystem::ACLiC>: creating shared library /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./check_S_C.so
+Info in <TUnixSystem::ACLiC>: creating shared library /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness_C.so
+In file included from /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/Check_Sness_C_ACLiC_dict.h:34:0,
+                 from /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/Check_Sness_C_ACLiC_dict.cxx:17:
+/home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness.C: In function ‘void Check_Sness(const Char_t*, TString, int)’:
+/home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness.C:254:43: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         for (int i = 0; i < pid_vec->size(); ++i)
+                                           ^
+In file included from /afs/rhic.bnl.gov/star/ROOT/36/5.34.38/.sl73_gcc485/rootdeb/include/G__ci.h:464:0,
+                 from /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/Check_Sness_C_ACLiC_dict.h:18,
+                 from /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/Check_Sness_C_ACLiC_dict.cxx:17:
+/home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness.C:332:39: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
+                                       ^
+/home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness.C:332:67: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
+                                                                   ^
+/home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_2819/./Check_Sness.C:332:95: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
+                                                                                               ^
+Warning in <TClass::TClass>: no dictionary for class ROOT::TIOFeatures is available

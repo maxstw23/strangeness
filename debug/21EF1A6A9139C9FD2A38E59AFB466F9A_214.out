@@ -1,0 +1,374 @@
+We are starting on node: spar0502.usatlas.bnl.gov
+HOME is not defined
+Using getent method
+HOME is now /star/u/maxwoo
+18052 We will spawn ourselves (/star/data01/pwg/xiatong/git/strangeness/script/sched21EF1A6A9139C9FD2A38E59AFB466F9A_214.csh )
+18052 We BEGIN on [Thu Jun  2 11:40:30 EDT 2022]
+[1] 18273
+18052 We are waiting for 18273 
+18052 Grandchild PID is 18649 - found in 10 x 1 seconds
+18052 Establishing first watcher   on    Thu Jun  2 11:40:42 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 18649 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 18649 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760781.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760781.root
+18052 Grandchild PID is 20780 - found in 20 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:41:03 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 20780 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 20780 18273  0 80   0 - 30261 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760801.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760801.root
+18052 Grandchild PID is 22013 - found in 30 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:41:24 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 22013 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 22013 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120857141.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857141.root
+18052 Grandchild PID is 23679 - found in 40 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:41:45 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 23679 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 23679 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860101.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860101.root
+18052 Grandchild PID is 24654 - found in 50 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:42:06 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 24654 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 24654 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860271.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860271.root
+18052 Grandchild PID is 25453 - found in 60 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:42:29 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 25453 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 25453 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860351.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860351.root
+18052 Grandchild PID is 27431 - found in 70 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:42:51 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 27431 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 27431 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860431.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860431.root
+18052 Grandchild PID is 32884 - found in 100 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:44:00 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 32884 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 32884 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860561.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860561.root
+18052 Grandchild PID is 34472 - found in 110 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:44:27 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 34472 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 34472 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860581.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860581.root
+18052 Grandchild PID is 39074 - found in 140 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:45:32 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 39074 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 D 100667 39074 18273  0 80   0 - 32311 cxiWai ?          0:00 cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860601.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860601.root
+18052 Grandchild PID is 1022 - found in 160 x 2 seconds
+18052 Grandchild to watch has changed on Thu Jun  2 11:46:14 EDT 2022
+18052 Process tree is 18052 (main) -> 18273 (child) -> 1022 (grandchild)
+F S   UID   PID  PPID  C PRI  NI ADDR SZ WCHAN  TTY        TIME CMD
+0 S 100667 1022 18273  0  80   0 -  1272 do_wai ?          0:00 root -b -q check_S.C++("/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list","21EF1A6A9139C9FD2A38E59AFB466F9A_214",1)
+18273 Stepping into the main SUMS wrapper program with []
+.... building sandbox
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760751.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760751.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760761.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760761.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760771.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760771.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760781.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760781.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760791.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760791.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760801.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760801.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760811.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760811.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760821.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760821.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760871.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760871.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760911.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760911.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120760961.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760961.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120761271.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120761271.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120857141.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857141.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120857151.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857151.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120857161.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857161.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860101.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860101.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860121.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860121.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860201.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860201.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860211.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860211.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860221.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860221.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860231.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860231.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860271.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860271.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860341.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860341.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860351.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860351.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860371.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860371.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860381.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860381.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860401.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860401.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860431.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860431.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860441.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860441.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860451.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860451.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860461.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860461.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860481.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860481.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860561.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860561.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860581.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860581.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860601.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860601.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860631.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860631.root
+Running: cp /star/data01/pwg/xiatong/AMPT/14GeV/data_120860661.root /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860661.root
+Swapping $FILELIST with: /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list
++++++++++++local copy debug++++++++++++++++++++
+newFileList: /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list
+++++++++++++++++cat FILELIST+++++++++++++++++++
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760751.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760761.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760771.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760781.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760791.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760801.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760811.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760821.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760871.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760911.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760961.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120761271.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857141.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857151.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857161.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860101.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860121.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860201.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860211.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860221.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860231.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860271.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860341.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860351.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860371.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860381.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860401.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860431.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860441.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860451.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860461.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860481.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860561.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860581.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860601.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860631.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860661.root 
+++++++++++++++++++++find.++++++++++++++++++++++
+.
+./INPUTFILES
+./INPUTFILES/data_120860371.root
+./INPUTFILES/data_120860341.root
+./INPUTFILES/data_120857161.root
+./INPUTFILES/data_120760791.root
+./INPUTFILES/data_120860231.root
+./INPUTFILES/data_120860101.root
+./INPUTFILES/data_120760811.root
+./INPUTFILES/data_120860121.root
+./INPUTFILES/data_120857151.root
+./INPUTFILES/data_120760821.root
+./INPUTFILES/data_120760801.root
+./INPUTFILES/data_120860661.root
+./INPUTFILES/data_120860561.root
+./INPUTFILES/data_120860351.root
+./INPUTFILES/data_120857141.root
+./INPUTFILES/data_120860201.root
+./INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list
+./INPUTFILES/data_120860581.root
+./INPUTFILES/data_120860461.root
+./INPUTFILES/data_120860211.root
+./INPUTFILES/data_120760911.root
+./INPUTFILES/data_120860401.root
+./INPUTFILES/data_120760871.root
+./INPUTFILES/data_120860271.root
+./INPUTFILES/data_120760751.root
+./INPUTFILES/data_120761271.root
+./INPUTFILES/data_120860381.root
+./INPUTFILES/data_120860631.root
+./INPUTFILES/data_120860431.root
+./INPUTFILES/data_120860481.root
+./INPUTFILES/data_120760781.root
+./INPUTFILES/data_120860441.root
+./INPUTFILES/data_120760961.root
+./INPUTFILES/data_120860221.root
+./INPUTFILES/data_120860601.root
+./INPUTFILES/data_120760761.root
+./INPUTFILES/data_120760771.root
+./INPUTFILES/data_120860451.root
+./.output.log
+./lib
+./lib/my_event.cpp
+./lib/MixedBuffer_cpp_ACLiC_dict_rdict.pcm
+./lib/CenMaker_cpp.so
+./lib/my_particle_cpp.so
+./lib/my_particle.cpp
+./lib/my_event.h
+./lib/NpartNormalizer_cpp.d
+./lib/NpartNormalizer_cpp_ACLiC_dict_rdict.pcm
+./lib/my_particle_cpp.d
+./lib/CenMaker_cpp_ACLiC_dict_rdict.pcm
+./lib/NpartNormalizer.cpp
+./lib/MixedBuffer.h
+./lib/CenMaker_cpp.d
+./lib/my_event_cpp_ACLiC_dict_rdict.pcm
+./lib/NpartNormalizer_cpp.so
+./lib/NpartNormalizer.h
+./lib/MixedBuffer_cpp.so
+./lib/CenMaker.cpp
+./lib/my_particle.h
+./lib/MixedBuffer_cpp.d
+./lib/my_particle_cpp_ACLiC_dict_rdict.pcm
+./lib/CenMaker.h
+./lib/my_event_cpp.d
+./lib/MixedBuffer.cpp
+./lib/my_event_cpp.so
+./.sandboxFiles
+./.errror.log
+./check_S.C
+./Check_Sness.C
+++++++++++++++++INPUTFILE Var++++++++++++++++++
+FILELIST=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list
+INPUTFILECOUNT=37
+INPUTFILE0=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760751.root
+INPUTFILE1=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760761.root
+INPUTFILE2=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760771.root
+INPUTFILE3=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760781.root
+INPUTFILE4=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760791.root
+INPUTFILE5=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760801.root
+INPUTFILE6=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760811.root
+INPUTFILE7=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760821.root
+INPUTFILE8=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760871.root
+INPUTFILE9=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760911.root
+INPUTFILE10=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760961.root
+INPUTFILE11=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120761271.root
+INPUTFILE12=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857141.root
+INPUTFILE13=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857151.root
+INPUTFILE14=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857161.root
+INPUTFILE15=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860101.root
+INPUTFILE16=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860121.root
+INPUTFILE17=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860201.root
+INPUTFILE18=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860211.root
+INPUTFILE19=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860221.root
+INPUTFILE20=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860231.root
+INPUTFILE21=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860271.root
+INPUTFILE22=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860341.root
+INPUTFILE23=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860351.root
+INPUTFILE24=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860371.root
+INPUTFILE25=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860381.root
+INPUTFILE26=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860401.root
+INPUTFILE27=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860431.root
+INPUTFILE28=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860441.root
+INPUTFILE29=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860451.root
+INPUTFILE30=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860461.root
+INPUTFILE31=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860481.root
+INPUTFILE32=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860561.root
+INPUTFILE33=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860581.root
+INPUTFILE34=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860601.root
+INPUTFILE35=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860631.root
+INPUTFILE36=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860661.root
+LocalInputFileDir=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES
+NewFILELIST=/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list
++++++++++++++++++++++++++++++++++++++++++++++++
+--------------------------------
+Simple Unified Meta Scheduler 1.10.50 we are starting in $SCRATCH : /home/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214
+--------------------------------
+total 16
+lrwxrwxrwx 1 maxwoo rhstar   61 Jun  2 11:40 check_S.C -> /gpfs/mnt/gpfs01/star/pwg/xiatong/git/strangeness/./check_S.C
+lrwxrwxrwx 1 maxwoo rhstar   65 Jun  2 11:40 Check_Sness.C -> /gpfs/mnt/gpfs01/star/pwg/xiatong/git/strangeness/./Check_Sness.C
+drwxr-xr-x 2 maxwoo rhstar 4096 Jun  2 11:45 INPUTFILES
+drwxr-xr-x 2 maxwoo rhstar 4096 Jun  2 11:40 lib
+  *******************************************
+  *                                         *
+  *        W E L C O M E  to  R O O T       *
+  *                                         *
+  *   Version   5.34/38     12 March 2018   *
+  *                                         *
+  *  You are welcome to visit our Web site  *
+  *          http://root.cern.ch            *
+  *                                         *
+  *******************************************
+
+ROOT 5.34/38 (v5-34-38@v5-34-38, Mar 12 2018, 15:49:39 on linux)
+
+CINT/ROOT C/C++ Interpreter version 5.18.00, July 2, 2010
+Type ? for help. Commands must be C++ statements.
+Enclose multiple statements between { }.
+*** Float Point Exception is OFF ***
+ *** Start at Date : Thu Jun  2 11:46:01 2022
+QAInfo:You are using STAR_LEVEL : dev, ROOT_LEVEL : 5.34.38 and node : spar0502.usatlas.bnl.gov 
+
+Processing check_S.C++("/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/21EF1A6A9139C9FD2A38E59AFB466F9A_214.local.list","21EF1A6A9139C9FD2A38E59AFB466F9A_214",1)...
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760751.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760761.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760771.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760781.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760791.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760801.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760811.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760821.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760871.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760911.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120760961.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120761271.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857141.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857151.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120857161.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860101.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860121.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860201.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860211.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860221.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860231.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860271.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860341.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860351.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860371.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860381.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860401.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860431.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860441.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860451.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860461.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860481.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860561.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860581.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860601.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860631.root 
+/tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/INPUTFILES/data_120860661.root 
+Added 37 files
+# entries in chain: 37000
+Processing entry == 1000 == out of 37000.
+Processing entry == 2000 == out of 37000.
+Processing entry == 3000 == out of 37000.
+Processing entry == 4000 == out of 37000.
+Processing entry == 5000 == out of 37000.
+Processing entry == 6000 == out of 37000.
+Processing entry == 7000 == out of 37000.
+Processing entry == 8000 == out of 37000.
+Processing entry == 9000 == out of 37000.
+Processing entry == 10000 == out of 37000.
+Processing entry == 11000 == out of 37000.
+Processing entry == 12000 == out of 37000.
+Processing entry == 13000 == out of 37000.
+Processing entry == 14000 == out of 37000.
+Processing entry == 15000 == out of 37000.
+Processing entry == 16000 == out of 37000.
+Processing entry == 17000 == out of 37000.
+Processing entry == 18000 == out of 37000.
+Processing entry == 19000 == out of 37000.
+Processing entry == 20000 == out of 37000.
+Processing entry == 21000 == out of 37000.
+Processing entry == 22000 == out of 37000.
+Processing entry == 23000 == out of 37000.
+Processing entry == 24000 == out of 37000.
+Processing entry == 25000 == out of 37000.
+Processing entry == 26000 == out of 37000.
+Processing entry == 27000 == out of 37000.
+Processing entry == 28000 == out of 37000.
+Processing entry == 29000 == out of 37000.
+Processing entry == 30000 == out of 37000.
+Processing entry == 31000 == out of 37000.
+Processing entry == 32000 == out of 37000.
+Processing entry == 33000 == out of 37000.
+Processing entry == 34000 == out of 37000.
+Processing entry == 35000 == out of 37000.
+Processing entry == 36000 == out of 37000.
+Processing entry == 37000 == out of 37000.
+
+This is the end of ROOT -- Goodbye
+
+Cleaning up sandbox file:  /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/check_S.C
+Cleaning up sandbox file:  /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/Check_Sness.C
+Cleaning up sandbox file:  /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/lib
+Cleaning up sandbox file:  /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/.sandboxFiles
+Starting copy block
+Running copy command:  /bin/cp -fp /tmp/maxwoo/21EF1A6A9139C9FD2A38E59AFB466F9A_214/out_21EF1A6A9139C9FD2A38E59AFB466F9A_214.root /star/data01/pwg/xiatong/git/strangeness/data/
+18052 Execution of (/star/data01/pwg/xiatong/git/strangeness/script/sched21EF1A6A9139C9FD2A38E59AFB466F9A_214.csh ) has ended, exiting normally
+18052 We END on [Thu Jun  2 12:07:46 EDT 2022]

@@ -12,7 +12,7 @@ private:
     static const int lowest_np_d = 321;
     static const int lowest_np_u = 251;
     static const int lowest_nss_s = 81;
-    static const int lowest_nss_d = 121
+    static const int lowest_nss_d = 121;
 
     static const int num_np_s = 80;
     static const int num_np_d = 60;
