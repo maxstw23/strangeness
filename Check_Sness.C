@@ -129,6 +129,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hBaryon_yield = new TH1D("hBaryon_yield", "Baryon yield for BES comparison", 6, -0.5, 5.5); //0-1 lambda, 2-3 xi, 4-5 omega
     TH2D* hBaryon_yield_np = new TH2D("hBaryon_yield_np", "Baryon yield based on npart distribution", 6, -0.5, 5.5, 1000, -0.5, 999.5);
 
+    TH2D* hnp_vs_ssbar = new TH2D("hnp_vs_ssbar", "Npart vs SSbar pair", 1000, -0.5, 999.5, 1000, -0.5, 999.5);
     TH1D* hnp         = new TH1D("hnp", "Participant number for all qualified events", 1000, -0.5, 999.5);
     TH1D* hnp_owx     = new TH1D("hnp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
     TH1D* hnp_owox    = new TH1D("hnp_owox", "Participant number for criteria owox", 1000, -0.5, 999.5);
@@ -294,7 +295,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         // for npart normalization
         NpartNormalizer normalizer(mode);
-        normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
+        //normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
 
         int total_s = 0, total_bn = 0, itrack = 0;
         float total_ssbar_pair = 0;
@@ -448,6 +449,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         hstrangeness->Fill(total_s);  
         hbaryon->Fill(total_bn);  
+        //np = static_cast<int>(total_ssbar_pair); //change to ssbar pair counts, comment to switch back to npart
+        int ssbar_pair = static_cast<int>(total_ssbar_pair);
         // baryon number subplots
         for (int k = 0; k < 6; k++)
         {
@@ -483,8 +486,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             }
             if ((!hasXi) && (!hasAntiXi))
             {
-                hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wx"));
-                hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wxb"));
+                //hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wx"));
+                //hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wxb"));
+                hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
+                hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
             }
         }
 
@@ -519,15 +524,17 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (hasParticle[1])                         hkaonct_woallo_for_wo ->Fill(2.*i  , kaonct[i]*1.0);
             if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wo ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wo"));
             if (hasAntiXi)                hkaonct_woallx_for_wxb->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wxb"));
+            //if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wxb"));
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
             if (hasXi)                    hkaonct_woallx_for_wx ->Fill(2.*i  , kaonct[i]*1.0);
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wx"));
+            //if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wx"));
+            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
 
         }
 
         // np distributions
-        np = static_cast<int>(total_ssbar_pair); //change to ssbar pair counts, comment to switch back to npart
         hnp->Fill(np);
+        hnp_vs_ssbar->Fill(np, ssbar_pair);
         if (hasParticle[2])
         {   
             hnp_wo->Fill(np);
@@ -557,8 +564,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         }
         if ((!hasXi) && (!hasAntiXi))
         {
-            hnp_woallx_for_wx ->Fill(np, normalizer.weight(np, "woallx_for_wx"));
-            hnp_woallx_for_wxb->Fill(np, normalizer.weight(np, "woallx_for_wxb"));
+            //hnp_woallx_for_wx ->Fill(np, normalizer.weight(np, "woallx_for_wx"));
+            //hnp_woallx_for_wxb->Fill(np, normalizer.weight(np, "woallx_for_wxb"));
+            hnp_woallx_for_wx ->Fill(ssbar_pair, normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
+            hnp_woallx_for_wxb->Fill(ssbar_pair, normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
         }
     }
 
