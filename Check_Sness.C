@@ -300,7 +300,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // for npart normalization
         NpartNormalizer normalizer(mode);
         normalizer.unit_weight(); // IF DONE CALCULATING, COMMENT OUT
-        
+
         int total_s = 0, total_bn = 0, itrack = 0;
         float total_ssbar_pair = 0;
 
@@ -481,7 +481,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
             if (hasXi)     {hbndist_wx  ->Fill(k, bct[k]); hbndist_bar_wx  ->Fill(k, bctbar[k]);}
             else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x")); 
-            if (hasAntiXi) {hbndist_wxb ->Fill(k, bct[k]); hbndist_bar_wxb ->Fill(k, bctbar[k]);
+            if (hasAntiXi) {hbndist_wxb ->Fill(k, bct[k]); hbndist_bar_wxb ->Fill(k, bctbar[k]);}
             else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(np, "xb")); 
 
             if ((!hasParticle[2]) && (!hasParticle[1]))
