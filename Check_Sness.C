@@ -161,6 +161,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hbndist_wox    = new TProfile("hbndist_wox", "Baryon number distribution for without xi events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_wxb    = new TProfile("hbndist_wxb", "Baryon number distribution for with xibar events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woxb   = new TProfile("hbndist_woxb", "Baryon number distribution for without xibar events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_bar_wx     = new TProfile("hbndist_bar_wx", "Baryon number distribution for with xi events", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_bar_wxb    = new TProfile("hbndist_bar_wxb", "Baryon number distribution for with xibar events", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owxb   = new TProfile("hbndist_owxb", "Baryon number distribution for omega events with xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owoxb  = new TProfile("hbndist_owoxb", "Baryon number distribution for omega events without xibar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_owx    = new TProfile("hbndist_owx", "Baryon number distribution for omega events with xi", 6, -0.5, 5.5, -200, 600);
@@ -173,6 +175,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TProfile* hbndist_woallo_for_wob = new TProfile("hbndist_woallo_for_wob", "Baryon number distribution for events without all omega for omegabar", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woallx_for_wx  = new TProfile("hbndist_woallx_for_wx" , "Baryon number distribution for events without all xi for xi", 6, -0.5, 5.5, -200, 600);
     TProfile* hbndist_woallx_for_wxb = new TProfile("hbndist_woallx_for_wxb", "Baryon number distribution for events without all xi for xibar", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_bar_woallx_for_wx  = new TProfile("hbndist_bar_woallx_for_wx" , "Baryon number distribution for events without all xi for xi", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbndist_bar_woallx_for_wxb = new TProfile("hbndist_bar_woallx_for_wxb", "Baryon number distribution for events without all xi for xibar", 6, -0.5, 5.5, -200, 600);
     
     TProfile* hkaonct_owx   = new TProfile("hkaonct_owx"  , "Kaon count for omega event with xi and without",8, -0.5, 7.5, 0, 100); //0-1: k+, 2-3: k-, 4-5: k0, 6-7: k0bar
     TProfile* hkaonct_owxb  = new TProfile("hkaonct_owxb" , "Kaon count for omega event with xibar and without",8, -0.5, 7.5, 0, 100);
@@ -333,6 +337,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
         int kaonct[4] = {0};  
         int bct[6] = {0};
+        int bctbar[6] = {0};
         for (int i = 0; i < ntrack; ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -412,37 +417,37 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (pid == -311) kaonct[3]++; //k0bar
             if (fabs(pid) >= 10000 || fabs(pid) <= 999) continue;
             // total
-            if (pid > 0) bct[0] += 1;
-            if (pid < 0) bct[0] -= 1;
+            if (pid > 0) bct[0]++;
+            if (pid < 0) bctbar[0]++;
             // lambda
             if (type == 3)
             {
-                if (pid > 0) bct[1] += 1;
-                if (pid < 0) bct[1] -= 1;
+                if (pid > 0) bct[1]++;
+                if (pid < 0) bctbar[1]++;
             }
             // sigma
             if (type == 4)
             {
-                if (pid > 0) bct[2] += 1;
-                if (pid < 0) bct[2] -= 1;
+                if (pid > 0) bct[2]++;
+                if (pid < 0) bctbar[2]++;
             }
             // cascade
             if (type == 5)
             {
-                if (pid > 0) bct[3] += 1;
-                if (pid < 0) bct[3] -= 1;
+                if (pid > 0) bct[3]++;
+                if (pid < 0) bctbar[3]++;
             }
             // omega
             if (type == 6)
             {
-                if (pid > 0) bct[4] += 1;
-                if (pid < 0) bct[4] -= 1;
+                if (pid > 0) bct[4]++;
+                if (pid < 0) bctbar[4]++;
             }
             // nucleon
             if (type == 7)
             {
-                if (pid > 0) bct[5] += 1;
-                if (pid < 0) bct[5] -= 1;
+                if (pid > 0) bct[5]++;
+                if (pid < 0) bctbar[5]++;
             }
 
         }
@@ -474,10 +479,10 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             }
             else hbndist_woob->Fill(k, bct[k], normalizer.weight(np, "ob")); 
 
-            if (hasXi)     hbndist_wx  ->Fill(k, bct[k]);
-            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x"));
-            if (hasAntiXi) hbndist_wxb ->Fill(k, bct[k]);
-            else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(np, "xb"));
+            if (hasXi)     {hbndist_wx  ->Fill(k, bct[k]); hbndist_bar_wx  ->Fill(k, bctbar[k]);}
+            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x")); 
+            if (hasAntiXi) {hbndist_wxb ->Fill(k, bct[k]); hbndist_bar_wxb ->Fill(k, bctbar[k]);
+            else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(np, "xb")); 
 
             if ((!hasParticle[2]) && (!hasParticle[1]))
             {
@@ -490,6 +495,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                 //hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(np, "woallx_for_wxb"));
                 hbndist_woallx_for_wx ->Fill(k, bct[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
                 hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
+                hbndist_bar_woallx_for_wx ->Fill(k, bctbar[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
+                hbndist_bar_woallx_for_wxb->Fill(k, bctbar[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
             }
         }
 
