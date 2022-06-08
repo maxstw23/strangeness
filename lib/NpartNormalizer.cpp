@@ -486,7 +486,7 @@ float NpartNormalizer::weight(int np, TString compare_case)
 
     if (mode == 1) // string-melting
     {
-        if (compare_case != "ss_woallx_for_wx" || compare_case != "ss_woallx_for_wxb")
+        if (compare_case != "ss_woallx_for_wx" && compare_case != "ss_woallx_for_wxb")
         {
             if (np < lowest_np_s || np >= lowest_np_s + num_np_s) return 0;
             if (compare_case == "ox")   return ratio_s_ox[np-lowest_np_s];
@@ -513,7 +513,7 @@ float NpartNormalizer::weight(int np, TString compare_case)
     }
     else if (mode == 0) // default
     {   
-        if (compare_case != "ss_woallx_for_wx" || compare_case != "ss_woallx_for_wxb")
+        if (compare_case != "ss_woallx_for_wx" && compare_case != "ss_woallx_for_wxb")
         {
             if (np < lowest_np_d || np >= lowest_np_d + num_np_d) return 0;
             if (compare_case == "ox")   return ratio_d_ox[np-lowest_np_d];
