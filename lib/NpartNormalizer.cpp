@@ -486,45 +486,57 @@ float NpartNormalizer::weight(int np, TString compare_case)
 
     if (mode == 1) // string-melting
     {
-        if (np < lowest_np_s || np >= lowest_np_s + num_np_s) return 0;
-        if (compare_case == "ox")   return ratio_s_ox[np-lowest_np_s];
-        if (compare_case == "oxb")  return ratio_s_oxb[np-lowest_np_s];
-        if (compare_case == "obx")  return ratio_s_obx[np-lowest_np_s];
-        if (compare_case == "obxb") return ratio_s_obxb[np-lowest_np_s];
+        if (compare_case != 'ss_woallx_for_wx' || compare_case != 'ss_woallx_for_wxb')
+        {
+            if (np < lowest_np_s || np >= lowest_np_s + num_np_s) return 0;
+            if (compare_case == "ox")   return ratio_s_ox[np-lowest_np_s];
+            if (compare_case == "oxb")  return ratio_s_oxb[np-lowest_np_s];
+            if (compare_case == "obx")  return ratio_s_obx[np-lowest_np_s];
+            if (compare_case == "obxb") return ratio_s_obxb[np-lowest_np_s];
 
-        if (compare_case == "x")  return ratio_s_x[np-lowest_np_s];
-        if (compare_case == "xb") return ratio_s_xb[np-lowest_np_s];
-        if (compare_case == "o")  return ratio_s_o[np-lowest_np_s];
-        if (compare_case == "ob") return ratio_s_ob[np-lowest_np_s];
+            if (compare_case == "x")  return ratio_s_x[np-lowest_np_s];
+            if (compare_case == "xb") return ratio_s_xb[np-lowest_np_s];
+            if (compare_case == "o")  return ratio_s_o[np-lowest_np_s];
+            if (compare_case == "ob") return ratio_s_ob[np-lowest_np_s];
 
-        if (compare_case == "woallx_for_wx")  return ratio_s_woallx_for_wx[np-lowest_np_s];
-        if (compare_case == "woallx_for_wxb") return ratio_s_woallx_for_wxb[np-lowest_np_s];
-        if (compare_case == "woallo_for_wo")  return ratio_s_woallo_for_wo[np-lowest_np_s];
-        if (compare_case == "woallo_for_wob") return ratio_s_woallo_for_wob[np-lowest_np_s];
-
-        if (compare_case == "ss_woallx_for_wx")  return ssratio_s_woallx_for_wx[np-lowest_nss_s];
-        if (compare_case == "ss_woallx_for_wxb") return ssratio_s_woallx_for_wxb[np-lowest_nss_s];
+            if (compare_case == "woallx_for_wx")  return ratio_s_woallx_for_wx[np-lowest_np_s];
+            if (compare_case == "woallx_for_wxb") return ratio_s_woallx_for_wxb[np-lowest_np_s];
+            if (compare_case == "woallo_for_wo")  return ratio_s_woallo_for_wo[np-lowest_np_s];
+            if (compare_case == "woallo_for_wob") return ratio_s_woallo_for_wob[np-lowest_np_s];
+        }
+        else
+        {
+            if (np < lowest_nss_s || np >= lowest_nss_s + num_nss_s) return 0;
+            if (compare_case == "ss_woallx_for_wx")  return ssratio_s_woallx_for_wx[np-lowest_nss_s];
+            if (compare_case == "ss_woallx_for_wxb") return ssratio_s_woallx_for_wxb[np-lowest_nss_s];
+        }
     }
     else if (mode == 0) // default
-    {
-        if (np < lowest_np_d || np >= lowest_np_d + num_np_d) return 0;
-        if (compare_case == "ox")   return ratio_d_ox[np-lowest_np_d];
-        if (compare_case == "oxb")  return ratio_d_oxb[np-lowest_np_d];
-        if (compare_case == "obx")  return ratio_d_obx[np-lowest_np_d];
-        if (compare_case == "obxb") return ratio_d_obxb[np-lowest_np_d];
+    {   
+        if (compare_case != 'ss_woallx_for_wx' || compare_case != 'ss_woallx_for_wxb')
+        {
+            if (np < lowest_np_d || np >= lowest_np_d + num_np_d) return 0;
+            if (compare_case == "ox")   return ratio_d_ox[np-lowest_np_d];
+            if (compare_case == "oxb")  return ratio_d_oxb[np-lowest_np_d];
+            if (compare_case == "obx")  return ratio_d_obx[np-lowest_np_d];
+            if (compare_case == "obxb") return ratio_d_obxb[np-lowest_np_d];
 
-        if (compare_case == "x")  return ratio_d_x[np-lowest_np_d];
-        if (compare_case == "xb") return ratio_d_xb[np-lowest_np_d];
-        if (compare_case == "o")  return ratio_d_o[np-lowest_np_d];
-        if (compare_case == "ob") return ratio_d_ob[np-lowest_np_d];
+            if (compare_case == "x")  return ratio_d_x[np-lowest_np_d];
+            if (compare_case == "xb") return ratio_d_xb[np-lowest_np_d];
+            if (compare_case == "o")  return ratio_d_o[np-lowest_np_d];
+            if (compare_case == "ob") return ratio_d_ob[np-lowest_np_d];
 
-        if (compare_case == "woallx_for_wx")  return ratio_d_woallx_for_wx[np-lowest_np_d];
-        if (compare_case == "woallx_for_wxb") return ratio_d_woallx_for_wxb[np-lowest_np_d];
-        if (compare_case == "woallo_for_wo")  return ratio_d_woallo_for_wo[np-lowest_np_d];
-        if (compare_case == "woallo_for_wob") return ratio_d_woallo_for_wob[np-lowest_np_d];
-
-        if (compare_case == "ss_woallx_for_wx")  return ssratio_d_woallx_for_wx[np-lowest_nss_d];
-        if (compare_case == "ss_woallx_for_wxb") return ssratio_d_woallx_for_wxb[np-lowest_nss_d];
+            if (compare_case == "woallx_for_wx")  return ratio_d_woallx_for_wx[np-lowest_np_d];
+            if (compare_case == "woallx_for_wxb") return ratio_d_woallx_for_wxb[np-lowest_np_d];
+            if (compare_case == "woallo_for_wo")  return ratio_d_woallo_for_wo[np-lowest_np_d];
+            if (compare_case == "woallo_for_wob") return ratio_d_woallo_for_wob[np-lowest_np_d];
+        }
+        else
+        {
+            if (np < lowest_nss_d || np >= lowest_nss_d + num_nss_d) return 0;
+            if (compare_case == "ss_woallx_for_wx")  return ssratio_d_woallx_for_wx[np-lowest_nss_d];
+            if (compare_case == "ss_woallx_for_wxb") return ssratio_d_woallx_for_wxb[np-lowest_nss_d];
+        }
     }
     else if (mode == 2) //UrQMD
     {
