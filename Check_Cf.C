@@ -40,7 +40,7 @@ const float PI = TMath::Pi();
 const float eta_cut = 1.;
 const float y_cut   = 1.;
 const int buffer_size = 10;
-const bool  CutEta  = false;
+const bool  CutEta  = true;
 const bool  Cuty    = false; //only select either CutEta or Cuty or none, not both!
 int cen_select = 9;
 TString energy = "14";
@@ -233,8 +233,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // loop
     int nentries = chain->GetEntries();
-    int P1PID = KaonPID, P2PID = OmegaPID, P3PID = Xi0PID;
-    float P1Mass = mKaon, P2Mass = mOmega;
+    int P1PID = ProtonPID, P2PID = OmegaPID, P3PID = Xi0PID;
+    float P1Mass = mProton, P2Mass = mOmega;
     bool hasP2 = false, hasAntiP2 = false;
     bool hasP3 = false, hasAntiP3 = false;
     int P2evt_ct = 0, AntiP2evt_ct = 0;
