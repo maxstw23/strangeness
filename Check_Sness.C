@@ -302,7 +302,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // counting particle for BES comparison and count omega
         int NKp=0, NKm=0, NK0=0, NK0bar=0, NOmega=0, NOmegabar=0, NXi=0, NXibar=0, NLambda=0, NLambdabar=0, Np=0, Npbar=0;
         int NO_y=0, NOb_y=0, NX_y=0, NXb_y=0, NL_y=0, NLb_y=0;
-        int num_omega_total = 0
+        int num_omega_total = 0;
         for (int i = 0; i < pid_vec->size(); ++i)
         {
             int   pid   = pid_vec->at(i);
