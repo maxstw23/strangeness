@@ -125,10 +125,51 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     TH1D* hstrangeness = new TH1D("sness", "total strangeness", 50, -24.5, 25.5);
     TH1D* hOmegaRatio  = new TH1D("hOmegaRatio", "Omega vs. Anti-Omega", 2 , -0.5 , 1.5 );
     TH1D* hMult_each   = new TH1D("hMult_each", "Mult for each choice of events", NEventClass+1, -0.5, -0.5+NEventClass+1);
+    
+    // new QA stuff
+    // for adding STAR acceptance kaon antib count
+    TProfile* hkaonct_woallx_for_wx_eta  = new TProfile("hkaonct_woallx_for_wx_eta", "", 8, -0.5, 7.5, 0, 100);
+    TProfile* hkaonct_woallx_for_wxb_eta = new TProfile("hkaonct_woallx_for_wxb_eta", "", 8, -0.5, 7.5, 0, 100);
+    TProfile* hbaryonct_woallx_eta = new TProfile("hbaryonct_woallx_eta", "", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbaryonct_wx_eta     = new TProfile("hbaryonct_wx_eta", "", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbaryonct_wxb_eta    = new TProfile("hbaryonct_wxb_eta", "", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbaryonctbar_woallx_eta = new TProfile("hbaryonctbar_woallx_eta", "", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbaryonctbar_wx_eta     = new TProfile("hbaryonctbar_wx_eta", "", 6, -0.5, 5.5, -200, 600);
+    TProfile* hbaryonctbar_wxb_eta    = new TProfile("hbaryonctbar_wxb_eta", "", 6, -0.5, 5.5, -200, 600);
+
+    // for counting pairs
+    TH1D* hQualifiedEvt = new TH1D("hQualifiedEvt", "Number of qualified events", 9, 0.5, 9.5); //all 0-5%
+    TH1D* hPairKO = new TH1D("hPairKO", "Number of kaon-Omega pairs",   4, -0.5, 3.5); //0: K+O-, 1: K+O+, 3: K-O-, 4: K-O+
+    TH1D* hPairXO = new TH1D("hPairXO", "Number of Xi-Omega pairs",     4, -0.5, 3.5);
+    TH1D* hPairLO = new TH1D("hPairLO", "Number of Lambda-Omega pairs", 4, -0.5, 3.5);
+    TH1D* hPairpO = new TH1D("hPairpO", "Number of p-Omega pairs",      4, -0.5, 3.5);
+
+    // for spectra
+    TH1D* hOmegaPtSpectrum    = new TH1D("hOmegaPtSpectrum", "",   3000, 0., 6.); //0-10%
+    TH1D* hOmegabarPtSpectrum = new TH1D("hOmegabarPtSpectrum","", 3000, 0., 6.); //0-10%
+    TH1D* hXiPtSpectrum    = new TH1D("hXiPtSpectrum",      "",    3000, 0., 6.); //0-5%
+    TH1D* hXibarPtSpectrum = new TH1D("hXibarPtSpectrum",      "", 3000, 0., 6.); //0-5%
+    TH1D* hLambdaPtSpecctrum    = new TH1D("hLambdaPtSpectrum"," ",    3000, 0., 6.); // 0-5%
+    TH1D* hLambdabarPtSpecctrum = new TH1D("hLambdabarPtSpectrum"," ", 3000, 0., 6.); // 0-5%
+
+    // dN/dy vs Npart
+    TH1D* hOmegadNdy    = new TH1D("hOmegadNdy", "Omega dN/dy at mid rapidity", 9, 0.5, 9.5);
+    TH1D* hOmegabardNdy = new TH1D("hOmegabardNdy", "Omegabar dN/dy at mid rapidity", 9, 0.5, 9.5);
+    TH1D* hXidNdy    = new TH1D("hXidNdy", "Xi dN/dy at mid rapidity", 9, 0.5, 9.5);
+    TH1D* hXibardNdy = new TH1D("hXibardNdy", "Xibar dN/dy at mid rapidity", 9, 0.5, 9.5);
+    TH1D* hLambdadNdy    = new TH1D("hLambdadNdy", "Lambda dN/dy at mid rapidity", 9, 0.5, 9.5);
+    TH1D* hLambdabardNdy = new TH1D("hLambdabardNdy", "Lambdabar dN/dy at mid rapidity", 9, 0.5, 9.5);
 
     TH1D* hBaryon_yield = new TH1D("hBaryon_yield", "Baryon yield for BES comparison", 6, -0.5, 5.5); //0-1 lambda, 2-3 xi, 4-5 omega
     TH2D* hBaryon_yield_np = new TH2D("hBaryon_yield_np", "Baryon yield based on npart distribution", 6, -0.5, 5.5, 1000, -0.5, 999.5);
 
+    TH1D* hnp_cen[9];
+    char hname[200];
+    for (int i = 0; i < 9; i++) 
+    {   
+        sprintf(hname, "hnp_cen_%d", i+1);
+        hnp_cen[i] = new TH1D(hname, hname. 1000, -0.5, 999.5);
+    }
     TH2D* hnp_vs_ssbar = new TH2D("hnp_vs_ssbar", "Npart vs SSbar pair", 1000, -0.5, 999.5, 1000, -0.5, 999.5);
     TH1D* hnp         = new TH1D("hnp", "Participant number for all qualified events", 1000, -0.5, 999.5);
     TH1D* hnp_owx     = new TH1D("hnp_owx", "Participant number for criteria owx", 1000, -0.5, 999.5);
@@ -242,6 +283,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     bool hasXi, hasAntiXi;
     int M[NEventClass+1] = {0}; //number of events that contain anti_o, o, anti_x, x, anti_x0, x0;
 
+    // evt count
+    int nevt_spec[9] = {0};
+
     // event loop
     for (int i = 0; i < nentries; ++i)
     {
@@ -253,9 +297,12 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // centrality
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
+        for (int i = 1; i <= 9; i++) {if (cen == i) nevt_spec[i-1]++;}
 
         // counting particle for BES comparison and count omega
-        int num_omega = 0;
+        int NKp=0, NKm=0, NK0=0, NK0bar=0, NOmega=0, NOmegabar=0, NXi=0, NXibar=0, NLambda=0, NLambdabar=0, Np=0, Npbar=0;
+        int NO_y=0, NOb_y=0, NX_y=0, NXb_y=0, NL_y=0, NLb_y=0;
+        int num_omega_total = 0
         for (int i = 0; i < pid_vec->size(); ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -274,28 +321,62 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
 
-            // count Omegas
-            if (fabs(pid) == 3334) num_omega++;
-
+            // count particles
+            if (fabs(pid) ==  3334) num_omega_total++;
+        
             // count "np" for UrQMD
             if (mode == 2)
             {
                 if (fabs(eta) < 1 && p_info->Charge() != 0) np++;
             }
 
+            // STAR acceptance
+            if (fabs(eta) < 1)
+            {
+                if (pid ==  3334) NOmega++;
+                if (pid == -3334) NOmegabar++;
+                if (pid ==  3312) NXi++;
+                if (pid == -3312) NXibar++;
+                if (pid ==  3122) NLambda++;
+                if (pid == -3122) NLambdabar++;
+                if (pid ==  321) NKp++;
+                if (pid == -321) NKm++;
+                if (pid ==  311) NK0++;
+                if (pid == -311) NK0bar++;
+                if (pid ==  2212) Np++;
+                if (pid == -2212) Npbar++;
+            }
+
             // for baryon/anti-baryon ratios
             if (fabs(y) > 0.5) continue; // mid-rapidity
+            if (pid ==  3334) NO_y++;
+            if (pid == -3334) NOb_y++;
+            if (pid ==  3312) NX_y++;
+            if (pid == -3312) NXb_y++;
+            if (pid ==  3122) NL_y++;
+            if (pid == -3122) NLb_y++;
+            
+
             if (pid == -3122 && cen == 9)                {hBaryon_yield->Fill(0.); hBaryon_yield_np->Fill(0., np*1.0);}
             if (pid ==  3122 && cen == 9)                {hBaryon_yield->Fill(1.); hBaryon_yield_np->Fill(1., np*1.0);}
             if (pid == -3312 && cen == 9)                {hBaryon_yield->Fill(2.); hBaryon_yield_np->Fill(2., np*1.0);}
             if (pid ==  3312 && cen == 9)                {hBaryon_yield->Fill(3.); hBaryon_yield_np->Fill(3., np*1.0);}
-            if (pid == -3334 && (cen == 9 || cen == 10)) {hBaryon_yield->Fill(4.); hBaryon_yield_np->Fill(4., np*1.0);}
-            if (pid ==  3334 && (cen == 9 || cen == 10)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
+            if (pid == -3334 && (cen == 9 || cen == 8)) {hBaryon_yield->Fill(4.); hBaryon_yield_np->Fill(4., np*1.0);}
+            if (pid ==  3334 && (cen == 9 || cen == 8)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
         }
 
-        // event cut
+        hOmegadNdy ->Fill(cen, NO_y); hOmegabardNdy ->Fill(cen, NOb_y); 
+        hXidNdy    ->Fill(cen, NX_y); hXibardNdy    ->Fill(cen, NXb_y); 
+        hLambdadNdy->Fill(cen, NL_y); hLambdabardNdy->Fill(cen, NLb_y); 
+
+        hPairKO->Fill(0, NKp    *NOmega); hPairKO->Fill(1, NKp    *NOmegabar); hPairKO->Fill(2, NKm       *NOmega); hPairKO->Fill(3, NKm       *NOmegabar); 
+        hPairLO->Fill(0, NLambda*NOmega); hPairLO->Fill(1, NLambda*NOmegabar); hPairLO->Fill(2, NLambdabar*NOmega); hPairLO->Fill(3, NLambdabar*NOmegabar); 
+        hPairXO->Fill(0, NXi    *NOmega); hPairXO->Fill(1, NXi    *NOmegabar); hPairXO->Fill(2, NXibar    *NOmega); hPairXO->Fill(3, NXibar    *NOmegabar); 
+        hPairpO->Fill(0, Np     *NOmega); hPairpO->Fill(1, Np     *NOmegabar); hPairpO->Fill(2, Npbar     *NOmega); hPairpO->Fill(3, Npbar     *NOmegabar); 
+
+        // event cut for sness analysis
         if (cen != cen_select) continue;
-        if (num_omega > num_omega_cut) continue;
+        if (num_omega_total > num_omega_cut) continue;
 
         // for npart normalization
         NpartNormalizer normalizer(mode);
@@ -335,9 +416,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         // loop thru events
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
-        int kaonct[4] = {0};  
-        int bct[6] = {0};
-        int bctbar[6] = {0};
+        int kaonct[4] = {0}; int kaonct_y[4] = {0};
+        int bct[6] = {0};    int bct_y[6] = {0};
+        int bctbar[6] = {0}; int bctbar_y[6] = {0};
         for (int i = 0; i < ntrack; ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -411,43 +492,43 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             } 
 
             // count kaons and baryon number
-            if (pid ==  321) kaonct[0]++; //k+
-            if (pid == -321) kaonct[1]++; //k-
-            if (pid ==  311) kaonct[2]++; //k0
-            if (pid == -311) kaonct[3]++; //k0bar
+            if (pid ==  321) {kaonct[0]++; if (fabs(eta) < 1) kaonct_y[0]++;}//k+
+            if (pid == -321) {kaonct[1]++; if (fabs(eta) < 1) kaonct_y[1]++;}//k-
+            if (pid ==  311) {kaonct[2]++; if (fabs(eta) < 1) kaonct_y[2]++;}//k0
+            if (pid == -311) {kaonct[3]++; if (fabs(eta) < 1) kaonct_y[3]++;}//k0bar
             if (fabs(pid) >= 10000 || fabs(pid) <= 999) continue;
             // total
-            if (pid > 0) bct[0]++;
-            if (pid < 0) bctbar[0]++;
+            if (pid > 0) {bct   [0]++; if (fabs(eta) < 1) bct_y   [0]++;}
+            if (pid < 0) {bctbar[0]++; if (fabs(eta) < 1) bctbar_y[0]++;}
             // lambda
             if (type == 3)
             {
-                if (pid > 0) bct[1]++;
-                if (pid < 0) bctbar[1]++;
+                if (pid > 0) {bct   [1]++; if (fabs(eta) < 1) bct_y   [1]++;}
+                if (pid < 0) {bctbar[1]++; if (fabs(eta) < 1) bctbar_y[1]++;}
             }
             // sigma
             if (type == 4)
             {
-                if (pid > 0) bct[2]++;
-                if (pid < 0) bctbar[2]++;
+                if (pid > 0) {bct   [2]++; if (fabs(eta) < 1) bct_y   [2]++;}
+                if (pid < 0) {bctbar[2]++; if (fabs(eta) < 1) bctbar_y[2]++;}
             }
             // cascade
             if (type == 5)
             {
-                if (pid > 0) bct[3]++;
-                if (pid < 0) bctbar[3]++;
+                if (pid > 0) {bct   [3]++; if (fabs(eta) < 1) bct_y   [3]++;}
+                if (pid < 0) {bctbar[3]++; if (fabs(eta) < 1) bctbar_y[3]++;}
             }
             // omega
             if (type == 6)
             {
-                if (pid > 0) bct[4]++;
-                if (pid < 0) bctbar[4]++;
+                if (pid > 0) {bct   [4]++; if (fabs(eta) < 1) bct_y   [4]++;}
+                if (pid < 0) {bctbar[4]++; if (fabs(eta) < 1) bctbar_y[4]++;}
             }
             // nucleon
             if (type == 7)
             {
-                if (pid > 0) bct[5]++;
-                if (pid < 0) bctbar[5]++;
+                if (pid > 0) {bct   [5]++; if (fabs(eta) < 1) bct_y   [5]++;}
+                if (pid < 0) {bctbar[5]++; if (fabs(eta) < 1) bctbar_y[5]++;}
             }
 
         }
@@ -479,9 +560,21 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             }
             else hbndist_woob->Fill(k, bct[k], normalizer.weight(np, "ob")); 
 
-            if (hasXi)     {hbndist_wx  ->Fill(k, bct[k]); hbndist_bar_wx  ->Fill(k, bctbar[k]);}
-            else           hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x")); 
-            if (hasAntiXi) {hbndist_wxb ->Fill(k, bct[k]); hbndist_bar_wxb ->Fill(k, bctbar[k]);}
+            if (hasXi)     
+            {
+                hbndist_wx         ->Fill(k, bct[k]); 
+                hbndist_bar_wx     ->Fill(k, bctbar[k]);
+                hbaryonct_wx_eta   ->Fill(k, bct_y[k]);
+                hbaryonctbar_wx_eta->Fill(k, bctbar_y[k]);
+            }
+            else hbndist_wox ->Fill(k, bct[k], normalizer.weight(np, "x")); 
+            if (hasAntiXi) 
+            {
+                hbndist_wxb         ->Fill(k, bct[k]); 
+                hbndist_bar_wxb     ->Fill(k, bctbar[k]);
+                hbaryonct_wxb_eta   ->Fill(k, bct_y[k]);
+                hbaryonctbar_wxb_eta->Fill(k, bctbar_y[k]);
+            }
             else           hbndist_woxb->Fill(k, bct[k], normalizer.weight(np, "xb")); 
 
             if ((!hasParticle[2]) && (!hasParticle[1]))
@@ -497,6 +590,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                 hbndist_woallx_for_wxb->Fill(k, bct[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
                 hbndist_bar_woallx_for_wx ->Fill(k, bctbar[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
                 hbndist_bar_woallx_for_wxb->Fill(k, bctbar[k], normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
+                hbaryonct_woallx_eta   ->Fill(k, bct_y[k]);
+                hbaryonctbar_woallx_eta->Fill(k, bctbar_y[k]);
             }
         }
 
@@ -530,12 +625,29 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wob->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wob"));
             if (hasParticle[1])                         hkaonct_woallo_for_wo ->Fill(2.*i  , kaonct[i]*1.0);
             if ((!hasParticle[2]) && (!hasParticle[1])) hkaonct_woallo_for_wo ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallo_for_wo"));
-            if (hasAntiXi)                hkaonct_woallx_for_wxb->Fill(2.*i  , kaonct[i]*1.0);
+
+            if (hasAntiXi)                
+            {
+                hkaonct_woallx_for_wxb->Fill(2.*i  , kaonct[i]*1.0);
+                hkaonct_woallx_for_wxb_eta->Fill(2.*i  , kaonct_y[i]*1.0);
+            }
             //if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wxb"));
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
-            if (hasXi)                    hkaonct_woallx_for_wx ->Fill(2.*i  , kaonct[i]*1.0);
+            if ((!hasXi) && (!hasAntiXi)) 
+            {
+                hkaonct_woallx_for_wxb->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wxb"));
+                hkaonct_woallx_for_wxb_eta->Fill(2.*i+1  , kaonct_y[i]*1.0);
+            }
+            if (hasXi)                    
+            {
+                hkaonct_woallx_for_wx ->Fill(2.*i  , kaonct[i]*1.0);
+                hkaonct_woallx_for_wx_eta->Fill(2.*i  , kaonct_y[i]*1.0);
+            }
             //if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(np, "woallx_for_wx"));
-            if ((!hasXi) && (!hasAntiXi)) hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
+            if ((!hasXi) && (!hasAntiXi)) 
+            {
+                hkaonct_woallx_for_wx ->Fill(2.*i+1, kaonct[i]*1.0, normalizer.weight(ssbar_pair, "ss_woallx_for_wx"));
+                hkaonct_woallx_for_wx_eta->Fill(2.*i+1  , kaonct_y[i]*1.0);
+            }
 
         }
 
@@ -578,6 +690,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         }
     }
 
+    for (int i = 1; i <= 9; i++) hQualifiedEvt->Fill(i, nevt_spec[i - 1]);
     for (int i = 0; i < NEventClass+1; i++) hMult_each->Fill(i, M[i]); //i = 0: total event count
 
     fout.Write();
