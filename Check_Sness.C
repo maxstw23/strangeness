@@ -653,6 +653,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
 
         // np distributions
         hnp->Fill(np);
+        hnp_cen[cen-1]->Fill(np);
         hnp_vs_ssbar->Fill(np, ssbar_pair);
         if (hasParticle[2])
         {   
