@@ -168,7 +168,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
     for (int i = 0; i < 9; i++) 
     {   
         sprintf(hname, "hnp_cen_%d", i+1);
-        hnp_cen[i] = new TH1D(hname, hname. 1000, -0.5, 999.5);
+        hnp_cen[i] = new TH1D(hname, hname, 1000, -0.5, 999.5);
     }
     TH2D* hnp_vs_ssbar = new TH2D("hnp_vs_ssbar", "Npart vs SSbar pair", 1000, -0.5, 999.5, 1000, -0.5, 999.5);
     TH1D* hnp         = new TH1D("hnp", "Participant number for all qualified events", 1000, -0.5, 999.5);
