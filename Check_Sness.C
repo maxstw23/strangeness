@@ -365,14 +365,14 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             if (pid ==  3334 && (cen == 9 || cen == 8)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
         }
 
-        hOmegadNdy ->Fill(cen, NO_y); hOmegabardNdy ->Fill(cen, NOb_y); 
-        hXidNdy    ->Fill(cen, NX_y); hXibardNdy    ->Fill(cen, NXb_y); 
-        hLambdadNdy->Fill(cen, NL_y); hLambdabardNdy->Fill(cen, NLb_y); 
+        hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
+        hXidNdy    ->Fill(cen*1.0, NX_y*1.0); hXibardNdy    ->Fill(cen*1.0, NXb_y*1.0); 
+        hLambdadNdy->Fill(cen*1.0, NL_y*1.0); hLambdabardNdy->Fill(cen*1.0, NLb_y*1.0); 
 
-        hPairKO->Fill(0, NKp    *NOmega); hPairKO->Fill(1, NKp    *NOmegabar); hPairKO->Fill(2, NKm       *NOmega); hPairKO->Fill(3, NKm       *NOmegabar); 
-        hPairLO->Fill(0, NLambda*NOmega); hPairLO->Fill(1, NLambda*NOmegabar); hPairLO->Fill(2, NLambdabar*NOmega); hPairLO->Fill(3, NLambdabar*NOmegabar); 
-        hPairXO->Fill(0, NXi    *NOmega); hPairXO->Fill(1, NXi    *NOmegabar); hPairXO->Fill(2, NXibar    *NOmega); hPairXO->Fill(3, NXibar    *NOmegabar); 
-        hPairpO->Fill(0, Np     *NOmega); hPairpO->Fill(1, Np     *NOmegabar); hPairpO->Fill(2, Npbar     *NOmega); hPairpO->Fill(3, Npbar     *NOmegabar); 
+        hPairKO->Fill(0., NKp    *NOmega*1.0); hPairKO->Fill(1., NKp    *NOmegabar*1.0); hPairKO->Fill(2., NKm       *NOmega*1.0); hPairKO->Fill(3., NKm       *NOmegabar*1.0); 
+        hPairLO->Fill(0., NLambda*NOmega*1.0); hPairLO->Fill(1., NLambda*NOmegabar*1.0); hPairLO->Fill(2., NLambdabar*NOmega*1.0); hPairLO->Fill(3., NLambdabar*NOmegabar*1.0); 
+        hPairXO->Fill(0., NXi    *NOmega*1.0); hPairXO->Fill(1., NXi    *NOmegabar*1.0); hPairXO->Fill(2., NXibar    *NOmega*1.0); hPairXO->Fill(3., NXibar    *NOmegabar*1.0); 
+        hPairpO->Fill(0., Np     *NOmega*1.0); hPairpO->Fill(1., Np     *NOmegabar*1.0); hPairpO->Fill(2., Npbar     *NOmega*1.0); hPairpO->Fill(3., Npbar     *NOmegabar*1.0); 
 
         // event cut for sness analysis
         if (cen != cen_select) continue;
