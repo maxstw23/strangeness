@@ -298,7 +298,7 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
         for (int i = 1; i <= 9; i++) {if (cen == i) nevt_spec[i-1]++;}
-        hnp_cen[cen-1]->Fill(np);
+        if (cen >= 1 && cen <= 9) hnp_cen[cen-1]->Fill(np);
 
         // counting particle for BES comparison and count omega
         int NKp=0, NKm=0, NK0=0, NK0bar=0, NOmega=0, NOmegabar=0, NXi=0, NXibar=0, NLambda=0, NLambdabar=0, Np=0, Npbar=0;
