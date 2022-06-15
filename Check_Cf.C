@@ -42,7 +42,8 @@ const float y_cut   = 1.;
 const int buffer_size = 10;
 const bool  CutEta  = true;
 const bool  Cuty    = false; //only select either CutEta or Cuty or none, not both!
-int cen_select = 9;
+int cen_select_1= 9;
+int cen_select_2= 8;
 TString energy = "14";
 
 const float mKaon = 0.493677;
@@ -233,8 +234,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // loop
     int nentries = chain->GetEntries();
-    int P1PID = ProtonPID, P2PID = OmegaPID, P3PID = Xi0PID;
-    float P1Mass = mProton, P2Mass = mOmega;
+    int P1PID = KaonPID, P2PID = OmegaPID, P3PID = Xi0PID;
+    float P1Mass = mKaon, P2Mass = mOmega;
     bool hasP2 = false, hasAntiP2 = false;
     bool hasP3 = false, hasAntiP3 = false;
     int P2evt_ct = 0, AntiP2evt_ct = 0;
@@ -346,7 +347,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
         // event cut
         if (px2_vec.size() != 1) continue; // get rid of this if not 14.6 GeV
-        if (cen != cen_select) continue;
+        if (cen != cen_select_1 && cen != cen_select_2) continue;
 
         // double loop for cf
         /****** normal cf ******/
