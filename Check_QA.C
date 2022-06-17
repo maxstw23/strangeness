@@ -42,7 +42,7 @@ TString energy = "14";
 
 int FindType(int PID);
 
-void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
+void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
 {   
     // PDG Database
 	TDatabasePDG *db = new TDatabasePDG();

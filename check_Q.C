@@ -2,7 +2,7 @@
 #include <TSystem.h>
 #include <TString.h>
 
-void check_S(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
+void check_Q(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
 {
     gSystem->Load("./lib/CenMaker_cpp.so");
     gSystem->Load("./lib/NpartNormalizer_cpp.so");
