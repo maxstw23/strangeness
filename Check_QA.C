@@ -113,6 +113,8 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
 	TFile fout(fname_out,"RECREATE");
 
     // hist and profiles
+    TH1D* hbaryon = new TH1D("hbaryon", "total baryon number", 800, -199.5, 600.5);
+    TH1D* hQualifiedEvt = new TH1D("hQualifiedEvt", "Number of qualified events", 9, 0.5, 9.5); //all 0-5%
     TH1D* hstrangeness = new TH1D("sness", "total strangeness", 50, -24.5, 25.5);
 
     // for spectra
@@ -126,17 +128,17 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     for (int i = 0; i < 9; i++)
     {
         sprintf(hname_pt, "hOmegaPtSpectrum_cen_%d", i+1);
-        hOmegaPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hOmegaPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
         sprintf(hname_pt, "hOmegabarPtSpectrum_cen_%d", i+1);
-        hOmegabarPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hOmegabarPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
         sprintf(hname_pt, "hXiPtSpectrum_cen_%d", i+1);
-        hXiPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hXiPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
         sprintf(hname_pt, "hXibarPtSpectrum_cen_%d", i+1);
-        hXibarPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hXibarPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
         sprintf(hname_pt, "hLambdaPtSpectrum_cen_%d", i+1);
-        hLambdaPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hLambdaPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
         sprintf(hname_pt, "hLambdabarPtSpectrum_cen_%d", i+1);
-        hLambdabarPtSpectrum[i] = = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
+        hLambdabarPtSpectrum[i] = new TH1D(hname_pt, hname_pt, 600, 0., 6.); 
     }
 
     // dN/dy vs Npart
@@ -158,7 +160,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     for (int i = 0; i < 9; i++) 
     {   
         sprintf(hname, "hnp_cen_%d", i+1);
-        sprtinf(hname_2, "hnssbar_cen_%d", i+1);
+        sprintf(hname_2, "hnssbar_cen_%d", i+1);
         hnp_cen[i] = new TH1D(hname, hname, 1000, -0.5, 999.5);
         hnssbar_cen[i] = new TH1D(hname_2, hname_2, 1000, -0.5, 999.5);
     }
