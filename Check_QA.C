@@ -122,8 +122,8 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hOmegabarPtSpectrum[9];   
     TH1D* hXiPtSpectrum[9];      
     TH1D* hXibarPtSpectrum[9];      
-    TH1D* hLambdaPtSpecctrum[9];    
-    TH1D* hLambdabarPtSpecctrum[9]; 
+    TH1D* hLambdaPtSpectrum[9];    
+    TH1D* hLambdabarPtSpectrum[9]; 
     char hname_pt[200];
     for (int i = 0; i < 9; i++)
     {
@@ -255,16 +255,16 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (pid ==  3122 && cen == 9)                {hBaryon_yield->Fill(1.); hBaryon_yield_np->Fill(1., np*1.0);}
             if (pid == -3312 && cen == 9)                {hBaryon_yield->Fill(2.); hBaryon_yield_np->Fill(2., np*1.0);}
             if (pid ==  3312 && cen == 9)                {hBaryon_yield->Fill(3.); hBaryon_yield_np->Fill(3., np*1.0);}
-            if (pid == -3334 && (cen == 9 || cen == 8)) {hBaryon_yield->Fill(4.); hBaryon_yield_np->Fill(4., np*1.0);}
-            if (pid ==  3334 && (cen == 9 || cen == 8)) {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
+            if (pid == -3334 && (cen == 9 || cen == 8))  {hBaryon_yield->Fill(4.); hBaryon_yield_np->Fill(4., np*1.0);}
+            if (pid ==  3334 && (cen == 9 || cen == 8))  {hBaryon_yield->Fill(5.); hBaryon_yield_np->Fill(5., np*1.0);}
 
             // pT spectrum
-            if (pid ==  3334) hOmegaPtSpectrum     [cen-1]->Fill(pt, 1.0/(2*PI)/pt);      
-            if (pid == -3334) hOmegabarPtSpectrum  [cen-1]->Fill(pt, 1.0/(2*PI)/pt);   
-            if (pid ==  3312) hXiPtSpectrum        [cen-1]->Fill(pt, 1.0/(2*PI)/pt);       
-            if (pid == -3312) hXibarPtSpectrum     [cen-1]->Fill(pt, 1.0/(2*PI)/pt);       
-            if (pid ==  3122) hLambdaPtSpecctrum   [cen-1]->Fill(pt, 1.0/(2*PI)/pt);      
-            if (pid == -3122) hLambdabarPtSpecctrum[cen-1]->Fill(pt, 1.0/(2*PI)/pt);  
+            if (pid ==  3334) hOmegaPtSpectrum    [cen-1]->Fill(pt, 1.0/(2*PI)/pt);      
+            if (pid == -3334) hOmegabarPtSpectrum [cen-1]->Fill(pt, 1.0/(2*PI)/pt);   
+            if (pid ==  3312) hXiPtSpectrum       [cen-1]->Fill(pt, 1.0/(2*PI)/pt);       
+            if (pid == -3312) hXibarPtSpectrum    [cen-1]->Fill(pt, 1.0/(2*PI)/pt);       
+            if (pid ==  3122) hLambdaPtSpectrum   [cen-1]->Fill(pt, 1.0/(2*PI)/pt);      
+            if (pid == -3122) hLambdabarPtSpectrum[cen-1]->Fill(pt, 1.0/(2*PI)/pt);  
 
         }
 
