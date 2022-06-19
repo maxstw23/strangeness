@@ -204,13 +204,11 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         // centrality
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
+        if (cen < 1 || cen > 9) continue;
         for (int i = 1; i <= 9; i++) {if (cen == i) nevt_spec[i-1]++;}
-        if (cen >= 1 && cen <= 9) 
-        {
-            hnp_cen[cen-1]->Fill(np);
-            hnp->Fill(np);
-        }
-
+        hnp_cen[cen-1]->Fill(np);
+        hnp->Fill(np);
+    
         // counting particle for BES comparison and count omega
         int NO_y=0, NOb_y=0, NX_y=0, NXb_y=0, NL_y=0, NLb_y=0;
         int num_omega_total = 0;
