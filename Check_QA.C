@@ -113,6 +113,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
 	TFile fout(fname_out,"RECREATE");
 
     // hist and profiles
+    TH1D* hRefMult     = new TH1D("hRefMult"   , "RefMult"                   , 1000, -0.5, 999.5);
+    TH1D* hImpPar      = new TH1D("hImpPar"    , "Impact Parameter"          , 200,    0., 20.  );
+    TH1D* hEta         = new TH1D("hEta"       , "Pseudorapidity"            , 500 , -10., 10.  );
+    TH1D* hy           = new TH1D("hy"         , "Rapidity"                  , 500 , -10., 10.  );
+    TH1D* hyOmega      = new TH1D("hyOmega"    , "#Omega^{-} Rapidity"       , 500 , -10., 10.  );
+    TH1D* hyOmegabar   = new TH1D("hyOmegabar" , "#bar{#Omega^{+}} Rapidity" , 500 , -10., 10.  );
+    TH1D* hyP          = new TH1D("hyP"        , "p Rapidity"                , 500 , -10., 10.  );
+    TH1D* hyPbar       = new TH1D("hyPbar"     , "#bar{p} Rapidity"          , 500 , -10., 10.  );
+    TH1D* hyLambda     = new TH1D("hyLambda"   , "#Lambda Rapidity"          , 500 , -10., 10.  );
+    TH1D* hyLambdabar  = new TH1D("hyLambdabar", "#bar{#Lambda} Rapidity"    , 500 , -10., 10.  );
+    TH1D* hyXi         = new TH1D("hyXi"       , "#Xi Rapidity"          , 500 , -10., 10.  );
+    TH1D* hyXibar      = new TH1D("hyXibar"    , "#bar{#Xi} Rapidity"    , 500 , -10., 10.  );
     TH1D* hbaryon = new TH1D("hbaryon", "total baryon number", 800, -199.5, 600.5);
     TH1D* hQualifiedEvt = new TH1D("hQualifiedEvt", "Number of qualified events", 9, 0.5, 9.5); //all 0-5%
     TH1D* hstrangeness = new TH1D("sness", "total strangeness", 50, -24.5, 25.5);
@@ -172,6 +184,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TBranch* bpid = nullptr;
     int npp = 0, npt = 0;
     int refmult;
+    float imp;
     std::vector<int>   *pid_vec = nullptr;
     std::vector<float> *px_vec  = nullptr;
     std::vector<float> *py_vec  = nullptr;
@@ -182,6 +195,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         chain->SetBranchAddress("npt", &npt);
     }
     chain->SetBranchAddress("refmult", &refmult);
+    chain->SetBranchAddress("imp", &imp);
     chain->SetBranchAddress("pid", &pid_vec, &bpid);
     chain->SetBranchAddress("px",  &px_vec);
     chain->SetBranchAddress("py",  &py_vec);
@@ -200,7 +214,11 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         chain->GetEntry(i);
         int np = 0;
         if (mode != 2) np = npp + npt;
-    
+
+        // some QA
+        hRefmult->Fill(refmult);
+        hImpPar->Fill(imp);
+
         // centrality
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
@@ -229,6 +247,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             TLorentzVector lv;
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
+
+            // QA
+            hEta->Fill(eta);
+            hy->Fill(y);
+            if (pid ==  3334) hyOomega->Fill(y);
+            if (pid == -3334) hyOmegabar->Fill(y);
+            if (pid ==  2212) hyP->Fill(y);
+            if (pid == -2212) hyPbar->Fill(y);
+            if (pid ==  3122) hyLambda->Fill(y);
+            if (pid == -3122) hyLambdabar->Fill(y);
+            if (pid ==  3312) hyXi->Fill(y);
+            if (pid == -3312) hyXibar->Fill(y);
 
             // count particles
             if (fabs(pid) ==  3334) num_omega_total++;
