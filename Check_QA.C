@@ -251,7 +251,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // QA
             hEta->Fill(eta);
             hy->Fill(y);
-            if (pid ==  3334) hyOomega->Fill(y);
+            if (pid ==  3334) hyOmega->Fill(y);
             if (pid == -3334) hyOmegabar->Fill(y);
             if (pid ==  2212) hyP->Fill(y);
             if (pid == -2212) hyPbar->Fill(y);
