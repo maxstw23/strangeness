@@ -216,7 +216,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         if (mode != 2) np = npp + npt;
 
         // some QA
-        hRefmult->Fill(refmult);
+        hRefMult->Fill(refmult);
         hImpPar->Fill(imp);
 
         // centrality
