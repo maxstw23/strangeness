@@ -42,7 +42,7 @@ const int NLambdaClass = 3;
 const int NSigmaClass  = 7;
 const int NXiClass     = 5;
 const int NOmegaClass  = 3;
-const int NNucleonClass= 4;
+const int NNucleonClass= 6;
 
 // for cendef
 TString energy = "14";
@@ -407,7 +407,9 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             total_s += s;
             total_ssbar_pair += fabs(s)/2.0;
             if (*it < 10000 && *it > 999) total_bn += 1;
+            if (*it == 42) total_bn += 2;
             if (*it >-10000 && *it <-999) total_bn -= 1;
+            if (*it == 42) total_bn -= 2;
         }
     
         // count events
@@ -489,6 +491,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
                     else if (pid == -2212) hNucleon[j]->Fill(2); //anti-proton
                     else if (pid ==  2112) hNucleon[j]->Fill(3); //neutron
                     else if (pid == -2112) hNucleon[j]->Fill(4); //anti-neutron
+                    else if (pid ==  42  ) hNucleon[j]->Fill(5,2); //deuteron
+                    else if (pid == -42  ) hNucleon[j]->Fill(6,2); //anti-deuteron
                 }
             } 
 
@@ -530,6 +534,8 @@ void Check_Sness(const Char_t *inFile = "placeholder.list", const TString JobID 
             {
                 if (pid > 0) {bct   [5]++; if (fabs(eta) < 1) bct_y   [5]++;}
                 if (pid < 0) {bctbar[5]++; if (fabs(eta) < 1) bctbar_y[5]++;}
+                if (pid ==  42) {bct   [5]++; if (fabs(eta) < 1) bct_y   [5]++;}
+                if (pid == -42) {bctbar[5]++; if (fabs(eta) < 1) bctbar_y[5]++;}
             }
 
         }
@@ -724,7 +730,7 @@ int FindType(int PID)
         return 6;
 
     // nucleon
-    if (fabs(PID) == 2212 || fabs(PID) == 2112)
+    if (fabs(PID) == 2212 || fabs(PID) == 2112 || fabs(PID) == 42)
         return 7;
     
     return -1; //not strange
