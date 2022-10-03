@@ -21,6 +21,7 @@
     </Generator>
     
     <!--<input URL="file:/star/data01/pwg/dneff/data/AMPT/min_bias/string_melting/19GeV/&input_dir;"/>-->
+    <input URL="file:/star/data01/pwg/xiatong/AMPT/14GeV/&input_dir;"/>
     <input URL="file:/star/data01/pwg/xiatong/AMPT/14GeV_central_sm/&input_dir;"/>
     <output fromScratch="*.root" toURL="file:/star/data01/pwg/xiatong/git/strangeness/data/" />
     
