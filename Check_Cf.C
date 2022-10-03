@@ -43,7 +43,7 @@ const int buffer_size = 10;
 const bool  CutEta  = true;
 const bool  Cuty    = false; //only select either CutEta or Cuty or none, not both!
 int cen_select_1= 9;
-int cen_select_2= 8;
+int cen_select_2= 9;
 TString energy = "14";
 
 const float mKaon = 0.493677;
