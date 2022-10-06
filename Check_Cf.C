@@ -346,214 +346,220 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         if (hasAntiP2) hKaonCt->Fill(1., kaonct*1.0);
 
         // event cut
-        if (px2_vec.size() != 1) continue; // get rid of this if not 14.6 GeV
+        //if (px2_vec.size() != 1) continue; // may need to modify if not 14.6 GeV
         if (cen != cen_select_1 && cen != cen_select_2) continue;
 
         // double loop for cf
         /****** normal cf ******/
-        for (int j = 0; j < px2_vec.size(); ++j) // this can be viewed as an event loop since only one omega per event
+        if (px2_vec.size() == 1) // only calculate CF when there is one Omega
         {
-            int pid2 = pid2_vec[j];
-            float px2 = px2_vec[j];
-            float py2 = py2_vec[j];
-            float pz2 = pz2_vec[j];
-            float pt2 = sqrt(px2*px2 + py2*py2);
-            float theta2 = atan2(pt2, pz2);
-            float phi2 = atan2(py2, px2);
-            float eta2 = -log(tan(theta2/2.));
-            lv.SetXYZM(px2, py2, pz2, P2Mass);
-            float y2 = lv.Rapidity();
-            
-            // for normalization
-            if (pid2 ==  P2PID) 
+            for (int j = 0; j < px2_vec.size(); ++j) // this can be viewed as an event loop since only one omega per event
             {
-                omega_ct[0]++;
-                if (hasAntiP3) AntiP3_used[0]++;
-                else AntiP3_used[1]++;
-            }
-            if (pid2 == -P2PID) 
-            {
-                omegab_ct[0]++;
-                if (hasP3) P3_used[0]++;
-                else P3_used[1]++;
-            }
-
-            for (int i = 0; i < px1_vec.size(); ++i)
-            {   
-                int  pid1 = pid1_vec[i];
-                float px1 = px1_vec[i];
-                float py1 = py1_vec[i];
-                float pz1 = pz1_vec[i];
-                float pt1 = sqrt(px1*px1 + py1*py1);
-                float theta1 = atan2(pt1, pz1);
-                float phi1 = atan2(py1, px1);
-                float eta1 = -log(tan(theta1/2.));
-                lv.SetXYZM(px1, py1, pz1, P1Mass);
-                float y1 = lv.Rapidity();
-
-                // test eta dist
-                if (pid2 ==  P2PID && pid1 ==  P1PID && fabs(eta2) < eta_cut) hKplusEtaDist_O    ->Fill(eta1);
-                if (pid2 == -P2PID && pid1 ==  P1PID && fabs(eta2) < eta_cut) hKplusEtaDist_Obar ->Fill(eta1);
-                if (pid2 ==  P2PID && pid1 == -P1PID && fabs(eta2) < eta_cut) hKminusEtaDist_O   ->Fill(eta1);
-                if (pid2 == -P2PID && pid1 == -P1PID && fabs(eta2) < eta_cut) hKminusEtaDist_Obar->Fill(eta1);
+                int pid2 = pid2_vec[j];
+                float px2 = px2_vec[j];
+                float py2 = py2_vec[j];
+                float pz2 = pz2_vec[j];
+                float pt2 = sqrt(px2*px2 + py2*py2);
+                float theta2 = atan2(pt2, pz2);
+                float phi2 = atan2(py2, px2);
+                float eta2 = -log(tan(theta2/2.));
+                lv.SetXYZM(px2, py2, pz2, P2Mass);
+                float y2 = lv.Rapidity();
                 
-                // boost to COM frame
-                TLorentzVector p1; p1.SetXYZM(px1, py1, pz1, P1Mass);
-                TLorentzVector p2; p2.SetXYZM(px2, py2, pz2, P2Mass);
-                TLorentzVector P = p1 + p2;
-                TVector3 beta = P.BoostVector();
-                p1.Boost((-1)*beta);
-                p2.Boost((-1)*beta);
-                hCOM->Fill((p1+p2).Vect().Mag());
+                // for normalization
+                if (pid2 ==  P2PID) 
+                {
+                    omega_ct[0]++;
+                    if (hasAntiP3) AntiP3_used[0]++;
+                    else AntiP3_used[1]++;
+                }
+                if (pid2 == -P2PID) 
+                {
+                    omegab_ct[0]++;
+                    if (hasP3) P3_used[0]++;
+                    else P3_used[1]++;
+                }
 
-                // fill quantity
-                float phi_diff = fabs(phi1-phi2);
-                if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
-                float kstar = 0.5*(p1-p2).Vect().Mag();
+                for (int i = 0; i < px1_vec.size(); ++i)
+                {   
+                    int  pid1 = pid1_vec[i];
+                    float px1 = px1_vec[i];
+                    float py1 = py1_vec[i];
+                    float pz1 = pz1_vec[i];
+                    float pt1 = sqrt(px1*px1 + py1*py1);
+                    float theta1 = atan2(pt1, pz1);
+                    float phi1 = atan2(py1, px1);
+                    float eta1 = -log(tan(theta1/2.));
+                    lv.SetXYZM(px1, py1, pz1, P1Mass);
+                    float y1 = lv.Rapidity();
 
-                // fill cf
-                if (pid1 ==  P1PID && pid2 == -P2PID) 
-                {
-                    hCorrKplusObar[0]   ->Fill(kstar);
-                    hPtCorrKplusObar[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKplusObar[0]  ->Fill(y1-y2);
-                    hphiCorrKplusObar[0]->Fill(phi_diff);
-                    hthetaCorrKplusObar ->Fill(fabs(theta1-theta2));
-                }
-                if (pid1 ==  P1PID && pid2 ==  P2PID) 
-                {
-                    hCorrKplusO[0]   ->Fill(kstar);
-                    if (hasAntiP3) 
+                    // test eta dist
+                    if (pid2 ==  P2PID && pid1 ==  P1PID && fabs(eta2) < eta_cut) hKplusEtaDist_O    ->Fill(eta1);
+                    if (pid2 == -P2PID && pid1 ==  P1PID && fabs(eta2) < eta_cut) hKplusEtaDist_Obar ->Fill(eta1);
+                    if (pid2 ==  P2PID && pid1 == -P1PID && fabs(eta2) < eta_cut) hKminusEtaDist_O   ->Fill(eta1);
+                    if (pid2 == -P2PID && pid1 == -P1PID && fabs(eta2) < eta_cut) hKminusEtaDist_Obar->Fill(eta1);
+                    
+                    // boost to COM frame
+                    TLorentzVector p1; p1.SetXYZM(px1, py1, pz1, P1Mass);
+                    TLorentzVector p2; p2.SetXYZM(px2, py2, pz2, P2Mass);
+                    TLorentzVector P = p1 + p2;
+                    TVector3 beta = P.BoostVector();
+                    p1.Boost((-1)*beta);
+                    p2.Boost((-1)*beta);
+                    hCOM->Fill((p1+p2).Vect().Mag());
+
+                    // fill quantity
+                    float phi_diff = fabs(phi1-phi2);
+                    if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
+                    float kstar = 0.5*(p1-p2).Vect().Mag();
+
+                    // fill cf
+                    if (pid1 ==  P1PID && pid2 == -P2PID) 
                     {
-                        hKplusO_wXi0->Fill(kstar);
-                        hPtKplusO_wXi0->Fill(fabs(pt1-pt2));
-                        hyKplusO_wXi0->Fill(y1-y2);
-                        hphiKplusO_wXi0->Fill(phi_diff);
+                        hCorrKplusObar[0]   ->Fill(kstar);
+                        hPtCorrKplusObar[0] ->Fill(fabs(pt1-pt2));
+                        hyCorrKplusObar[0]  ->Fill(y1-y2);
+                        hphiCorrKplusObar[0]->Fill(phi_diff);
+                        hthetaCorrKplusObar ->Fill(fabs(theta1-theta2));
                     }
-                    else 
+                    if (pid1 ==  P1PID && pid2 ==  P2PID) 
                     {
-                        hKplusO_woXi0->Fill(kstar);
-                        hPtKplusO_woXi0->Fill(fabs(pt1-pt2));
-                        hyKplusO_woXi0->Fill(y1-y2);
-                        hphiKplusO_woXi0->Fill(phi_diff);
+                        hCorrKplusO[0]   ->Fill(kstar);
+                        if (hasAntiP3) 
+                        {
+                            hKplusO_wXi0->Fill(kstar);
+                            hPtKplusO_wXi0->Fill(fabs(pt1-pt2));
+                            hyKplusO_wXi0->Fill(y1-y2);
+                            hphiKplusO_wXi0->Fill(phi_diff);
+                        }
+                        else 
+                        {
+                            hKplusO_woXi0->Fill(kstar);
+                            hPtKplusO_woXi0->Fill(fabs(pt1-pt2));
+                            hyKplusO_woXi0->Fill(y1-y2);
+                            hphiKplusO_woXi0->Fill(phi_diff);
+                        }
+                        hPtCorrKplusO[0] ->Fill(fabs(pt1-pt2));
+                        hyCorrKplusO[0]  ->Fill(y1-y2);
+                        hphiCorrKplusO[0]->Fill(phi_diff);
+                        hthetaCorrKplusO ->Fill(fabs(theta1-theta2));
                     }
-                    hPtCorrKplusO[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKplusO[0]  ->Fill(y1-y2);
-                    hphiCorrKplusO[0]->Fill(phi_diff);
-                    hthetaCorrKplusO ->Fill(fabs(theta1-theta2));
-                }
-                if (pid1 == -P1PID && pid2 == -P2PID) 
-                {
-                    hCorrKminusObar[0]   ->Fill(kstar);
-                    if (hasP3) 
+                    if (pid1 == -P1PID && pid2 == -P2PID) 
                     {
-                        hKminusObar_wXi0->Fill(kstar);
-                        hPtKminusObar_wXi0->Fill(fabs(pt1-pt2));
-                        hyKminusObar_wXi0->Fill(y1-y2);
-                        hphiKminusObar_wXi0->Fill(phi_diff);
+                        hCorrKminusObar[0]   ->Fill(kstar);
+                        if (hasP3) 
+                        {
+                            hKminusObar_wXi0->Fill(kstar);
+                            hPtKminusObar_wXi0->Fill(fabs(pt1-pt2));
+                            hyKminusObar_wXi0->Fill(y1-y2);
+                            hphiKminusObar_wXi0->Fill(phi_diff);
+                        }
+                        else 
+                        {
+                            hKminusObar_woXi0->Fill(kstar);
+                            hPtKminusObar_woXi0->Fill(fabs(pt1-pt2));
+                            hyKminusObar_woXi0->Fill(y1-y2);
+                            hphiKminusObar_woXi0->Fill(phi_diff);
+                        }
+                        hPtCorrKminusObar[0] ->Fill(fabs(pt1-pt2));
+                        hyCorrKminusObar[0]  ->Fill(y1-y2);
+                        hphiCorrKminusObar[0]->Fill(phi_diff);
+                        hthetaCorrKminusObar ->Fill(fabs(theta1-theta2));
                     }
-                    else 
+                    if (pid1 == -P1PID && pid2 ==  P2PID) 
                     {
-                        hKminusObar_woXi0->Fill(kstar);
-                        hPtKminusObar_woXi0->Fill(fabs(pt1-pt2));
-                        hyKminusObar_woXi0->Fill(y1-y2);
-                        hphiKminusObar_woXi0->Fill(phi_diff);
+                        hCorrKminusO[0]   ->Fill(kstar);
+                        hPtCorrKminusO[0] ->Fill(fabs(pt1-pt2));
+                        hyCorrKminusO[0]  ->Fill(y1-y2);
+                        hphiCorrKminusO[0]->Fill(phi_diff);
+                        hthetaCorrKminusO ->Fill(fabs(theta1-theta2));
                     }
-                    hPtCorrKminusObar[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKminusObar[0]  ->Fill(y1-y2);
-                    hphiCorrKminusObar[0]->Fill(phi_diff);
-                    hthetaCorrKminusObar ->Fill(fabs(theta1-theta2));
-                }
-                if (pid1 == -P1PID && pid2 ==  P2PID) 
-                {
-                    hCorrKminusO[0]   ->Fill(kstar);
-                    hPtCorrKminusO[0] ->Fill(fabs(pt1-pt2));
-                    hyCorrKminusO[0]  ->Fill(y1-y2);
-                    hphiCorrKminusO[0]->Fill(phi_diff);
-                    hthetaCorrKminusO ->Fill(fabs(theta1-theta2));
                 }
             }
         }
 
         /****** mixed cf ******/
-        if (!buffer.IsEmpty(cen))
-        {   
-            std::vector<my_event> mixed_buffer = buffer.Sample_All(cen);
-            for (int evt = 0; evt < mixed_buffer.size(); ++evt)
-            {
-                std::vector<my_particle> mixed_vec = mixed_buffer[evt].GetParticles();
-                for (int j = 0; j < mixed_vec.size(); ++j)
+        if (px2_vec.size() == 0) // only calculate mixed CF when no Omega so as to preserve the quantitative difference
+        {
+            if (!buffer.IsEmpty(cen))
+            {   
+                std::vector<my_event> mixed_buffer = buffer.Sample_All(cen);
+                for (int evt = 0; evt < mixed_buffer.size(); ++evt)
                 {
-                    int pid2 = mixed_vec[j].GetPID();
-                    TVector3 mom2 = mixed_vec[j].GetMomentum();
-                    float px2 = mom2.X();
-                    float py2 = mom2.Y();
-                    float pz2 = mom2.Z();
-                    float pt2 = sqrt(px2*px2 + py2*py2);
-                    float theta2 = atan2(pt2, pz2);
-                    float phi2 = atan2(py2, px2);
-                    float eta2 = -log(tan(theta2/2.));
-                    lv.SetXYZM(px2, py2, pz2, P2Mass);
-                    float y2 = lv.Rapidity();
+                    std::vector<my_particle> mixed_vec = mixed_buffer[evt].GetParticles();
+                    for (int j = 0; j < mixed_vec.size(); ++j)
+                    {
+                        int pid2 = mixed_vec[j].GetPID();
+                        TVector3 mom2 = mixed_vec[j].GetMomentum();
+                        float px2 = mom2.X();
+                        float py2 = mom2.Y();
+                        float pz2 = mom2.Z();
+                        float pt2 = sqrt(px2*px2 + py2*py2);
+                        float theta2 = atan2(pt2, pz2);
+                        float phi2 = atan2(py2, px2);
+                        float eta2 = -log(tan(theta2/2.));
+                        lv.SetXYZM(px2, py2, pz2, P2Mass);
+                        float y2 = lv.Rapidity();
 
-                    // for normalization
-                    if (pid2 ==  P2PID) omega_ct[1]++;
-                    if (pid2 == -P2PID) omegab_ct[1]++;
+                        // for normalization
+                        if (pid2 ==  P2PID) omega_ct[1]++;
+                        if (pid2 == -P2PID) omegab_ct[1]++;
 
-                    for (int i = 0; i < px1_vec.size(); ++i)
-                    {   
-                        int  pid1 = pid1_vec[i];
-                        float px1 = px1_vec[i];
-                        float py1 = py1_vec[i];
-                        float pz1 = pz1_vec[i];
-                        float pt1 = sqrt(px1*px1 + py1*py1);
-                        float theta1 = atan2(pt1, pz1);
-                        float phi1 = atan2(py1, px1);
-                        float eta1 = -log(tan(theta1/2.));
-                        lv.SetXYZM(px1, py1, pz1, P1Mass);
-                        float y1 = lv.Rapidity();
+                        for (int i = 0; i < px1_vec.size(); ++i)
+                        {   
+                            int  pid1 = pid1_vec[i];
+                            float px1 = px1_vec[i];
+                            float py1 = py1_vec[i];
+                            float pz1 = pz1_vec[i];
+                            float pt1 = sqrt(px1*px1 + py1*py1);
+                            float theta1 = atan2(pt1, pz1);
+                            float phi1 = atan2(py1, px1);
+                            float eta1 = -log(tan(theta1/2.));
+                            lv.SetXYZM(px1, py1, pz1, P1Mass);
+                            float y1 = lv.Rapidity();
 
-                        // boost to COM frame
-                        TLorentzVector p1; p1.SetXYZM(px1, py1, pz1, P1Mass);
-                        TLorentzVector p2; p2.SetXYZM(px2, py2, pz2, P2Mass);
-                        TLorentzVector P = p1 + p2;
-                        TVector3 beta = P.BoostVector();
-                        p1.Boost((-1)*beta);
-                        p2.Boost((-1)*beta);
-                        hCOM->Fill((p1+p2).Vect().Mag());
+                            // boost to COM frame
+                            TLorentzVector p1; p1.SetXYZM(px1, py1, pz1, P1Mass);
+                            TLorentzVector p2; p2.SetXYZM(px2, py2, pz2, P2Mass);
+                            TLorentzVector P = p1 + p2;
+                            TVector3 beta = P.BoostVector();
+                            p1.Boost((-1)*beta);
+                            p2.Boost((-1)*beta);
+                            hCOM->Fill((p1+p2).Vect().Mag());
 
-                        // angle folding
-                        float phi_diff = fabs(phi1-phi2);
-                        if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
+                            // angle folding
+                            float phi_diff = fabs(phi1-phi2);
+                            if (phi_diff   > PI) phi_diff   = 2*PI - phi_diff;
 
-                        // fill cf
-                        if (pid1 ==  P1PID && pid2 == -P2PID)
-                        {
-                            hCorrKplusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
-                            hPtCorrKplusObar[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKplusObar[1]  ->Fill(y1-y2);
-                            hphiCorrKplusObar[1]->Fill(phi_diff);
-                        }
-                        if (pid1 ==  P1PID && pid2 ==  P2PID) 
-                        {
-                            hCorrKplusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
-                            hPtCorrKplusO[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKplusO[1]  ->Fill(y1-y2);
-                            hphiCorrKplusO[1]->Fill(phi_diff);
-                        }
-                        if (pid1 == -P1PID && pid2 == -P2PID)
-                        {
-                            hCorrKminusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
-                            hPtCorrKminusObar[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKminusObar[1]  ->Fill(y1-y2);
-                            hphiCorrKminusObar[1]->Fill(phi_diff); 
-                        } 
-                        if (pid1 == -P1PID && pid2 ==  P2PID) 
-                        {
-                            hCorrKminusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
-                            hPtCorrKminusO[1] ->Fill(fabs(pt1-pt2));
-                            hyCorrKminusO[1]  ->Fill(y1-y2);
-                            hphiCorrKminusO[1]->Fill(phi_diff);
+                            // fill cf
+                            if (pid1 ==  P1PID && pid2 == -P2PID)
+                            {
+                                hCorrKplusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                                hPtCorrKplusObar[1] ->Fill(fabs(pt1-pt2));
+                                hyCorrKplusObar[1]  ->Fill(y1-y2);
+                                hphiCorrKplusObar[1]->Fill(phi_diff);
+                            }
+                            if (pid1 ==  P1PID && pid2 ==  P2PID) 
+                            {
+                                hCorrKplusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                                hPtCorrKplusO[1] ->Fill(fabs(pt1-pt2));
+                                hyCorrKplusO[1]  ->Fill(y1-y2);
+                                hphiCorrKplusO[1]->Fill(phi_diff);
+                            }
+                            if (pid1 == -P1PID && pid2 == -P2PID)
+                            {
+                                hCorrKminusObar[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                                hPtCorrKminusObar[1] ->Fill(fabs(pt1-pt2));
+                                hyCorrKminusObar[1]  ->Fill(y1-y2);
+                                hphiCorrKminusObar[1]->Fill(phi_diff); 
+                            } 
+                            if (pid1 == -P1PID && pid2 ==  P2PID) 
+                            {
+                                hCorrKminusO[1]   ->Fill(0.5*(p1-p2).Vect().Mag());
+                                hPtCorrKminusO[1] ->Fill(fabs(pt1-pt2));
+                                hyCorrKminusO[1]  ->Fill(y1-y2);
+                                hphiCorrKminusO[1]->Fill(phi_diff);
+                            }
                         }
                     }
                 }
