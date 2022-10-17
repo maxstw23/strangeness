@@ -209,6 +209,22 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hphiKminusObar_wXi0  = new TH1D("hphiKminusObar_wXi0" , "K^{-}-#bar{#Omega^{+}} phi Correlation with Xi0"   , 500, 0.0, PI);
     TH1D* hphiKminusObar_woXi0 = new TH1D("hphiKminusObar_woXi0", "K^{-}-#bar{#Omega^{+}} phi Correlation without Xi0", 500, 0.0, PI);
 
+    // 2D Hist
+    TH2D* hCorrKplusO_y_pT = new TH2D("hCorrKplusO_y_pT", "hCorrKplusO_y_pT", 500, 0.0, 5.0, 200, 0.0, 2.0);
+	TH2D* hCorrKplusObar_y_pT = new TH2D("hCorrKplusObar_y_pT", "hCorrKplusObar_y_pT", 500, 0.0, 5.0, 200, 0.0, 2.0);
+	TH2D* hCorrKminusO_y_pT = new TH2D("hCorrKminusO_y_pT", "hCorrKminusO_y_pT", 500, 0.0, 5.0, 200, 0.0, 2.0); 
+	TH2D* hCorrKminusObar_y_pT = new TH2D("hCorrKminusObar_y_pT", "hCorrKminusObar_y_pT", 500, 0.0, 5.0, 200, 0.0, 2.0);
+
+	TH2D* hCorrKplusO_y_phi = new TH2D("hCorrKplusO_y_phi", "hCorrKplusO_y_phi", 500, 0.0, PI, 200, 0.0, 2.0);
+	TH2D* hCorrKplusObar_y_phi = new TH2D("hCorrKplusObar_y_phi", "hCorrKplusObar_y_phi", 500, 0.0, PI, 200, 0.0, 2.0);
+	TH2D* hCorrKminusO_y_phi = new TH2D("hCorrKminusO_y_phi", "hCorrKminusO_y_phi", 500, 0.0, PI, 200, 0.0, 2.0); 
+	TH2D* hCorrKminusObar_y_phi = new TH2D("hCorrKminusObar_y_phi", "hCorrKminusObar_y_phi", 500, 0.0, PI, 200, 0.0, 2.0);
+
+	TH2D* hCorrKplusO_phi_pT = new TH2D("hCorrKplusO_phi_pT", "hCorrKplusO_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI);
+	TH2D* hCorrKplusObar_phi_pT = new TH2D("hCorrKplusObar_phi_pT", "hCorrKplusObar_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI);
+	TH2D* hCorrKminusO_phi_pT = new TH2D("hCorrKminusO_phi_pT", "hCorrKminusO_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI); 
+	TH2D* hCorrKminusObar_phi_pT = new TH2D("hCorrKminusObar_phi_pT", "hCorrKminusObar_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI);
+
     // setting PID and momentum branches
     float imp;
     int refmult;
@@ -402,6 +418,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 TLorentzVector p2; p2.SetXYZM(px2, py2, pz2, P2Mass);
                 TLorentzVector P = p1 + p2;
                 TVector3 beta = P.BoostVector();
+                float dphi = fabs(p1.Vect().DeltaPhi(p2.Vect()));
+                float dpt = fabs(p1.Perp() - p2.Perp());
+                float dy = fabs(p1.Rapidity() - p2.Rapidity());
                 p1.Boost((-1)*beta);
                 p2.Boost((-1)*beta);
                 hCOM->Fill((p1+p2).Vect().Mag());
@@ -419,6 +438,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKplusObar[0]  ->Fill(y1-y2);
                     hphiCorrKplusObar[0]->Fill(phi_diff);
                     hthetaCorrKplusObar ->Fill(fabs(theta1-theta2));
+
+                    // 2D 
+                    hCorrKplusObar_y_pT->Fill(dpt, dy);
+                    hCorrKplusObar_y_phi->Fill(dphi, dy);
+                    hCorrKplusObar_phi_pT->Fill(dpt, dphi);
                 }
                 if (pid1 ==  P1PID && pid2 ==  P2PID) 
                 {
@@ -441,6 +465,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKplusO[0]  ->Fill(y1-y2);
                     hphiCorrKplusO[0]->Fill(phi_diff);
                     hthetaCorrKplusO ->Fill(fabs(theta1-theta2));
+
+                    // 2D
+                    hCorrKplusO_y_pT  ->Fill(dpt, dy);
+                    hCorrKplusO_y_phi ->Fill(dphi, dy);
+                    hCorrKplusO_phi_pT->Fill(dpt, dphi);
                 }
                 if (pid1 == -P1PID && pid2 == -P2PID) 
                 {
@@ -463,6 +492,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKminusObar[0]  ->Fill(y1-y2);
                     hphiCorrKminusObar[0]->Fill(phi_diff);
                     hthetaCorrKminusObar ->Fill(fabs(theta1-theta2));
+
+                    // 2D
+                    hCorrKminusObar_y_pT  ->Fill(dpt, dy);
+                    hCorrKminusObar_y_phi ->Fill(dphi, dy);
+                    hCorrKminusObar_phi_pT->Fill(dpt, dphi);
                 }
                 if (pid1 == -P1PID && pid2 ==  P2PID) 
                 {
@@ -471,6 +505,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKminusO[0]  ->Fill(y1-y2);
                     hphiCorrKminusO[0]->Fill(phi_diff);
                     hthetaCorrKminusO ->Fill(fabs(theta1-theta2));
+
+                    // 2D
+                    hCorrKminusO_y_pT  ->Fill(dpt, dy);
+                    hCorrKminusO_y_phi ->Fill(dphi, dy);
+                    hCorrKminusO_phi_pT->Fill(dpt, dphi);
                 }
             }
         }
