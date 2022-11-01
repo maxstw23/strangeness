@@ -134,6 +134,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hCOM = new TH1D("hCOM", "Momentum Sum in COM (should be 0)", 100, -5., 5.);
     TH1D* hCen = new TH1D("hCen", "Centrality", 11, -1.5, 9.5);
     TProfile* hKaonCt = new TProfile("hKaonCt", "Kaon Count for #Omega^{-} and #bar{#Omega^{+}} events", 2, -0.5, 1.5); // to check average kaon+ counts per events. Omega events should have more
+    TProfile* hKaonCtEta = new TProfile("hKaonCtEta", "hKaonCtEta", 4, -0.5, 3.5);
     TH1D* hSingleEvtCt = new TH1D("hSingleEvtCt", "Count Single Hyperon Event (0 is total hyperon event)", 2, -0.5, 1.5);
     TH1D* hOmegaUsed = new TH1D("hOmegaUsed", "Actual #Omega^{-}/#bar{#Omega^{+}} used (1-2 orig 3-4 mixed)", 4, 0.5, 4.5); // for mixed event normalization
     TH1D* hOmegaXi0Used = new TH1D("hOmegaXi0Used", 
@@ -276,7 +277,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         // fill track vectors and QA plots
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
-        int kaonct = 0;
+        int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
         for (int i = 0; i < ntrack; ++i)
@@ -315,6 +316,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // track cut
             if (CutEta) {if (fabs(eta) > eta_cut) continue;}
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
+            if (pid == KaonPID) kpct_eta++;
+            if (pid == KaonPID) kmct_eta++;
 
             // find particles
             if (!hasP2    ) {if (pid ==  P2PID) hasP2     = true;}
@@ -358,8 +361,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hRefMult->Fill(refmult); 
         hImpPar->Fill(imp);
         hCen->Fill(cen*1.0);
-        if (hasP2)     hKaonCt->Fill(0., kaonct*1.0);
-        if (hasAntiP2) hKaonCt->Fill(1., kaonct*1.0);
+        if (hasP2)     {hKaonCt->Fill(0., kaonct*1.0); hKaonCtEta->Fill(0., kpct_eta*1.0); hKaonCtEta->Fill(2., kmct_eta*1.0); }
+        if (hasAntiP2) {hKaonCt->Fill(1., kaonct*1.0); hKaonCtEta->Fill(1., kpct_eta*1.0); hKaonCtEta->Fill(3., kmct_eta*1.0); }
 
         // event cut
         if (px2_vec.size() != 1) continue; // get rid of this if not 14.6 GeV
