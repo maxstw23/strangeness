@@ -28,10 +28,10 @@
 #include "TParticlePDG.h"
 #include <string>
 // my classes
-#include "./lib/my_particle.h"
-#include "./lib/my_event.h"
-#include "./lib/MixedBuffer.h"
-#include "./lib/CenMaker.h"
+//#include "./lib/my_particle.h"
+//#include "./lib/my_event.h"
+//#include "./lib/MixedBuffer.h"
+//#include "./lib/CenMaker.h"
 
 using namespace std;
 
@@ -246,8 +246,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TLorentzVector lv;
 
     // mixed-event buffer
-    MixedBuffer buffer(buffer_size);
-    buffer.Init();
+    //MixedBuffer buffer(buffer_size);
+    //buffer.Init();
 
     // loop
     int nentries = chain->GetEntries();
@@ -270,9 +270,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         mult = 0;
         hasP2 = false; hasAntiP2 = false;
         hasP3 = false; hasAntiP3 = false;
-        my_event current_evt;
-        CenMaker cenmaker;
-        int cen = cenmaker.cent9(refmult, energy, mode); 
+        //my_event current_evt;
+        //CenMaker cenmaker;
+        //int cen = cenmaker.cent9(refmult, energy, mode); 
         if (energy == "7" && imp < 3.4) cen == 9;   
 
         // fill track vectors and QA plots
@@ -345,8 +345,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // fill particle for mixed-event
             if (fabs(pid) == P2PID) 
             {
-                my_particle current_h(px, py, pz, pid);
-                current_evt.push_back(current_h);
+                //my_particle current_h(px, py, pz, pid);
+                //current_evt.push_back(current_h);
             }
         }
 
@@ -521,6 +521,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         }
 
         /****** mixed cf ******/
+        /*
         if (!buffer.IsEmpty(cen))
         {   
             std::vector<my_event> mixed_buffer = buffer.Sample_All(cen);
@@ -604,9 +605,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 }
             }
         }
+        */
 
         // fill mixed-event buffer
-        buffer.Add_FIFO(current_evt, cen);
+        //buffer.Add_FIFO(current_evt, cen);
     }
 
     hEvtCt->Fill(0.,P2evt_ct*1.0); // Note these did not go thru the event cut!
