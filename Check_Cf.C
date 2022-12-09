@@ -226,6 +226,12 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 	TH2D* hCorrKminusO_phi_pT = new TH2D("hCorrKminusO_phi_pT", "hCorrKminusO_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI); 
 	TH2D* hCorrKminusObar_phi_pT = new TH2D("hCorrKminusObar_phi_pT", "hCorrKminusObar_phi_pT", 500, 0.0, 5.0, 500, 0.0, PI);
 
+    // a new test observable
+    // kaon ratios at different p/pbar bins, in three different scenarios: with one omega, without o/ob, with one omegabar
+    TProfile* hKratio_omega    = new TProfile("hKratio_omega", "hKratio_omega", 5, 0., 1., 0., 1.);
+    TProfile* hKratio_wo       = new TProfile("hKratio_wo"   , "hKratio_omega", 5, 0., 1., 0., 1.);
+    TProfile* hKratio_omegabar = new TProfile("hKratio_omega", "hKratio_omega", 5, 0., 1., 0., 1.);
+
     // setting PID and momentum branches
     float imp;
     int refmult;
@@ -281,6 +287,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
+        int pct_eta  = 0;
+        int pbct_eta = 0;
         for (int i = 0; i < ntrack; ++i)
         {
             pid   = pid_vec->at(i);
@@ -319,6 +327,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
             if (pid ==  KaonPID) kpct_eta++;
             if (pid == -KaonPID) kmct_eta++;
+            if (pid ==  ProtonPID) pct_eta++;
+            if (pid == -ProtonPID) pbct_eta++;
 
             // find particles
             if (!hasP2    ) {if (pid ==  P2PID) hasP2     = true;}
@@ -362,6 +372,14 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hRefMult->Fill(refmult); 
         hImpPar->Fill(imp);
         hCen->Fill(cen*1.0);
+
+        // new observable
+        if (cen == cen_select_1 || cen == cen_select_2)
+        {   
+            if (hasP2     && px2_vec.size() == 1) hKratio_omega   ->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
+            if (px2_vec.size() == 0)              hKratio_wo      ->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
+            if (hasAntiP2 && px2_vec.size() == 1) hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
+        }
 
         // event cut
         if (px2_vec.size() != 1) continue; // get rid of this if not 14.6 GeV
