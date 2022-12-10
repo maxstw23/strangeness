@@ -228,9 +228,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // a new test observable
     // kaon ratios at different p/pbar bins, in three different scenarios: with one omega, without o/ob, with one omegabar
-    TProfile* hKratio_omega    = new TProfile("hKratio_omega", "hKratio_omega", 5, 0., 1., 0., 1.);
-    TProfile* hKratio_wo       = new TProfile("hKratio_wo"   , "hKratio_omega", 5, 0., 1., 0., 1.);
-    TProfile* hKratio_omegabar = new TProfile("hKratio_omega", "hKratio_omega", 5, 0., 1., 0., 1.);
+    TProfile* hKratio_omega    = new TProfile("hKratio_omega"   , "hKratio_omega"   , 10, 0., 1., 0., 10.);
+    TProfile* hKratio_wo       = new TProfile("hKratio_wo"      , "hKratio_wo"      , 10, 0., 1., 0., 10.);
+    TProfile* hKratio_omegabar = new TProfile("hKratio_omegabar", "hKratio_omegabar", 10, 0., 1., 0., 10.);
 
     // setting PID and momentum branches
     float imp;
@@ -376,9 +376,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         // new observable
         if (cen == cen_select_1 || cen == cen_select_2)
         {   
-            if (hasP2     && px2_vec.size() == 1) hKratio_omega   ->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
-            if (px2_vec.size() == 0)              hKratio_wo      ->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
-            if (hasAntiP2 && px2_vec.size() == 1) hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kpct_eta*1.0/kmct_eta);
+            if (hasP2     && px2_vec.size() == 1) hKratio_omega   ->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+            if (px2_vec.size() == 0)              hKratio_wo      ->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+            if (hasAntiP2 && px2_vec.size() == 1) hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
         }
 
         // event cut
