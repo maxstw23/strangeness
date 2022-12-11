@@ -52,6 +52,7 @@ const float mProton = 0.938272;
 const float mLambda = 1.115683;
 const float mXim = 1.32171;
 const int   KaonPID = 321;
+const int   PionPID = 211;
 const int   OmegaPID = 3334;
 const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
@@ -228,9 +229,19 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // a new test observable
     // kaon ratios at different p/pbar bins, in three different scenarios: with one omega, without o/ob, with one omegabar
-    TProfile* hKratio_omega    = new TProfile("hKratio_omega"   , "hKratio_omega"   , 10, 0., 1., 0., 10.);
-    TProfile* hKratio_wo       = new TProfile("hKratio_wo"      , "hKratio_wo"      , 10, 0., 1., 0., 10.);
-    TProfile* hKratio_omegabar = new TProfile("hKratio_omegabar", "hKratio_omegabar", 10, 0., 1., 0., 10.);
+    TProfile* hKratio_omega    = new TProfile("hKratio_omega"   , "hKratio_omega"   , 20, 0., 1., 0., 10.);
+    TProfile* hKratio_wo       = new TProfile("hKratio_wo"      , "hKratio_wo"      , 20, 0., 1., 0., 10.);
+    TProfile* hKratio_omegabar = new TProfile("hKratio_omegabar", "hKratio_omegabar", 20, 0., 1., 0., 10.);
+    TProfile* hKpybin_omega    = new TProfile("hKpybin_omega"   , "hKpybin_omega"   , 10, 0., 1., 0., 1000.);
+    TProfile* hKpybin_wo       = new TProfile("hKpybin_wo"      , "hKpybin_wo"      , 10, 0., 1., 0., 1000.);
+    TProfile* hKpybin_omegabar = new TProfile("hKpybin_omegabar", "hKpybin_omegabar", 10, 0., 1., 0., 1000.);
+    TProfile* hKmybin_omega    = new TProfile("hKmybin_omega"   , "hKmybin_omega"   , 10, 0., 1., 0., 1000.);
+    TProfile* hKmybin_wo       = new TProfile("hKmybin_wo"      , "hKmybin_wo"      , 10, 0., 1., 0., 1000.);
+    TProfile* hKmybin_omegabar = new TProfile("hKmybin_omegabar", "hKmybin_omegabar", 10, 0., 1., 0., 1000.);
+    TProfile* hpybin_omega    = new TProfile("hpybin_omega"   , "hpybin_omega"   , 10, 0., 1., 0., 1000.);
+    TProfile* hpybin_wo       = new TProfile("hpybin_wo"      , "hpybin_wo"      , 10, 0., 1., 0., 1000.);
+    TProfile* hpybin_omegabar = new TProfile("hpybin_omegabar", "hpybin_omegabar", 10, 0., 1., 0., 1000.);
+
 
     // setting PID and momentum branches
     float imp;
@@ -285,10 +296,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
         int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
+        int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y{10} = {0}
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
-        int pct_eta  = 0;
-        int pbct_eta = 0;
+        int pct_mid  = 0;
+        int pbct_mid = 0;
         for (int i = 0; i < ntrack; ++i)
         {
             pid   = pid_vec->at(i);
@@ -304,6 +316,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (!p_info) continue;
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
+            int ybin = static_cast<int>(floor(fabs(y) / 0.1));
                         
             // fill relevant hists
             hP->Fill(p);
@@ -325,10 +338,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // track cut
             if (CutEta) {if (fabs(eta) > eta_cut) continue;}
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
-            if (pid ==  KaonPID) kpct_eta++;
-            if (pid == -KaonPID) kmct_eta++;
-            if (pid ==  ProtonPID) pct_eta++;
-            if (pid == -ProtonPID) pbct_eta++;
+            if (pid ==  KaonPID) {kpct_eta++; kpct_y[ybin]++;}
+            if (pid == -KaonPID) {kmct_eta++; kmct_y[ybin]++;}
+            if (fabs(pid) == PionPID) pionct_y[ybin]++;
+            if (pid ==  ProtonPID && fabs(y) < 0.5) pct_mid++;
+            if (pid == -ProtonPID && fabs(y) < 0.5) pbct_mid++;
 
             // find particles
             if (!hasP2    ) {if (pid ==  P2PID) hasP2     = true;}
@@ -376,9 +390,27 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         // new observable
         if (cen == cen_select_1 || cen == cen_select_2)
         {   
-            if (hasP2     && px2_vec.size() == 1) hKratio_omega   ->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
-            if (px2_vec.size() == 0)              hKratio_wo      ->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
-            if (hasAntiP2 && px2_vec.size() == 1) hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+            if (hasP2     && px2_vec.size() == 1) 
+            {
+                hKratio_omega->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
+                for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
+                for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
+            }
+            if (px2_vec.size() == 0)              
+            {
+                hKratio_wo->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                for (int i = 0; i < 10; i++) hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
+                for (int i = 0; i < 10; i++) hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
+                for (int i = 0; i < 10; i++) hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
+            }
+            if (hasAntiP2 && px2_vec.size() == 1) 
+            {
+                hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
+                for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
+                for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
+            }
         }
 
         // event cut
