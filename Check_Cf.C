@@ -297,7 +297,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
         int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
         int pct_mid  = 0; int pbct_mid = 0;
-        int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y{10} = {0};
+        int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y[10] = {0};
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
         for (int i = 0; i < ntrack; ++i)
