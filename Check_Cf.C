@@ -296,11 +296,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         int ntrack = pid_vec->size();
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
         int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
-        int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y{10} = {0}
+        int pct_mid  = 0; int pbct_mid = 0;
+        int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y{10} = {0};
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
-        int pct_mid  = 0;
-        int pbct_mid = 0;
         for (int i = 0; i < ntrack; ++i)
         {
             pid   = pid_vec->at(i);
@@ -392,21 +391,21 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         {   
             if (hasP2     && px2_vec.size() == 1) 
             {
-                hKratio_omega->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                hKratio_omega->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (px2_vec.size() == 0)              
             {
-                hKratio_wo->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                hKratio_wo->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
-                hKratio_omegabar->Fill(pbct_eta*1.0/pct_eta, kmct_eta*1.0/kpct_eta);
+                hKratio_omegabar->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
