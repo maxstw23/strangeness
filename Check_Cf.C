@@ -242,7 +242,6 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile* hpybin_wo       = new TProfile("hpybin_wo"      , "hpybin_wo"      , 10, 0., 1., 0., 1000.);
     TProfile* hpybin_omegabar = new TProfile("hpybin_omegabar", "hpybin_omegabar", 10, 0., 1., 0., 1000.);
 
-
     // setting PID and momentum branches
     float imp;
     int refmult;
@@ -297,6 +296,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         assert(ntrack == px_vec->size() && ntrack == py_vec->size() && ntrack == pz_vec->size() && "Ntrack size mismatch!");
         int kaonct = 0; int kpct_eta = 0; int kmct_eta = 0;
         int pct_mid  = 0; int pbct_mid = 0;
+        int lct_mid = 0; int lbct_mid = 0;
         int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y[10] = {0};
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec; 
@@ -340,8 +340,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (pid ==  KaonPID) {kpct_eta++; kpct_y[ybin]++;}
             if (pid == -KaonPID) {kmct_eta++; kmct_y[ybin]++;}
             if (fabs(pid) == PionPID) pionct_y[ybin]++;
-            if (pid ==  ProtonPID && fabs(y) < 0.5) pct_mid++;
-            if (pid == -ProtonPID && fabs(y) < 0.5) pbct_mid++;
+            if (pid ==  ProtonPID) pct_mid++;
+            if (pid == -ProtonPID) pbct_mid++;
+            if (pid ==  LambdaPID) lct_mid++;
+            if (pid == -LambdaPID) lbct_mid++;
 
             // find particles
             if (!hasP2    ) {if (pid ==  P2PID) hasP2     = true;}
@@ -391,21 +393,21 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         {   
             if (hasP2     && px2_vec.size() == 1) 
             {
-                hKratio_omega->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
+                hKratio_omega->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (px2_vec.size() == 0)              
             {
-                hKratio_wo->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
+                hKratio_wo->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
-                hKratio_omegabar->Fill(pbct_mid*1.0/pct_mid, kmct_eta*1.0/kpct_eta);
+                hKratio_omegabar->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
