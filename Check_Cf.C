@@ -393,21 +393,21 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         {   
             if (hasP2     && px2_vec.size() == 1) 
             {
-                hKratio_omega->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
+                hKratio_omega->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (px2_vec.size() == 0)              
             {
-                hKratio_wo->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
+                hKratio_wo->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
             }
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
-                hKratio_omegabar->Fill(lbct_mid/lct_mid/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
+                hKratio_omegabar->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
