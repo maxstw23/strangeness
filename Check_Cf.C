@@ -306,7 +306,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         int kpct_y[10] = {0}; int kmct_y[10] = {0}; int pionct_y[10] = {0};
         int bct_y[10] = {0}; int abct_y[10] = {0};
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
-        vector<int> pid1_vec, pid2_vec; 
+        vector<int> pid1_vec, pid2_vec, ybin2_vec; 
         for (int i = 0; i < ntrack; ++i)
         {
             pid   = pid_vec->at(i);
@@ -374,6 +374,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 py2_vec.push_back(py);
                 pz2_vec.push_back(pz);
                 pid2_vec.push_back(pid);
+                ybin2_vec.push_back(ybin);
             }
             
             // fill particle for mixed-event
@@ -406,6 +407,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
+                bct_y[ybin2_vec[0]]--; // subtract self Omega
                 for (int i = 0; i < 10; i++) hbasymybin_omega->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
             }
             if (px2_vec.size() == 0)              
@@ -422,6 +424,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
+                abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
                 for (int i = 0; i < 10; i++) hbasymybin_omegabar->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
             }
         }
