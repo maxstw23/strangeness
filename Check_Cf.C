@@ -346,8 +346,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
             if (pid ==  KaonPID) {kpct_eta++; kpct_y[ybin]++;}
             if (pid == -KaonPID) {kmct_eta++; kmct_y[ybin]++;}
-            if (pid ==  ProtonPID || pid ==  LambdaPID || pid ==  XimPID || pid ==  OmegaPID) bct_y[ybin]++;
-            if (pid == -ProtonPID || pid == -LambdaPID || pid == -XimPID || pid == -OmegaPID) abct_y[ybin]++;
+            if (/*pid ==  ProtonPID || */pid ==  LambdaPID || pid ==  XimPID || pid ==  OmegaPID) bct_y[ybin]++;
+            if (/*pid == -ProtonPID || */pid == -LambdaPID || pid == -XimPID || pid == -OmegaPID) abct_y[ybin]++;
             if (fabs(pid) == PionPID) pionct_y[ybin]++;
             if (pid ==  ProtonPID) pct_mid++;
             if (pid == -ProtonPID) pbct_mid++;
@@ -407,7 +407,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
-                bct_y[ybin2_vec[0]]--; // subtract self Omega
+                //bct_y[ybin2_vec[0]]--; // subtract self Omega
                 for (int i = 0; i < 10; i++) hbasymybin_omega->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
             }
             if (px2_vec.size() == 0)              
@@ -424,7 +424,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                 for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                 for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
-                abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
+                //abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
                 for (int i = 0; i < 10; i++) hbasymybin_omegabar->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
             }
         }
