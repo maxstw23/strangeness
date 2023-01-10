@@ -247,6 +247,13 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile* hbasymybin_omega    = new TProfile("hbasymybin_omega"   , "hbasymybin_omega"   , 10, 0., 1., -1., 1.);
     TProfile* hbasymybin_wo       = new TProfile("hbasymybin_wo"      , "hbasymybin_wo"      , 10, 0., 1., -1., 1.);
     TProfile* hbasymybin_omegabar = new TProfile("hbasymybin_omegabar", "hbasymybin_omegabar", 10, 0., 1., -1., 1.);
+    TH1D* hbybin_omega       = new TH1D("hbybin_omega"   , "hbybin_omega"   , 10, 0., 1.);
+    TH1D* hbybin_wo          = new TH1D("hbybin_wo"      , "hbybin_wo"      , 10, 0., 1.);
+    TH1D* hbybin_omegabar    = new TH1D("hbybin_omegabar", "hbybin_omegabar", 10, 0., 1.);
+    TH1D* hbbarybin_omega    = new TH1D("hbbarybin_omega"   , "hbbarybin_omega"   , 10, 0., 1.);
+    TH1D* hbbarybin_wo       = new TH1D("hbbarybin_wo"      , "hbbarybin_wo"      , 10, 0., 1.);
+    TH1D* hbbarybin_omegabar = new TH1D("hbbarybin_omegabar", "hbbarybin_omegabar", 10, 0., 1.);
+
 
     // setting PID and momentum branches
     float imp;
@@ -346,7 +353,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (Cuty)   {if (fabs(y)   > y_cut  ) continue;}
             if (pid ==  KaonPID) {kpct_eta++; kpct_y[ybin]++;}
             if (pid == -KaonPID) {kmct_eta++; kmct_y[ybin]++;}
-            if (/*pid ==  ProtonPID || */pid ==  LambdaPID || pid ==  XimPID || pid ==  OmegaPID) bct_y[ybin]++;
+            if (/*pid ==  ProtonPID || */pid ==  LambdaPID || pid ==  XimPID || pid ==  OmegaPID) bct_y[ybin]++;  
             if (/*pid == -ProtonPID || */pid == -LambdaPID || pid == -XimPID || pid == -OmegaPID) abct_y[ybin]++;
             if (fabs(pid) == PionPID) pionct_y[ybin]++;
             if (pid ==  ProtonPID) pct_mid++;
@@ -404,28 +411,43 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (hasP2     && px2_vec.size() == 1) 
             {
                 hKratio_omega->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
-                for (int i = 0; i < 10; i++) hKpybin_omega->Fill(y*0.1+0.05, kpct_y[i]);
-                for (int i = 0; i < 10; i++) hKmybin_omega->Fill(y*0.1+0.05, kmct_y[i]);
-                for (int i = 0; i < 10; i++) hpybin_omega ->Fill(y*0.1+0.05, pionct_y[i]);
-                //bct_y[ybin2_vec[0]]--; // subtract self Omega
-                for (int i = 0; i < 10; i++) hbasymybin_omega->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                for (int i = 0; i < 10; i++) 
+                {
+                    hKpybin_omega->Fill(i*0.1+0.05, kpct_y[i]);
+                    hKmybin_omega->Fill(i*0.1+0.05, kmct_y[i]);
+                    hpybin_omega ->Fill(i*0.1+0.05, pionct_y[i]);
+                    //bct_y[ybin2_vec[0]]--; // subtract self Omega
+                    hbasymybin_omega->Fill(i*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                    hbybin_omega->Fill(i*0.1+0.05, bct_y[i]);
+                    hbbarybin_omega->Fill(i*0.1+0.05, abct_y[i]);
+                }
             }
             if (px2_vec.size() == 0)              
             {
                 hKratio_wo->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
-                for (int i = 0; i < 10; i++) hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
-                for (int i = 0; i < 10; i++) hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
-                for (int i = 0; i < 10; i++) hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
-                for (int i = 0; i < 10; i++) hbasymybin_wo->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                for (int i = 0; i < 10; i++) 
+                {
+                    hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
+                    hKmybin_wo->Fill(y*0.1+0.05, kmct_y[i]);
+                    hpybin_wo ->Fill(y*0.1+0.05, pionct_y[i]);
+                    hbasymybin_wo->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                    hbybin_wo->Fill(i*0.1+0.05, bct_y[i]);
+                    hbbarybin_wo->Fill(i*0.1+0.05, abct_y[i]);
+                }
             }
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
                 hKratio_omegabar->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
-                for (int i = 0; i < 10; i++) hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
-                for (int i = 0; i < 10; i++) hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
-                for (int i = 0; i < 10; i++) hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
-                //abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
-                for (int i = 0; i < 10; i++) hbasymybin_omegabar->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                for (int i = 0; i < 10; i++) 
+                {
+                    hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
+                    hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
+                    hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
+                    //abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
+                    hbasymybin_omegabar->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
+                    hbybin_omegabar->Fill(i*0.1+0.05, bct_y[i]);
+                    hbbarybin_omegabar->Fill(i*0.1+0.05, abct_y[i]);
+                }
             }
         }
 
