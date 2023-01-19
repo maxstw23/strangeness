@@ -416,7 +416,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hKpybin_omega->Fill(i*0.1+0.05, kpct_y[i]);
                     hKmybin_omega->Fill(i*0.1+0.05, kmct_y[i]);
                     hpybin_omega ->Fill(i*0.1+0.05, pionct_y[i]);
-                    //bct_y[ybin2_vec[0]]--; // subtract self Omega
+                    bct_y[ybin2_vec[0]]--; // subtract self Omega
                     hbasymybin_omega->Fill(i*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
                     hbybin_omega->Fill(i*0.1+0.05, bct_y[i]);
                     hbbarybin_omega->Fill(i*0.1+0.05, abct_y[i]);
@@ -443,7 +443,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
                     hKmybin_omegabar->Fill(y*0.1+0.05, kmct_y[i]);
                     hpybin_omegabar ->Fill(y*0.1+0.05, pionct_y[i]);
-                    //abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
+                    abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
                     hbasymybin_omegabar->Fill(y*0.1+0.05, (bct_y[i]-abct_y[i])*1.0/(bct_y[i]+abct_y[i]));
                     hbybin_omegabar->Fill(i*0.1+0.05, bct_y[i]);
                     hbbarybin_omegabar->Fill(i*0.1+0.05, abct_y[i]);
