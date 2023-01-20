@@ -406,12 +406,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hCen->Fill(cen*1.0);
 
         // new observable
-        bct_y [ybin2_vec[0]]--; // subtract self Omega
-        abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
         if (cen == cen_select_1 || cen == cen_select_2)
         {   
             if (hasP2     && px2_vec.size() == 1) 
-            {
+            {   
+                bct_y [ybin2_vec[0]]--; // subtract self Omega
                 hKratio_omega->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) 
                 {
@@ -438,6 +437,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             }
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
+                abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
                 hKratio_omegabar->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kmct_eta*1.0/kpct_eta);
                 for (int i = 0; i < 10; i++) 
                 {
