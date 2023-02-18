@@ -231,9 +231,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     // a new test observable
     // kaon ratios at different p/pbar bins, in three different scenarios: with one omega, without o/ob, with one omegabar
     // 02/15/2023: instead of ratios, perhaps perhaps look at difference instead. Use the same profiles
-    TProfile* hKratio_omega    = new TProfile("hKratio_omega"   , "hKratio_omega"   , 20, 0., 1., 0., 50.);
-    TProfile* hKratio_wo       = new TProfile("hKratio_wo"      , "hKratio_wo"      , 20, 0., 1., 0., 50.);
-    TProfile* hKratio_omegabar = new TProfile("hKratio_omegabar", "hKratio_omegabar", 20, 0., 1., 0., 50.);
+    TProfile* hKratio_omega    = new TProfile("hKratio_omega"   , "hKratio_omega"   , 20, -0.5, 19.5, 0., 50.);
+    TProfile* hKratio_wo       = new TProfile("hKratio_wo"      , "hKratio_wo"      , 20, -0.5, 19.5, 0., 50.);
+    TProfile* hKratio_omegabar = new TProfile("hKratio_omegabar", "hKratio_omegabar", 20, -0.5, 19.5, 0., 50.);
     // k-to-pi ratios in different rapidity bins in three different scenarios
     TProfile* hKpybin_omega    = new TProfile("hKpybin_omega"   , "hKpybin_omega"   , 10, 0., 1., 0., 1000.);
     TProfile* hKpybin_wo       = new TProfile("hKpybin_wo"      , "hKpybin_wo"      , 10, 0., 1., 0., 1000.);
@@ -412,7 +412,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (hasP2     && px2_vec.size() == 1) 
             {   
                 bct_y [ybin2_vec[0]]--; // subtract self Omega
-                hKratio_omega->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kpct_eta-kmct_eta);
+                hKratio_omega->Fill(lct_mid*1.0 - lbct_mid, kpct_eta*1.0-kmct_eta);
                 for (int i = 0; i < 10; i++) 
                 {
                     hKpybin_omega->Fill(i*0.1+0.05, kpct_y[i]);
@@ -425,7 +425,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             }
             if (px2_vec.size() == 0)              
             {
-                hKratio_wo->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kpct_eta-kmct_eta);
+                hKratio_wo->Fill(lct_mid*1.0 - lbct_mid, kpct_eta*1.0-kmct_eta);
                 for (int i = 0; i < 10; i++) 
                 {
                     hKpybin_wo->Fill(y*0.1+0.05, kpct_y[i]);
@@ -439,7 +439,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (hasAntiP2 && px2_vec.size() == 1) 
             {
                 abct_y[ybin2_vec[0]]--; // subtract self anti-Omega
-                hKratio_omegabar->Fill((lbct_mid*1.0/lct_mid)/(pbct_mid*1.0/pct_mid), kpct_eta-kmct_eta);
+                hKratio_omegabar->Fill(lct_mid*1.0 - lbct_mid, kpct_eta*1.0-kmct_eta);
                 for (int i = 0; i < 10; i++) 
                 {
                     hKpybin_omegabar->Fill(y*0.1+0.05, kpct_y[i]);
