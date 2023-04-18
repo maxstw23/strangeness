@@ -149,6 +149,15 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
     // Result hist
     TH1D* hEvtCt = new TH1D("hEvtCt", "Omega/Anti-Omega event ct", 2, -0.5, 1.5); // for normalization
+    // raw kaon phase space normalized
+    TH1D* hKplusPt_O = new TH1D("hKplusPt_O", "hKplusPt_O", 5000, 0.0, 50.0);
+    TH1D* hKplusPt_Obar = new TH1D("hKplusPt_Obar", "hKplusPt_Obar", 5000, 0.0, 50.0);
+    TH1D* hKminusPt_O = new TH1D("hKminusPt_O", "hKminusPt_O", 5000, 0.0, 50.0);
+    TH1D* hKminusPt_Obar = new TH1D("hKminusPt_Obar", "hKminusPt_Obar", 5000, 0.0, 50.0);
+    TH1D* hKplusy_O = new TH1D("hKplusy_O", "hKplusy_O", 2000, -10.0, 10.0);
+    TH1D* hKplusy_Obar = new TH1D("hKplusy_Obar", "hKplusy_Obar", 2000, -10.0, 10.0);
+    TH1D* hKminusy_O = new TH1D("hKminusy_O", "hKminusy_O", 2000, -10.0, 10.0);
+    TH1D* hKminusy_Obar = new TH1D("hKminusy_Obar", "hKminusy_Obar", 2000, -10.0, 10.0);
     /* K* */
     TH1D *hCorrKplusO[2], *hCorrKplusObar[2], *hCorrKminusO[2], *hCorrKminusObar[2];
     hCorrKplusO[0]     = new TH1D("hCorrKplusO"    , "K^{+}-#Omega^{-} Correlation"      , 5000, 0.0, 50.0);
@@ -534,6 +543,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hphiCorrKplusObar[0]->Fill(phi_diff);
                     hthetaCorrKplusObar ->Fill(fabs(theta1-theta2));
 
+                    // just kaon
+                    hKplusPt_Obar->Fill(pt1);
+                    hKplusy_Obar->Fill(y1);
+
                     // 2D 
                     hCorrKplusObar_y_pT->Fill(dpt, dy);
                     hCorrKplusObar_y_phi->Fill(dphi, dy);
@@ -560,6 +573,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKplusO[0]  ->Fill(y1-y2);
                     hphiCorrKplusO[0]->Fill(phi_diff);
                     hthetaCorrKplusO ->Fill(fabs(theta1-theta2));
+
+                    // just kaon
+                    hKplusPt_O->Fill(pt1);
+                    hKplusy_O->Fill(y1);
 
                     // 2D
                     hCorrKplusO_y_pT  ->Fill(dpt, dy);
@@ -588,6 +605,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hphiCorrKminusObar[0]->Fill(phi_diff);
                     hthetaCorrKminusObar ->Fill(fabs(theta1-theta2));
 
+                    // just kaon
+                    hKminusPt_Obar->Fill(pt1);
+                    hKminusy_Obar->Fill(y1);
+
                     // 2D
                     hCorrKminusObar_y_pT  ->Fill(dpt, dy);
                     hCorrKminusObar_y_phi ->Fill(dphi, dy);
@@ -600,6 +621,10 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hyCorrKminusO[0]  ->Fill(y1-y2);
                     hphiCorrKminusO[0]->Fill(phi_diff);
                     hthetaCorrKminusO ->Fill(fabs(theta1-theta2));
+
+                    // just kaon
+                    hKminusPt_O->Fill(pt1);
+                    hKminusy_O->Fill(y1);
 
                     // 2D
                     hCorrKminusO_y_pT  ->Fill(dpt, dy);
