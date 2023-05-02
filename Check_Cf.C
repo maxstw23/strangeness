@@ -264,6 +264,26 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hbbarybin_wo       = new TH1D("hbbarybin_wo"      , "hbbarybin_wo"      , 10, 0., 1.);
     TH1D* hbbarybin_omegabar = new TH1D("hbbarybin_omegabar", "hbbarybin_omegabar", 10, 0., 1.);
 
+    // v2 test
+    TProfile* hpiplus_v2_pt[9];
+    TProfile* hpiminus_v2_pt[9];
+    TProfile* hKplus_v2_pt[9];
+    TProfile* hKminus_v2_pt[9];
+    TProfile* hproton_v2_pt[9];
+    TProfile* hantiproton_v2_pt[9];
+    TProfile* hlambda_v2_pt[9];
+    TProfile* hantilambda_v2_pt[9];
+    for (int i = 0; i < 9; i++)
+    {
+        hpiplus_v2_pt[i] = new TProfile(Form("hpiplus_v2_pt_%d", i+1), Form("hpiplus_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hpiminus_v2_pt[i] = new TProfile(Form("hpiminus_v2_pt_%d", i+1), Form("hpiminus_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hKplus_v2_pt[i] = new TProfile(Form("hKplus_v2_pt_%d", i+1), Form("hKplus_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hKminus_v2_pt[i] = new TProfile(Form("hKminus_v2_pt_%d", i+1), Form("hKminus_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hproton_v2_pt[i] = new TProfile(Form("hproton_v2_pt_%d", i+1), Form("hproton_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hantiproton_v2_pt[i] = new TProfile(Form("hantiproton_v2_pt_%d", i+1), Form("hantiproton_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hlambda_v2_pt[i] = new TProfile(Form("hlambda_v2_pt_%d", i+1), Form("hlambda_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hantilambda_v2_pt[i] = new TProfile(Form("hantilambda_v2_pt_%d", i+1), Form("hantilambda_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+    }
 
     // setting PID and momentum branches
     float imp;
@@ -280,7 +300,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     chain->SetBranchAddress("pz",  &pz_vec);
 
     // variables
-    float px, py, pz, p, pt, theta, eta, y;
+    float px, py, pz, p, pt, theta, eta, phi, y;
     int pid, mult;
     TLorentzVector lv;
 
@@ -324,6 +344,35 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         int bct_y[10] = {0}; int abct_y[10] = {0};
         vector<float> px1_vec, py1_vec, pz1_vec, px2_vec, py2_vec, pz2_vec;
         vector<int> pid1_vec, pid2_vec, ybin2_vec; 
+
+        // v2 loop
+        for (int i = 0; i < ntrack; ++i)
+        {
+            pid   = pid_vec->at(i);
+            px    = px_vec->at(i);
+            py    = py_vec->at(i);
+            pz    = pz_vec->at(i);
+            p     = sqrt(px*px + py*py + pz*pz);
+            pt    = sqrt(px*px + py*py);
+            theta = atan2(pt,pz);
+            phi   = atan2(py,px);
+            eta   = -log(tan(theta/2.));
+            y     = -999;
+            p_info= db->GetParticle((int)pid);
+            if (!p_info) continue;
+            if (fabs(eta) > 1.) continue;
+
+            // v2
+            if (pid ==  PionPID) hpiplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid == -PionPID) hpiminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid ==  KaonPID) hkaon_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid == -KaonPID) hantikaon_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid ==  ProtonPID) hproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid == -ProtonPID) hantiproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid == -LambdaPID) hantilambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+        }
+
         for (int i = 0; i < ntrack; ++i)
         {
             pid   = pid_vec->at(i);
