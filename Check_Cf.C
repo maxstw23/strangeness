@@ -37,7 +37,7 @@ using namespace std;
 
 // constants
 const float PI = TMath::Pi();
-const float eta_cut = 1.;
+const float eta_cut = 1.5;
 const float y_cut   = 1.;
 const int buffer_size = 10;
 const bool  CutEta  = true;
