@@ -365,8 +365,8 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // v2
             if (pid ==  PionPID) hpiplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             if (pid == -PionPID) hpiminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid ==  KaonPID) hkaon_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid == -KaonPID) hantikaon_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid ==  KaonPID) hKplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            if (pid == -KaonPID) hKminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             if (pid ==  ProtonPID) hproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             if (pid == -ProtonPID) hantiproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
