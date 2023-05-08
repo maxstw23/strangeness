@@ -346,31 +346,34 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         vector<int> pid1_vec, pid2_vec, ybin2_vec; 
 
         // v2 loop
-        for (int i = 0; i < ntrack; ++i)
+        if (cen > 0 && cen < 10)
         {
-            pid   = pid_vec->at(i);
-            px    = px_vec->at(i);
-            py    = py_vec->at(i);
-            pz    = pz_vec->at(i);
-            p     = sqrt(px*px + py*py + pz*pz);
-            pt    = sqrt(px*px + py*py);
-            theta = atan2(pt,pz);
-            phi   = atan2(py,px);
-            eta   = -log(tan(theta/2.));
-            y     = -999;
-            p_info= db->GetParticle((int)pid);
-            if (!p_info) continue;
-            if (fabs(eta) > 1.) continue;
+            for (int i = 0; i < ntrack; ++i)
+            {
+                pid   = pid_vec->at(i);
+                px    = px_vec->at(i);
+                py    = py_vec->at(i);
+                pz    = pz_vec->at(i);
+                p     = sqrt(px*px + py*py + pz*pz);
+                pt    = sqrt(px*px + py*py);
+                theta = atan2(pt,pz);
+                phi   = atan2(py,px);
+                eta   = -log(tan(theta/2.));
+                y     = -999;
+                p_info= db->GetParticle((int)pid);
+                if (!p_info) continue;
+                if (fabs(eta) > 1.) continue;
 
-            // v2
-            if (pid ==  PionPID) hpiplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid == -PionPID) hpiminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid ==  KaonPID) hKplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid == -KaonPID) hKminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid ==  ProtonPID) hproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid == -ProtonPID) hantiproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-            if (pid == -LambdaPID) hantilambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                // v2
+                if (pid ==  PionPID) hpiplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -PionPID) hpiminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  KaonPID) hKplus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -KaonPID) hKminus_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  ProtonPID) hproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -ProtonPID) hantiproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -LambdaPID) hantilambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+            }
         }
 
         for (int i = 0; i < ntrack; ++i)
