@@ -59,6 +59,7 @@ const int   ProtonPID = 2212;
 const int   LambdaPID = 3122;
 const int   Xi0PID = 3322;
 const int   XimPID = 3312;
+const int   phiPID = 333;
 
 
 void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "1234", const int mode = 1)
@@ -273,6 +274,12 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile* hantiproton_v2_pt[9];
     TProfile* hlambda_v2_pt[9];
     TProfile* hantilambda_v2_pt[9];
+    TProfile* homega_v2_pt[9];
+    TProfile* homegabar_v2_pt[9];
+    TProfile* hxi_v2_pt[9];
+    TProfile* hantixi_v2_pt[9];
+    TProfile* hphi_v2_pt[9];
+
     for (int i = 0; i < 9; i++)
     {
         hpiplus_v2_pt[i] = new TProfile(Form("hpiplus_v2_pt_%d", i+1), Form("hpiplus_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
@@ -283,6 +290,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hantiproton_v2_pt[i] = new TProfile(Form("hantiproton_v2_pt_%d", i+1), Form("hantiproton_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
         hlambda_v2_pt[i] = new TProfile(Form("hlambda_v2_pt_%d", i+1), Form("hlambda_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
         hantilambda_v2_pt[i] = new TProfile(Form("hantilambda_v2_pt_%d", i+1), Form("hantilambda_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        homega_v2_pt[i] = new TProfile(Form("homega_v2_pt_%d", i+1), Form("homega_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        homegabar_v2_pt[i] = new TProfile(Form("homegabar_v2_pt_%d", i+1), Form("homegabar_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hxi_v2_pt[i] = new TProfile(Form("hxi_v2_pt_%d", i+1), Form("hxi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hantixi_v2_pt[i] = new TProfile(Form("hantixi_v2_pt_%d", i+1), Form("hantixi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hphi_v2_pt[i] = new TProfile(Form("hphi_v2_pt_%d", i+1), Form("hphi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
     }
 
     // setting PID and momentum branches
@@ -373,6 +385,11 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 if (pid == -ProtonPID) hantiproton_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid == -LambdaPID) hantilambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  XimPID) hxi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -XimPID) hantixi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  OmegaPID) homega_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -OmegaPID) hantiomega_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid ==  phiPID) hphi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             }
         }
 
