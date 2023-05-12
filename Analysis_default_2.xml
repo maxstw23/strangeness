@@ -3,7 +3,7 @@
 <job  maxFilesPerProcess="50" simulateSubmission="false" fileListSyntax="xrootd">
     
     <command>
-	stardev
+	starpro
 	root4star -b -q check.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
     </command>
     
