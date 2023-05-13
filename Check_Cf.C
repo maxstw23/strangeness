@@ -277,7 +277,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile* homega_v2_pt[9];
     TProfile* homegabar_v2_pt[9];
     TProfile* hxi_v2_pt[9];
-    TProfile* hantixi_v2_pt[9];
+    TProfile* hxibar_v2_pt[9];
     TProfile* hphi_v2_pt[9];
 
     for (int i = 0; i < 9; i++)
@@ -293,7 +293,7 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
         homega_v2_pt[i] = new TProfile(Form("homega_v2_pt_%d", i+1), Form("homega_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
         homegabar_v2_pt[i] = new TProfile(Form("homegabar_v2_pt_%d", i+1), Form("homegabar_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
         hxi_v2_pt[i] = new TProfile(Form("hxi_v2_pt_%d", i+1), Form("hxi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
-        hantixi_v2_pt[i] = new TProfile(Form("hantixi_v2_pt_%d", i+1), Form("hantixi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
+        hxibar_v2_pt[i] = new TProfile(Form("hxibar_v2_pt_%d", i+1), Form("hxibar_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
         hphi_v2_pt[i] = new TProfile(Form("hphi_v2_pt_%d", i+1), Form("hphi_v2_pt_%d", i+1), 400, 0., 4., -1., 1.);
     }
 
@@ -386,9 +386,9 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 if (pid ==  LambdaPID) hlambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid == -LambdaPID) hantilambda_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid ==  XimPID) hxi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-                if (pid == -XimPID) hantixi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -XimPID) hxibar_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid ==  OmegaPID) homega_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
-                if (pid == -OmegaPID) hantiomega_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
+                if (pid == -OmegaPID) homegabar_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
                 if (pid ==  phiPID) hphi_v2_pt[cen-1]->Fill(pt, cos(2.*phi));
             }
         }
