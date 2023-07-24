@@ -107,6 +107,19 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
     sprintf(fname_out,"out_%s.root",JobID.Data());
 	TFile fout(fname_out,"RECREATE");
 
+    // dNdy
+    TH1D* hdNdy_proton[9];
+    TH1D* hdNdy_antiproton[9];
+    TH1D* hdNdy_omega[9];
+    TH1D* hdNdy_antiomega[9];
+    for (int i = 0; i < 9; ++i)
+    {
+        hdNdy_proton[i]     = new TH1D(Form("hdNdy_proton_%d", i+1), Form("hdNdy_proton_%d", i+1), 2000, -10., 10.);
+        hdNdy_antiproton[i] = new TH1D(Form("hdNdy_antiproton_%d", i+1), Form("hdNdy_antiproton_%d", i+1), 2000, -10., 10.);
+        hdNdy_omega[i]      = new TH1D(Form("hdNdy_omega_%d", i+1), Form("hdNdy_omega_%d", i+1), 2000, -10., 10.);
+        hdNdy_antiomega[i]  = new TH1D(Form("hdNdy_antiomega_%d", i+1), Form("hdNdy_antiomega_%d", i+1), 2000, -10., 10.);
+    }
+
     // QA hist 
     TH1D* hMult     = new TH1D("hMult"     , "Total Multiplicity"               , 1000, -0.5, 999.5);
     TH1D* hRefMult  = new TH1D("hRefMult"  , "RefMult"                          , 1000, -0.5, 999.5);
@@ -426,6 +439,12 @@ void Check_Cf(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (pid == -LambdaPID){hEtaLambdabar->Fill(eta); if (y > -999)hyLambdabar->Fill(y);}
             mult++;
             if (pid == KaonPID) kaonct++;
+
+            // dNdy for centralities
+            if (pid ==  ProtonPID) hdNdy_proton[cen-1]->Fill(y);
+            if (pid == -ProtonPID) hdNdy_antiproton[cen-1]->Fill(y);
+            if (pid ==  OmegaPID) hdNdy_omega[cen-1]->Fill(y);
+            if (pid == -OmegaPID) hdNdy_antiomega[cen-1]->Fill(y);
 
             // track cut
             if (CutEta) {if (fabs(eta) > eta_cut) continue;}
