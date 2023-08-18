@@ -36,6 +36,12 @@ using namespace std;
 // constants
 const float eta_cut    = 1.;
 const float PI = TMath::Pi();
+const float cen_cut_1 = 1;
+const float cen_cut_2 = 2;
+const float rho_mass = 0.77526;
+const float rho_sigma = 0.005;
+const float EP_eta_lo = 2.1;
+const float EP_eta_hi = 5.1;
 
 // for cendef
 TString energy = "14";
@@ -128,6 +134,22 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TH1D* hbaryon = new TH1D("hbaryon", "total baryon number", 800, -199.5, 600.5);
     TH1D* hQualifiedEvt = new TH1D("hQualifiedEvt", "Number of qualified events", 9, 0.5, 9.5); //all 0-5%
     TH1D* hstrangeness = new TH1D("sness", "total strangeness", 50, -24.5, 25.5);
+
+    // for rho decay pion v_2 test
+    TH1D *hEP_e = new TH1D("hEP_e", "hEP_e", 100, 0, TMath::Pi());
+    TH1D *hEP_w = new TH1D("hEP_w", "hEP_w", 100, 0, TMath::Pi());
+    TH1D *hEP_ew_cos = new TH1D("hEP_ew_cos", "hEP_ew_cos", 1, -0.5, 0.5);
+    TH1D *hpipiinvmass_SS = new TH1D("hpipiinvmass_SS", "hpipiinvmass_SS", 2000, 0., 2.);
+    TH1D *hpipiinvmass_OS = new TH1D("hpipiinvmass_OS", "hpipiinvmass_OS", 2000, 0., 2.);
+    TProfile *hpiplus_v2_pt_inc  = new TProfile("hpiplus_v2_pt_inc",  "hpiplus_v2_pt_inc",  200, 0., 10.);
+    TProfile *hpiminus_v2_pt_inc = new TProfile("hpiminus_v2_pt_inc", "hpiminus_v2_pt_inc", 200, 0., 10.);
+    TProfile *hpiplus_v2_pt_sig  = new TProfile("hpiplus_v2_pt_sig",  "hpiplus_v2_pt_sig",  200, 0., 10.);
+    TProfile *hpiminus_v2_pt_sig = new TProfile("hpiminus_v2_pt_sig", "hpiminus_v2_pt_sig", 200, 0., 10.);
+    TProfile *hpiplus_v2_pt_sbd  = new TProfile("hpiplus_v2_pt_sbd",  "hpiplus_v2_pt_sbd",  200, 0., 10.);
+    TProfile *hpiminus_v2_pt_sbd = new TProfile("hpiminus_v2_pt_sbd", "hpiminus_v2_pt_sbd", 200, 0., 10.);
+    TProfile *hrho_v2_pt_sig = new TProfile("hrho_v2_pt_sig", "hrho_v2_pt_sig", 200, 0., 10.);
+    TProfile *hrho_v2_pt_sbd = new TProfile("hrho_v2_pt_sbd", "hrho_v2_pt_sbd", 200, 0., 10.);
+        
 
     // for spectra
     TH1D* hOmegaPtSpectrum[9];          
@@ -223,6 +245,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
         if (cen < 1 || cen > 9) continue;
+        if ((cen_cut_1 || cen_cut_2) && (cen != cen_cut_1 && cen != cen_cut_2)) continue;
         for (int i = 1; i <= 9; i++) {if (cen == i) nevt_spec[i-1]++;}
         hnp_cen[cen-1]->Fill(np);
         hnp->Fill(np);
@@ -230,6 +253,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         // counting particle for BES comparison and count omega
         int NO_y=0, NOb_y=0, NX_y=0, NXb_y=0, NL_y=0, NLb_y=0;
         int num_omega_total = 0;
+        float mQxe = 0, mQye = 0, mQxw = 0, mQyw = 0;
         for (int i = 0; i < pid_vec->size(); ++i)
         {
             int   pid   = pid_vec->at(i);
@@ -247,6 +271,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             TLorentzVector lv;
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
+
+            // event plane
+            if (EP_eta_lo < eta && eta < EP_eta_hi)
+            {
+                mQxe += pt*cos(2*theta);
+                mQye += pt*sin(2*theta);
+            }
+            if (-EP_eta_hi < eta && eta < -EP_eta_lo)
+            {
+                mQxw += pt*cos(2*theta);
+                mQyw += pt*sin(2*theta);
+            }
 
             // QA
             hEta->Fill(eta);
@@ -296,6 +332,83 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
 
         }
 
+        if (mQxe == 0 || mQye == 0 || mQxw == 0 || mQyw == 0) continue;
+        TVector2 mQe; mQe.Set(mQxe, mQye);
+        TVector2 mQw; mQw.Set(mQxw, mQyw);
+        float EP_e = mQe.Phi()/2.;
+        float EP_w = mQw.Phi()/2.;
+        hEP_e->Fill(EP_e);
+        hEP_w->Fill(EP_w);
+        hEP_ew_cos->Fill(cos(2*EP_e-2*EP_w));
+
+        // rho/pion v2 test
+        std::vector<int> used_tracks;
+        used_tracks.resize(0);
+        for (int i = 0; i < pid_vec->size(); ++i)
+        {
+            int   pid1   = pid_vec->at(i);
+            if (abs(pid1) != 211) continue;
+            float px1    = px_vec->at(i);
+            float py1    = py_vec->at(i);
+            float pz1    = pz_vec->at(i);
+            float pt1    = px*px + py*py;
+            float theta1 = atan2(pt,pz);
+            float eta1   = -log(tan(theta/2.));
+            float y1     = -999;
+            p_info= db->GetParticle((int)pid1);
+            if (!p_info) continue;
+            TLorentzVector lv1;
+            lv1.SetXYZM(px1, py1, pz1, p_info->Mass());
+            y1 = lv1.Rapidity();
+            
+            for (int j = i+1; j < pid_vec->size(); ++j)
+            {
+                int   pid2   = pid_vec->at(j);
+                if (abs(pid2) != 211) continue;
+                float px2    = px_vec->at(j);
+                float py2    = py_vec->at(j);
+                float pz2    = pz_vec->at(j);
+                float pt2    = px*px + py*py;
+                float theta2 = atan2(pt,pz);
+                float eta2   = -log(tan(theta/2.));
+                float y2     = -999;
+                p_info= db->GetParticle((int)pid2);
+                if (!p_info) continue;
+                TLorentzVector lv2;
+                lv2.SetXYZM(px2, py2, pz2, p_info->Mass());
+                y2 = lv2.Rapidity();
+                
+                // rho inv mass
+                float invmass = (lv1+lv2).M();
+                float rho_phi = (lv1+lv2).Phi();
+                float rho_pt  = (lv1+lv2).Pt();
+                if (pid1 * pid2 < 0) hpipiinvmass_OS->Fill(invmass);
+                else                 hpipiinvmass_SS->Fill(invmass);
+
+                // pion v2
+                if (pid1 * pid2 < 0) continue;
+                // sideband first
+                if ((rho_mass - 6 * rho_sigma < invmass && invmass < rho_mass - 4 * rho_sigma) || (rho_mass + 4 * rho_sigma < invmass && invmass < rho_mass + 6 * rho_sigma))
+                {
+                    if (pid1 > 0) { hpiplus_v2_pt_sbd->Fill(pt1, cos(2*(phi1))); hpiminus_v2_pt_sbd->Fill(pt2, cos(2*(phi2))); }
+                    else          { hpiplus_v2_pt_sbd->Fill(pt2, cos(2*(phi2))); hpiminus_v2_pt_sbd->Fill(pt1, cos(2*(phi1))); }
+                    hrho_v2_pt_sbd->Fill(rho_pt, cos(2*(rho_phi1)));
+                    
+                }
+                // signal
+                if (rho_mass - 3 * rho_sigma < invmass && invmass < rho_mass + 3 * rho_sigma)
+                {
+                    // if track not used
+                    if (std::find(used_tracks.begin(), used_tracks.end(), i) != used_tracks.end()) break;
+                    if (std::find(used_tracks.begin(), used_tracks.end(), j) != used_tracks.end()) continue;
+                    used_tracks.push_back(i); used_tracks.push_back(j);
+                    if (pid1 > 0) { hpiplus_v2_pt_sig->Fill(pt1, cos(2*(phi1))); hpiminus_v2_pt_sig->Fill(pt2, cos(2*(phi2))); }
+                    else          { hpiplus_v2_pt_sig->Fill(pt2, cos(2*(phi2))); hpiminus_v2_pt_sig->Fill(pt1, cos(2*(phi1))); }
+                    hrho_v2_pt_sig->Fill(rho_pt, cos(2*(rho_phi1)));
+                }  
+            }
+        }
+        
         hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
         hXidNdy    ->Fill(cen*1.0, NX_y*1.0); hXibardNdy    ->Fill(cen*1.0, NXb_y*1.0); 
         hLambdadNdy->Fill(cen*1.0, NL_y*1.0); hLambdabardNdy->Fill(cen*1.0, NLb_y*1.0); 

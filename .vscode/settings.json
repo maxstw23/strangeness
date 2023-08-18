@@ -53,6 +53,9 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "Check_Cf_default.C": "cpp"
+        "Check_Cf_default.C": "cpp",
+        "check.C": "cpp",
+        "Check_QA.C": "cpp",
+        "check_Q.C": "cpp"
     }
 }
