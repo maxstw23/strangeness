@@ -56,6 +56,8 @@
         "Check_Cf_default.C": "cpp",
         "check.C": "cpp",
         "Check_QA.C": "cpp",
-        "check_Q.C": "cpp"
+        "check_Q.C": "cpp",
+        "Check_Sness.C": "cpp",
+        "check_S.C": "cpp"
     }
 }
