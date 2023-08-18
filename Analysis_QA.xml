@@ -24,7 +24,7 @@
     <!--<input URL="file:/star/data01/pwg/xiatong/AMPT/14GeV/&input_dir;"/>-->
     <!--<input URL="file:/star/data01/pwg/xiatong/AMPT/14GeV_default/&input_dir;"/>-->
     <!--<input URL="file:/star/data01/pwg/xiatong/git/UrQMD/14GeV/&input_dir;"/>-->
-    <input URL="file:/star/data01/pwg/xiatong/git/Ampt_Runner_New/14GeV_sm/output/&input_dir;"/>
+    <input URL="file:/star/data01/pwg/xiatong/AMPT/14GeV/&input_dir;"/>
     <output fromScratch="*.root" toURL="file:/star/data01/pwg/xiatong/git/strangeness/data/" />
     
     <stdout URL="file:/star/data01/pwg/xiatong/git/strangeness/debug/$JOBID.out"/>
