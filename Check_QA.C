@@ -351,9 +351,10 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             float px1    = px_vec->at(i);
             float py1    = py_vec->at(i);
             float pz1    = pz_vec->at(i);
-            float pt1    = px*px + py*py;
-            float theta1 = atan2(pt,pz);
-            float eta1   = -log(tan(theta/2.));
+            float pt1    = px1*px1 + py1*py1;
+            float phi1   = atan2(py1,px1);
+            float theta1 = atan2(pt1,pz1);
+            float eta1   = -log(tan(theta1/2.));
             float y1     = -999;
             p_info= db->GetParticle((int)pid1);
             if (!p_info) continue;
@@ -368,8 +369,9 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 float px2    = px_vec->at(j);
                 float py2    = py_vec->at(j);
                 float pz2    = pz_vec->at(j);
-                float pt2    = px*px + py*py;
-                float theta2 = atan2(pt,pz);
+                float pt2    = px2*px2 + py2*py2;
+                float phi2   = atan2(py2,px2);
+                float theta2 = atan2(pt2,pz2);
                 float eta2   = -log(tan(theta/2.));
                 float y2     = -999;
                 p_info= db->GetParticle((int)pid2);
@@ -392,7 +394,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 {
                     if (pid1 > 0) { hpiplus_v2_pt_sbd->Fill(pt1, cos(2*(phi1))); hpiminus_v2_pt_sbd->Fill(pt2, cos(2*(phi2))); }
                     else          { hpiplus_v2_pt_sbd->Fill(pt2, cos(2*(phi2))); hpiminus_v2_pt_sbd->Fill(pt1, cos(2*(phi1))); }
-                    hrho_v2_pt_sbd->Fill(rho_pt, cos(2*(rho_phi1)));
+                    hrho_v2_pt_sbd->Fill(rho_pt, cos(2*(rho_phi)));
                     
                 }
                 // signal
@@ -404,7 +406,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     used_tracks.push_back(i); used_tracks.push_back(j);
                     if (pid1 > 0) { hpiplus_v2_pt_sig->Fill(pt1, cos(2*(phi1))); hpiminus_v2_pt_sig->Fill(pt2, cos(2*(phi2))); }
                     else          { hpiplus_v2_pt_sig->Fill(pt2, cos(2*(phi2))); hpiminus_v2_pt_sig->Fill(pt1, cos(2*(phi1))); }
-                    hrho_v2_pt_sig->Fill(rho_pt, cos(2*(rho_phi1)));
+                    hrho_v2_pt_sig->Fill(rho_pt, cos(2*(rho_phi)));
                 }  
             }
         }
