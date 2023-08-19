@@ -372,7 +372,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 float pt2    = px2*px2 + py2*py2;
                 float phi2   = atan2(py2,px2);
                 float theta2 = atan2(pt2,pz2);
-                float eta2   = -log(tan(theta/2.));
+                float eta2   = -log(tan(theta2/2.));
                 float y2     = -999;
                 p_info= db->GetParticle((int)pid2);
                 if (!p_info) continue;
