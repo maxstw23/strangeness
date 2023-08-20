@@ -38,8 +38,8 @@ const float eta_cut    = 1.;
 const float PI = TMath::Pi();
 const float cen_cut_1 = 1;
 const float cen_cut_2 = 2;
-const float rho_mass = 0.77526;
-const float rho_sigma = 0.005;
+const float rho_mass = 0.77;
+const float rho_sigma = 0.001;
 const float EP_eta_lo = 2.1;
 const float EP_eta_hi = 5.1;
 
@@ -150,6 +150,11 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile *hrho_v2_pt_sig = new TProfile("hrho_v2_pt_sig", "hrho_v2_pt_sig", 200, 0., 10.);
     TProfile *hrho_v2_pt_sbd = new TProfile("hrho_v2_pt_sbd", "hrho_v2_pt_sbd", 200, 0., 10.);
         
+    // transported net proton net neutron flow
+    TProfile *hproton_v2_pt = new TProfile("hproton_v2_pt", "hproton_v2_pt", 200, 0., 10.);
+    TProfile *hneutron_v2_pt = new TProfile("hneutron_v2_pt", "hneutron_v2_pt", 200, 0., 10.);
+    TProfile *hantiproton_v2_pt = new TProfile("hantiproton_v2_pt", "hantiproton_v2_pt", 200, 0., 10.);
+    TProfile *hantineutron_v2_pt = new TProfile("hantineutron_v2_pt", "hantineutron_v2_pt", 200, 0., 10.);
 
     // for spectra
     TH1D* hOmegaPtSpectrum[9];          
@@ -355,12 +360,17 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             float phi1   = atan2(py1,px1);
             float theta1 = atan2(pt1,pz1);
             float eta1   = -log(tan(theta1/2.));
+            if (fabs(eta1) > 1) continue;
             float y1     = -999;
             p_info= db->GetParticle((int)pid1);
             if (!p_info) continue;
             TLorentzVector lv1;
             lv1.SetXYZM(px1, py1, pz1, p_info->Mass());
             y1 = lv1.Rapidity();
+
+            // inclusive v2
+            if (pid1 ==  211) hpiplus_v2_pt_inc ->Fill(pt1, cos(2*phi1));
+            if (pid1 == -211) hpiminus_v2_pt_inc->Fill(pt1, cos(2*phi1));
             
             for (int j = i+1; j < pid_vec->size(); ++j)
             {
@@ -373,6 +383,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                 float phi2   = atan2(py2,px2);
                 float theta2 = atan2(pt2,pz2);
                 float eta2   = -log(tan(theta2/2.));
+                if (fabs(eta2) > 1) continue;
                 float y2     = -999;
                 p_info= db->GetParticle((int)pid2);
                 if (!p_info) continue;
@@ -409,6 +420,35 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
                     hrho_v2_pt_sig->Fill(rho_pt, cos(2*(rho_phi)));
                 }  
             }
+        }
+        
+        // proton neutron v2 test
+        for (int i = 0; i < pid_vec->size(); ++i)
+        {
+            int   pid   = pid_vec->at(i);
+            int   s     = sness_map[pid];
+            int   type  = FindType(pid);
+            float px    = px_vec->at(i);
+            float py    = py_vec->at(i);
+            float phi   = atan2(py,px);
+            float pz    = pz_vec->at(i);
+            float pt    = px*px + py*py;
+            float theta = atan2(pt,pz);
+            float eta   = -log(tan(theta/2.));
+            float y     = -999;
+            p_info= db->GetParticle((int)pid);
+            if (!p_info) continue;
+            TLorentzVector lv;
+            lv.SetXYZM(px, py, pz, p_info->Mass());
+            y = lv.Rapidity();
+            if (fabs(y) > 1) continue; // mid-rapidity
+
+            // proton v2
+            if (pid ==  2212) hproton_v2_pt->Fill(pt, cos(2*phi));
+            if (pid == -2212) hantiproton_v2_pt->Fill(pt, cos(2*phi));
+            // neutron v2
+            if (pid ==  2112) hneutron_v2_pt->Fill(pt, cos(2*phi));
+            if (pid == -2112) hantineutron_v2_pt->Fill(pt, cos(2*phi));
         }
         
         hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
