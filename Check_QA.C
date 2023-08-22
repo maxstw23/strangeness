@@ -36,8 +36,8 @@ using namespace std;
 // constants
 const float eta_cut    = 1.;
 const float PI = TMath::Pi();
-const float cen_cut_1 = 1;
-const float cen_cut_2 = 2;
+const float cen_cut_1 = 8;
+const float cen_cut_2 = 9;
 const float rho_mass = 0.77;
 const float rho_sigma = 0.001;
 const float EP_eta_lo = 2.1;
