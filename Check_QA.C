@@ -205,6 +205,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     }
     TH2D* hnp_vs_ssbar = new TH2D("hnp_vs_ssbar", "Npart vs SSbar pair", 1000, -0.5, 999.5, 1000, -0.5, 999.5);
     TH1D* hnp          = new TH1D("hnp", "Participant number for all qualified events", 1000, -0.5, 999.5);
+    TH2D* hRefMult_np  = new TH2D("hRefMult_np", "RefMult vs Npart", 1000, -0.5, 999.5, 1000, -0.5, 999.5);
     
 
     // setting PID and momentum branches
@@ -250,10 +251,11 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         CenMaker cenmaker;
         int cen = cenmaker.cent9(refmult, energy, mode);
         if (cen < 1 || cen > 9) continue;
-        if ((cen_cut_1 || cen_cut_2) && (cen != cen_cut_1 && cen != cen_cut_2)) continue;
+        // if ((cen_cut_1 || cen_cut_2) && (cen != cen_cut_1 && cen != cen_cut_2)) continue;
         for (int i = 1; i <= 9; i++) {if (cen == i) nevt_spec[i-1]++;}
         hnp_cen[cen-1]->Fill(np);
         hnp->Fill(np);
+        hRefMult_np->Fill(np, refmult);
     
         // counting particle for BES comparison and count omega
         int NO_y=0, NOb_y=0, NX_y=0, NXb_y=0, NL_y=0, NLb_y=0;
