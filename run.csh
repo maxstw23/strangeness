@@ -1,7 +1,7 @@
 #!/bin/tcsh
 
 # historic for selecting fractions of files
-min=1
+set min=1
 printf -v var '*.root'
 
 # mode: {0: AMPT default, 1: AMPT SM, 2: UrQMD}
