@@ -13,4 +13,4 @@ printf -v var '*.root'
 
 #star-submit-template -template ./Analysis_sness.xml -entities input_dir=$var,mode=1
 
-star-submit-template -template ./Analysis_QA.xml -entities input_dir=$var,mode=1
+star-submit-beta-template -template ./Analysis_QA.xml -entities input_dir=$var,mode=1
