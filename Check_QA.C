@@ -156,6 +156,35 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile *hantiproton_v2_pt = new TProfile("hantiproton_v2_pt", "hantiproton_v2_pt", 200, 0., 10.);
     TProfile *hantineutron_v2_pt = new TProfile("hantineutron_v2_pt", "hantineutron_v2_pt", 200, 0., 10.);
 
+    // v1 coalescence test
+    TProfile *hproton_v1_y[9];
+    TProfile *hantiproton_v1_y[9];
+    TProfile *hneutron_v1_y[9];
+    TProfile *hantineutron_v1_y[9];
+    TProfile *hkplus_v1_y[9];
+    TProfile *hkminus_v1_y[9];
+    TProfile *hpiplus_v1_y[9];
+    TProfile *hpiminus_v1_y[9];
+    TProfile *hlambda_v1_y[9];
+    TProfile *hantilambda_v1_y[9];
+    TProfile *hxi_v1_y[9];
+    TProfile *hantixi_v1_y[9];
+    for (int i = 0; i < 9; i++)
+    {
+        hproton_v1_y[i] = new TProfile(Form("hproton_v1_y_%d", i+1), Form("hproton_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hantiproton_v1_y[i] = new TProfile(Form("hantiproton_v1_y_%d", i+1), Form("hantiproton_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hneutron_v1_y[i] = new TProfile(Form("hneutron_v1_y_%d", i+1), Form("hneutron_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hantineutron_v1_y[i] = new TProfile(Form("hantineutron_v1_y_%d", i+1), Form("hantineutron_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hkplus_v1_y[i] = new TProfile(Form("hkplus_v1_y_%d", i+1), Form("hkplus_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hkminus_v1_y[i] = new TProfile(Form("hkminus_v1_y_%d", i+1), Form("hkminus_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hpiplus_v1_y[i] = new TProfile(Form("hpiplus_v1_y_%d", i+1), Form("hpiplus_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hpiminus_v1_y[i] = new TProfile(Form("hpiminus_v1_y_%d", i+1), Form("hpiminus_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hlambda_v1_y[i] = new TProfile(Form("hlambda_v1_y_%d", i+1), Form("hlambda_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hantilambda_v1_y[i] = new TProfile(Form("hantilambda_v1_y_%d", i+1), Form("hantilambda_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hxi_v1_y[i] = new TProfile(Form("hxi_v1_y_%d", i+1), Form("hxi_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+        hantixi_v1_y[i] = new TProfile(Form("hantixi_v1_y_%d", i+1), Form("hantixi_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
+    }
+
     // for spectra
     TH1D* hOmegaPtSpectrum[9];          
     TH1D* hOmegabarPtSpectrum[9];   
@@ -451,6 +480,41 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             // neutron v2
             if (pid ==  2112) hneutron_v2_pt->Fill(pt, cos(2*phi));
             if (pid == -2112) hantineutron_v2_pt->Fill(pt, cos(2*phi));
+        }
+        
+        // v1 coalescence
+        for (int i = 0; i < pid_vec->size(); ++i)
+        {
+            int   pid   = pid_vec->at(i);
+            int   s     = sness_map[pid];
+            int   type  = FindType(pid);
+            float px    = px_vec->at(i);
+            float py    = py_vec->at(i);
+            float phi   = atan2(py,px);
+            float pz    = pz_vec->at(i);
+            float pt    = px*px + py*py;
+            float theta = atan2(pt,pz);
+            float eta   = -log(tan(theta/2.));
+            float y     = -999;
+            p_info= db->GetParticle((int)pid);
+            if (!p_info) continue;
+            TLorentzVector lv;
+            lv.SetXYZM(px, py, pz, p_info->Mass());
+            y = lv.Rapidity();
+            if (fabs(y) > 1) continue; // mid-rapidity
+
+            if (pid ==  2212) hproton_v1_y->Fill(y, cos(phi));
+            if (pid == -2212) hantiproton_v1_y->Fill(y, cos(phi));
+            if (pid ==  2112) hneutron_v1_y->Fill(y, cos(phi));
+            if (pid == -2112) hantineutron_v1_y->Fill(y, cos(phi));
+            if (pid ==   211) hpiplus_v1_y->Fill(y, cos(phi));
+            if (pid ==  -211) hpiminus_v1_y->Fill(y, cos(phi));
+            if (pid ==   321) hkplus_v1_y->Fill(y, cos(phi));
+            if (pid ==  -321) hkminus_v1_y->Fill(y, cos(phi));
+            if (pid ==  3122) hlambda_v1_y->Fill(y, cos(phi));
+            if (pid == -3122) hantilambda_v1_y->Fill(y, cos(phi));
+            if (pid ==  3312) hsigma_v1_y->Fill(y, cos(phi));
+            if (pid == -3312) hantsigma_v1_y->Fill(y, cos(phi));
         }
         
         hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
