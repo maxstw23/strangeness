@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <job  maxFilesPerProcess="50" simulateSubmission="false" fileListSyntax="xrootd">
-    <shell>singularity exec -e -B /direct -B /star -B /afs -B /gpfs -B /sdcc/lustre02 /cvmfs/star.sdcc.bnl.gov/containers/rhic_sl7.sif</shell>
+    <!--<shell>singularity exec -e -B /direct -B /star -B /afs -B /gpfs -B /sdcc/lustre02 /cvmfs/star.sdcc.bnl.gov/containers/rhic_sl7.sif</shell>-->
     <command>
     starpro
 	root4star -b -q check_Q.C++\(\"$FILELIST\",\"$JOBID\",&mode;\)
