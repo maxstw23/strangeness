@@ -157,18 +157,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     TProfile *hantineutron_v2_pt = new TProfile("hantineutron_v2_pt", "hantineutron_v2_pt", 200, 0., 10.);
 
     // v1 coalescence test
-    TProfile *hproton_v1_y[9];
-    TProfile *hantiproton_v1_y[9];
-    TProfile *hneutron_v1_y[9];
-    TProfile *hantineutron_v1_y[9];
-    TProfile *hkplus_v1_y[9];
-    TProfile *hkminus_v1_y[9];
-    TProfile *hpiplus_v1_y[9];
-    TProfile *hpiminus_v1_y[9];
-    TProfile *hlambda_v1_y[9];
-    TProfile *hantilambda_v1_y[9];
-    TProfile *hxi_v1_y[9];
-    TProfile *hantixi_v1_y[9];
+    TProfile* hproton_v1_y[9];
+    TProfile* hantiproton_v1_y[9];
+    TProfile* hneutron_v1_y[9];
+    TProfile* hantineutron_v1_y[9];
+    TProfile* hkplus_v1_y[9];
+    TProfile* hkminus_v1_y[9];
+    TProfile* hpiplus_v1_y[9];
+    TProfile* hpiminus_v1_y[9];
+    TProfile* hlambda_v1_y[9];
+    TProfile* hantilambda_v1_y[9];
+    TProfile* hxi_v1_y[9];
+    TProfile* hantixi_v1_y[9];
     for (int i = 0; i < 9; i++)
     {
         hproton_v1_y[i] = new TProfile(Form("hproton_v1_y_%d", i+1), Form("hproton_v1_y_%d", i+1), 20, -1.0, 1.0, -1.0, 1.0);
