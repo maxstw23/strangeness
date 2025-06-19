@@ -265,9 +265,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     int nevt_spec[9] = {0};
 
     // event loop
+    auto t1 = std::chrono::high_resolution_clock::now();
+    auto t2 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < nentries; ++i)
     {
-        if((i+1)%1000==0) cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".\n";
+        if((i+1)%1000==0) 
+        {
+            cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".";
+            t2 = std::chrono::high_resolution_clock::now();
+            auto ms_int = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
+            cout<<" Time per event == "<< ms_int.count()  / 1000 << " ms."<<endl;
+            t1 = std::chrono::high_resolution_clock::now();
+        }
         chain->GetEntry(i);
         int np = 0;
         if (mode != 2) np = npp + npt;
@@ -377,7 +386,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         hEP_w->Fill(EP_w);
         hEP_ew_cos->Fill(cos(2*EP_e-2*EP_w));
 
-        // rho/pion v2 test
+        //// rho/pion v2 test
         // std::vector<int> used_tracks;
         // used_tracks.resize(0);
         // for (int i = 0; i < pid_vec->size(); ++i)
@@ -453,34 +462,34 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
         //     }
         // }
         
-        // proton neutron v2 test
-        for (int i = 0; i < pid_vec->size(); ++i)
-        {
-            int   pid   = pid_vec->at(i);
-            int   s     = sness_map[pid];
-            int   type  = FindType(pid);
-            float px    = px_vec->at(i);
-            float py    = py_vec->at(i);
-            float phi   = atan2(py,px);
-            float pz    = pz_vec->at(i);
-            float pt    = px*px + py*py;
-            float theta = atan2(pt,pz);
-            float eta   = -log(tan(theta/2.));
-            float y     = -999;
-            p_info= db->GetParticle((int)pid);
-            if (!p_info) continue;
-            TLorentzVector lv;
-            lv.SetXYZM(px, py, pz, p_info->Mass());
-            y = lv.Rapidity();
-            if (fabs(y) > 1) continue; // mid-rapidity
+        //// proton neutron v2 test
+        // for (int i = 0; i < pid_vec->size(); ++i)
+        // {
+        //     int   pid   = pid_vec->at(i);
+        //     int   s     = sness_map[pid];
+        //     int   type  = FindType(pid);
+        //     float px    = px_vec->at(i);
+        //     float py    = py_vec->at(i);
+        //     float phi   = atan2(py,px);
+        //     float pz    = pz_vec->at(i);
+        //     float pt    = px*px + py*py;
+        //     float theta = atan2(pt,pz);
+        //     float eta   = -log(tan(theta/2.));
+        //     float y     = -999;
+        //     p_info= db->GetParticle((int)pid);
+        //     if (!p_info) continue;
+        //     TLorentzVector lv;
+        //     lv.SetXYZM(px, py, pz, p_info->Mass());
+        //     y = lv.Rapidity();
+        //     if (fabs(y) > 1) continue; // mid-rapidity
 
-            // proton v2
-            if (pid ==  2212) hproton_v2_pt->Fill(pt, cos(2*phi));
-            if (pid == -2212) hantiproton_v2_pt->Fill(pt, cos(2*phi));
-            // neutron v2
-            if (pid ==  2112) hneutron_v2_pt->Fill(pt, cos(2*phi));
-            if (pid == -2112) hantineutron_v2_pt->Fill(pt, cos(2*phi));
-        }
+        //     // proton v2
+        //     if (pid ==  2212) hproton_v2_pt->Fill(pt, cos(2*phi));
+        //     if (pid == -2212) hantiproton_v2_pt->Fill(pt, cos(2*phi));
+        //     // neutron v2
+        //     if (pid ==  2112) hneutron_v2_pt->Fill(pt, cos(2*phi));
+        //     if (pid == -2112) hantineutron_v2_pt->Fill(pt, cos(2*phi));
+        // }
         
         // v1 coalescence
         for (int i = 0; i < pid_vec->size(); ++i)
