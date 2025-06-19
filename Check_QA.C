@@ -513,8 +513,8 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             if (pid ==  -321) hkminus_v1_y->Fill(y, cos(phi));
             if (pid ==  3122) hlambda_v1_y->Fill(y, cos(phi));
             if (pid == -3122) hantilambda_v1_y->Fill(y, cos(phi));
-            if (pid ==  3312) hsigma_v1_y->Fill(y, cos(phi));
-            if (pid == -3312) hantsigma_v1_y->Fill(y, cos(phi));
+            if (pid ==  3312) hxi_v1_y->Fill(y, cos(phi));
+            if (pid == -3312) hantixi_v1_y->Fill(y, cos(phi));
         }
         
         hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
