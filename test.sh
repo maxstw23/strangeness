@@ -1,4 +1,4 @@
-#!/bin/tcsh
+#!/bin/bash
 testlist="./test.list"
 jobid=$1
 mode=$2
