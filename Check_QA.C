@@ -270,11 +270,11 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     auto t2 = std::time(nullptr);
     for (int i = 0; i < nentries; ++i)
     {
-        if((i+1)%1000==0) 
+        if((i+1)%100==0) 
         {
             cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".";
             t2 = std::time(nullptr);
-            cout<<" Time used per event: "<<(t2-t1)/1000.<<" seconds."<<endl;
+            cout<<" Time used per event: "<<(t2-t1)/100.<<" seconds."<<endl;
         }
         chain->GetEntry(i);
         int np = 0;
