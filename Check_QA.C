@@ -503,18 +503,18 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             y = lv.Rapidity();
             if (fabs(y) > 1) continue; // mid-rapidity
 
-            if (pid ==  2212) hproton_v1_y[i]->Fill(y, cos(phi));
-            if (pid == -2212) hantiproton_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==  2112) hneutron_v1_y[i]->Fill(y, cos(phi));
-            if (pid == -2112) hantineutron_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==   211) hpiplus_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==  -211) hpiminus_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==   321) hkplus_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==  -321) hkminus_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==  3122) hlambda_v1_y[i]->Fill(y, cos(phi));
-            if (pid == -3122) hantilambda_v1_y[i]->Fill(y, cos(phi));
-            if (pid ==  3312) hxi_v1_y[i]->Fill(y, cos(phi));
-            if (pid == -3312) hantixi_v1_y[i]->Fill(y, cos(phi));
+            if (pid ==  2212) hproton_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid == -2212) hantiproton_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==  2112) hneutron_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid == -2112) hantineutron_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==   211) hpiplus_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==  -211) hpiminus_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==   321) hkplus_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==  -321) hkminus_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==  3122) hlambda_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid == -3122) hantilambda_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid ==  3312) hxi_v1_y[cen-1]->Fill(y, cos(phi));
+            if (pid == -3312) hantixi_v1_y[cen-1]->Fill(y, cos(phi));
         }
         
         hOmegadNdy ->Fill(cen*1.0, NO_y*1.0); hOmegabardNdy ->Fill(cen*1.0, NOb_y*1.0); 
