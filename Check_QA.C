@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <vector>
 #include <map>
+#include <ctime>
 #include "TTree.h"
 #include "TH1.h"
 #include "TH2.h"
@@ -265,17 +266,15 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
     int nevt_spec[9] = {0};
 
     // event loop
-    auto t1 = std::chrono::high_resolution_clock::now();
-    auto t2 = std::chrono::high_resolution_clock::now();
+    auto t1 = std::time(nullptr);
+    auto t2 = std::time(nullptr);
     for (int i = 0; i < nentries; ++i)
     {
         if((i+1)%1000==0) 
         {
             cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".";
-            t2 = std::chrono::high_resolution_clock::now();
-            auto ms_int = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
-            cout<<" Time per event == "<< ms_int.count()  / 1000 << " ms."<<endl;
-            t1 = std::chrono::high_resolution_clock::now();
+            t2 = std::time(nullptr);
+            cout<<" Time used per event: "<<(t2-t1)/1000.<<" seconds."<<endl;
         }
         chain->GetEntry(i);
         int np = 0;
