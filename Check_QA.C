@@ -275,6 +275,7 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             cout<<"Processing entry == "<< i+1 <<" == out of "<<nentries<<".";
             t2 = std::time(nullptr);
             cout<<" Time used per event: "<<(t2-t1)/100.<<" seconds."<<endl;
+            t1 = t2;
         }
         chain->GetEntry(i);
         int np = 0;
