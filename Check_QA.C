@@ -43,6 +43,8 @@ const float rho_mass = 0.77;
 const float rho_sigma = 0.001;
 const float EP_eta_lo = 2.1;
 const float EP_eta_hi = 5.1;
+const float pt_lo_pq = 0.08;
+const float pt_hi_pq = 0.6;
 
 // for cendef
 TString energy = "14";
@@ -511,6 +513,14 @@ void Check_QA(const Char_t *inFile = "placeholder.list", const TString JobID = "
             lv.SetXYZM(px, py, pz, p_info->Mass());
             y = lv.Rapidity();
             if (fabs(y) > 1) continue; // mid-rapidity
+            if (abs(pid) > 100 && abs(pid) < 1000)
+            {
+                if (pt < pt_lo_pq * 2 || pt > pt_hi_pq * 2) continue;
+            } 
+            else if (abs(pid) > 1000)
+            {
+                if (pt < pt_lo_pq * 3 || pt > pt_hi_pq * 3) continue;
+            }
 
             if (pid ==  2212) hproton_v1_y[cen-1]->Fill(y, cos(phi));
             if (pid == -2212) hantiproton_v1_y[cen-1]->Fill(y, cos(phi));
